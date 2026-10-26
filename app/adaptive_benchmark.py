@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Офлайн-сравнение обычных стратегий на конечном учебном наборе."""
 
+from localization import print
+import localization as loc
+
 import argparse
 import copy
 import hashlib
@@ -170,6 +173,7 @@ def evaluate():
                           "responses": sum(r["accounting"]["attempted_requests"] for r in synthetic.values()), "runs": synthetic}}
 
 
+@loc.localized_html
 def render_report(report):
     body = ("<h1>Выбор следующего входа по наблюдениям</h1><aside>Учебные задачи с намеренными ошибками. "
             "Этот новый набор выполнен офлайн. Настоящая модель на нём НЕ ПРОВЕРЕНА.</aside>"
@@ -240,7 +244,8 @@ def write_evaluation(directory=ROOT / "outputs"):
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description="Только офлайн-сравнение обычных стратегий; сеть и ключи не используются.")
+    argv = loc.cli_args(argv)
+    parser = loc.ArgumentParser(description="Только офлайн-сравнение обычных стратегий; сеть и ключи не используются.")
     sub = parser.add_subparsers(dest="command")
     replay = sub.add_parser("replay")
     replay.add_argument("--artifact", required=True)

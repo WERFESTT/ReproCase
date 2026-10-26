@@ -1,5 +1,7 @@
 """Пять заранее выбранных существующих случаев. Без нового набора или произвольных заданий."""
 
+import localization as loc
+
 import copy
 import hashlib
 import html
@@ -166,7 +168,7 @@ def save_report(record, directory):
     for row in record["rows"]:
         body += "<details><summary>" + html.escape(LABELS[row["id"]]) + "</summary><pre>" + html.escape(app.json_text(row)) + "</pre></details>"
     body += "<p><a href='result.json'>Полный журнал, план, история и метрики</a></p></html>"
-    (directory / "report.html").write_text(body, encoding="utf-8")
+    (directory / "report.html").write_text(loc.html_text(body), encoding="utf-8")
     return directory / "report.html"
 
 

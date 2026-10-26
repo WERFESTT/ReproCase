@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Конечный офлайн-пилот исторических дефектов и Hypothesis. Автоустановки и сети нет."""
 
+from localization import print
+import localization as loc
+
 import argparse
 from collections import Counter
 import hashlib
@@ -276,6 +279,7 @@ if __name__ == '__main__':
     return evidence
 
 
+@loc.localized_html
 def render(report):
     rows=""
     for r in report['summary']:
@@ -309,12 +313,13 @@ def render(report):
 
 
 def main(argv=None):
-    parser=argparse.ArgumentParser(description="Воспроизвести два исторических дефекта и сравнить обычный метод с Hypothesis, офлайн.")
+    argv = loc.cli_args(argv)
+    parser=loc.ArgumentParser(description="Воспроизвести два исторических дефекта и сравнить обычный метод с Hypothesis, офлайн.")
     parser.parse_args(argv)
     if importlib.util.find_spec('hypothesis') is None:
         if not PYTHON.is_file():
             print('Нет локального Hypothesis. Сначала восстановите изолированное окружение по HISTORICAL_PILOT.md.'); return 2
-        return subprocess.run([str(PYTHON),'-B',str(Path(__file__).resolve())],cwd=ROOT).returncode
+        return subprocess.run([str(PYTHON),'-B',str(Path(__file__).resolve()),'--language',loc.get_language()],cwd=ROOT).returncode
     os.environ['HYPOTHESIS_STORAGE_DIRECTORY']=str(ROOT/'outputs/hypothesis-cache')
     import hypothesis
     if hypothesis.__version__ != core.plan()['hypothesis_version']:

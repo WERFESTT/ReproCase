@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """ReproCase: три учебных случая и строгий офлайн-маршрут проверки."""
 
+from localization import print
+import localization as loc
+
 import argparse
 import hashlib
 import json
@@ -260,7 +263,7 @@ def write_report(evidence, output_dir):
         (output_dir / name).write_text(content, encoding="utf-8")
 
 
-class RussianParser(argparse.ArgumentParser):
+class RussianParser(loc.ArgumentParser):
     def error(self, message):
         self.print_usage(sys.stderr)
         self.exit(2, "Ошибка параметров. Используйте --help для списка команд и вариантов.\n")
@@ -291,6 +294,7 @@ def parser():
 
 
 def main(argv=None):
+    argv = loc.cli_args(argv)
     args = parser().parse_args(argv)
     try:
         if args.command == "demo-all":

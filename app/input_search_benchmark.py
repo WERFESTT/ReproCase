@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Отдельный оценщик ограниченного поиска. Замороженные ответы не идут селектору."""
 
+import localization as loc
+from localization import print
+
 import copy
 import hashlib
 import html
@@ -148,7 +151,9 @@ def write_evaluation(output_dir=ROOT / "outputs"):
     return report
 
 
-def main():
+def main(argv=None):
+    argv = loc.cli_args(argv)
+    loc.ArgumentParser(description="Offline input search evaluation").parse_args(argv)
     report = write_evaluation()
     print("Реально измерен только обычный метод; настоящая модель не проверена.")
     for split in ("control", "tuning"):

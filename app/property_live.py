@@ -1,4 +1,6 @@
 """Подтверждаемый запуск подготовки свойства. Сеть только после явного согласия в окне."""
+
+import localization as loc
 import copy
 import hashlib
 import html
@@ -238,7 +240,7 @@ def save_report(record,directory):
     refresh(record)
     (directory/'result.json').write_text(app.json_text(record))
     body="<!doctype html><html lang='ru'><meta charset='utf-8'><title>ReproCase — подготовка теста</title><style>body{font:17px/1.5 system-ui;max-width:1100px;margin:24px auto;padding:16px}pre{white-space:pre-wrap;overflow-wrap:anywhere}</style><h1>Подготовка свойства и регрессионного теста</h1><p>Исторические открытые случаи; ручная грамматика. Результат модели отделён от локальной проверки.</p><pre>"+html.escape(record['summary_ru'])+"</pre><a href='result.json'>Полные результаты и попытки</a></html>\n"
-    (directory/'report.html').write_text(body)
+    (directory/'report.html').write_text(loc.html_text(body))
     return directory/'report.html'
 
 

@@ -4,6 +4,9 @@
 окружение, файлы ключей и аккаунты этот модуль не ищет.
 """
 
+from localization import print
+import localization as loc
+
 from dataclasses import dataclass
 import http.client
 import json

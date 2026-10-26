@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 """Офлайн-маршрут подготовки свойства; прежние транспорт, поиск и исторические операции."""
+
+from localization import print
+import localization as loc
 import argparse
 import copy
 import hashlib
@@ -285,6 +288,7 @@ def demo_scenarios():
     entries.append(('unknown_operation','cpython_correlation',p,'hypothesis','before',252,'REJECTED'))
     return entries
 
+@loc.localized_html
 def render(report):
     rows=[]
     for row in report['scenarios']:
@@ -340,13 +344,14 @@ def write_demo():
     return report
 
 def main(argv=None):
-    parser=argparse.ArgumentParser(description='Офлайн-подготовка свойства по искусственным ответам. Сетевого режима нет.')
+    argv = loc.cli_args(argv)
+    parser=loc.ArgumentParser(description='Офлайн-подготовка свойства по искусственным ответам. Сетевого режима нет.')
     parser.add_argument('--synthetic',action='store_true',required=True)
     parser.parse_args(argv)
     try: import hypothesis
     except ImportError:
         if not search.PYTHON.is_file(): print('Нет локального Hypothesis; см. HISTORICAL_PILOT.md.'); return 2
-        return subprocess.run([str(search.PYTHON),'-B',str(Path(__file__).resolve()),'--synthetic'],cwd=ROOT).returncode
+        return subprocess.run([str(search.PYTHON),'-B',str(Path(__file__).resolve()),'--synthetic','--language',loc.get_language()],cwd=ROOT).returncode
     if hypothesis.__version__!=core.plan()['hypothesis_version']: print('Версия Hypothesis не соответствует плану.'); return 2
     os.environ['HYPOTHESIS_STORAGE_DIRECTORY']=str(ROOT/'outputs/hypothesis-cache')
     result=write_demo()

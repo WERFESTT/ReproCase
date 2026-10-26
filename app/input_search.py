@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Ограниченный офлайн-поиск входа. Ответ селектора никогда не является кодом."""
 
+from localization import print
+import localization as loc
+
 import argparse
 import copy
 import hashlib
@@ -295,6 +298,7 @@ def render_result(result, command=None):
             + f"<p>Новых попыток: {result['probe_attempts']} из {MAX_TRIALS}; остановка: {html.escape(result['stop_reason'] or '')}.</p>")
 
 
+@loc.localized_html
 def html_page(title, body):
     return ("<!doctype html><html lang='ru'><meta charset='utf-8'><meta name='viewport' content='width=device-width, initial-scale=1'>"
             f"<title>{html.escape(title)}</title><style>body{{font:17px/1.5 system-ui;margin:32px auto;padding:0 20px;max-width:1100px;color:#202b38;background:#f7f8fa}}"
@@ -327,7 +331,8 @@ def write_result(result, variant, output_dir=ROOT / "outputs/search-current"):
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description="Ограниченный поиск входа и повторение сохранённого учебного сбоя.")
+    argv = loc.cli_args(argv)
+    parser = loc.ArgumentParser(description="Ограниченный поиск входа и повторение сохранённого учебного сбоя.")
     sub = parser.add_subparsers(dest="command", required=True)
     search = sub.add_parser("search")
     search.add_argument("--input", default="examples/search_units_ambiguous.json")

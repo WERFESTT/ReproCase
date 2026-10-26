@@ -67,15 +67,15 @@ def demo():
             passed = counts == expected and child.returncode == int(version=='before')
             results.append({'evidence':label, 'version':version, 'counts':counts, 'exit_code':child.returncode,
                             'expected_outcome_matched':passed})
-            print(label, version, counts, 'EXPECTED / ОЖИДАЕМО' if passed else 'ERROR / ОШИБКА')
+            print(label, version, counts, 'ОЖИДАЕМО' if passed else 'ОШИБКА')
     output = ROOT/'review-output'; output.mkdir(exist_ok=True)
     record = {'source':'LOCAL_REPLAY_OF_SAVED_EVIDENCE', 'new_api_calls':0, 'runs':results,
               'original_partial_series':{'requested':6, 'attempted':2, 'valid_but_no_counterexample':1,
                                          'local_export_failure':1, 'not_started':4, 'confirmed_exports':0}}
     (output/'demo.json').write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\n')
-    print('Saved real response + separate repaired replay; no new API. / Сохранённый ответ и отдельный ремонтный повтор.')
-    print('Partial series: 1 no finding, 1 local export failure, 4 unrun. / Серия: 1 без находки, 1 ошибка экспорта, 4 незапущены.')
-    print('Manual property vocabulary; no measured AI advantage or time savings. / Словарь ручной, польза ИИ не доказана.')
+    print('Сохранённый реальный ответ и отдельный ремонтный повтор; новых API-запросов нет.')
+    print('Серия: 1 без находки, 1 локальная ошибка экспорта, 4 незапущены.')
+    print('Словарь свойств ручной; преимущество ИИ и экономия труда не измерены.')
     print(output/'demo.json')
     return 0 if all(r['expected_outcome_matched'] for r in results) else 1
 
@@ -86,12 +86,13 @@ def gui(hidden=False):
     class OfflineWindow(original):
         def __init__(self, root):
             super().__init__(root)
-            root.title('ReproCase — OFFLINE_REVIEW — OFFLINE')
+            self.localizer.title = 'ReproCase — OFFLINE_REVIEW — OFFLINE'
+            self.localizer.refresh()
             for button in (self.live_button, self.series_button, self.property_live_button):
                 button.configure(state='disabled')
-            self.status.set('OFFLINE_REVIEW: сеть отключена, ключ не нужен. / Offline review; no key required.')
+            self.status.set('OFFLINE_REVIEW: сеть отключена, ключ не нужен.')
         def start_live(self, *args, **kwargs):
-            self.status.set('OFFLINE_REVIEW: отправка отключена. / Sending is disabled.')
+            self.status.set('OFFLINE_REVIEW: отправка отключена.')
     desktop.Window = OfflineWindow
     if hidden:
         import tkinter as tk
@@ -103,10 +104,10 @@ def gui(hidden=False):
             window.run_button.invoke(); root.update_idletasks()
             assert len(window.table.get_children())==2
             window.prepare_property()
-            assert 'НИЧЕГО НЕ ОТПРАВЛЕНО' in window.draft.get('1.0','end-1c')
+            assert loc.text('НИЧЕГО НЕ ОТПРАВЛЕНО') in window.draft.get('1.0','end-1c')
             window.start_live(property_mode=True)
             assert 'отключена' in window.status.get()
-            print('Hidden GUI / скрытое окно: PASS; no requests / запросов 0')
+            print('Скрытое окно: PASS; запросов 0')
         finally:
             root.destroy()
         return 0
@@ -117,13 +118,20 @@ def main():
     parser = argparse.ArgumentParser(description='OFFLINE_REVIEW — local judge kit / локальный комплект проверки')
     parser.add_argument('mode', choices=('verify','demo','gui','pilot','synthetic'))
     parser.add_argument('--hidden-check', action='store_true')
+    parser.add_argument('--language', choices=('ru','en'), default=None)
     args = parser.parse_args()
     sys.addaudithook(no_network)
-    global FILES
+    global FILES, loc, print
     FILES = verify()['files']
     sys.meta_path.insert(0, CheckedFinder())
+    import localization as loc
+    if args.language:
+        loc.cli_args(['--language', args.language])
+    else:
+        loc.set_language(loc.load_setting()[0] if args.mode=='gui' else 'ru')
+    print = loc.print
     if args.mode=='verify':
-        print('OFFLINE_REVIEW: hashes OK / хеши совпадают. No authorship guarantee / это не доказательство авторства.')
+        print('OFFLINE_REVIEW: хеши совпадают. Это не доказательство авторства.')
         return 0
     if args.mode=='demo': return demo()
     if args.mode=='gui': return gui(args.hidden_check)

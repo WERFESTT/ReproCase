@@ -1,5 +1,7 @@
 """Самодостаточный русский HTML: все результаты берутся из фактических наблюдений."""
 
+import localization as loc
+
 import html
 import json
 
@@ -82,6 +84,7 @@ def case_section(case, batch):
 <p><strong>Что не доказано:</strong> {html.escape(info['not_proven'])}</p></section>"""
 
 
+@loc.localized_html
 def render_html(evidence):
     cases = case_list(evidence)
     batch = "cases" in evidence
@@ -151,6 +154,7 @@ HTML — снимок результатов. Изменили код или д�
 """
 
 
+@loc.localized_text
 def render_markdown(evidence):
     chunks = ["# ReproCase — офлайн-основа, этап 2\n", evidence["disclaimer"],
               "\n**Настоящая нейросеть ещё не подключена.** Выбор проверки детерминированный.\n"]

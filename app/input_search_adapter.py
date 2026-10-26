@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Соединение ограниченного поиска с клиентом. CLI — только искусственные ответы."""
 
+from localization import print
+import localization as loc
+
 import argparse
 import copy
 import hashlib
@@ -227,7 +230,8 @@ def write_synthetic_evidence(output_dir=search.ROOT / "outputs"):
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description="Соединение клиента и поиска: только искусственные ответы, без сети и ключа.")
+    argv = loc.cli_args(argv)
+    parser = loc.ArgumentParser(description="Соединение клиента и поиска: только искусственные ответы, без сети и ключа.")
     parser.add_argument("--synthetic", action="store_true", required=True, help="явно выбрать искусственные ответы")
     parser.parse_args(argv)
     report = write_synthetic_evidence()

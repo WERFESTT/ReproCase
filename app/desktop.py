@@ -17,6 +17,8 @@ import live_search
 import comparison_series
 import property_live
 import desktop_theme
+import localization as loc
+from localization import print
 import reprocase as app
 
 
@@ -173,10 +175,15 @@ class Session:
 class Window:
     def __init__(self, root):
         import tkinter as tk
+        from localization_gui import Binder, TextVariable
         from tkinter import ttk
         from tkinter.scrolledtext import ScrolledText
 
         self.root, self.tk, self.ttk = root, tk, ttk
+        self.language, language_warning = loc.load_setting()
+        self.language = loc.cli_language or self.language
+        loc.set_language(self.language)
+        self._display_sources = {}
         self.theme, theme_warning = desktop_theme.load_setting()
         desktop_theme.apply_theme(root, self.theme)
         self.session = Session()
@@ -200,19 +207,25 @@ class Window:
         header.columnconfigure(0, weight=1)
         ttk.Label(header, text="ReproCase", font=("TkDefaultFont", 23, "bold")).grid(row=0, column=0, sticky="w")
         ttk.Label(header, text="Тема:").grid(row=0, column=1, padx=(16, 6))
-        self.theme_choice = tk.StringVar(value=desktop_theme.LABELS[self.theme])
+        self.theme_choice = TextVariable(root, value=desktop_theme.LABELS[self.theme], choices=desktop_theme.LABELS.values())
         self.theme_selector = ttk.Combobox(header, textvariable=self.theme_choice, state="readonly",
                                          values=list(desktop_theme.LABELS.values()), width=10)
         self.theme_selector.grid(row=0, column=2, sticky="e")
         self.theme_selector.bind("<<ComboboxSelected>>", self.change_theme)
+        ttk.Label(header, text="Язык:").grid(row=0, column=3, padx=(16, 6))
+        self.language_choice = tk.StringVar(value=self.language.upper())
+        self.language_selector = ttk.Combobox(header, textvariable=self.language_choice, state="readonly",
+                                             values=("RU", "EN"), width=4)
+        self.language_selector.grid(row=0, column=4, sticky="e")
+        self.language_selector.bind("<<ComboboxSelected>>", self.change_language)
         ttk.Label(body, text="Учебные и исторические проверки • отправка модели только после подтверждения",
                   style="Warning.TLabel").grid(row=1, sticky="w", pady=(3, 16))
-        self.selection = tk.StringVar()
+        self.selection = TextVariable(root, choices=[x["title"] for x in CATALOG.values()])
         self.selector = ttk.Combobox(body, textvariable=self.selection, state="readonly",
                                     values=[x["title"] for x in CATALOG.values()])
         self.selector.grid(row=2, sticky="ew")
         self.selector.bind("<<ComboboxSelected>>", self.select)
-        self.task_text = tk.StringVar()
+        self.task_text = TextVariable(root)
         ttk.Label(body, textvariable=self.task_text, wraplength=1000).grid(row=3, sticky="ew", pady=10)
         self.form = ttk.Frame(body)
         self.form.grid(row=4, sticky="ew")
@@ -236,7 +249,7 @@ class Window:
         self.live_button.grid(row=2, column=0, columnspan=2, sticky="w", pady=(8, 0))
         self.series_button = ttk.Button(buttons, text="Сравнить пять случаев…", command=lambda: self.start_live(series=True))
         self.series_button.grid(row=3, column=0, columnspan=2, sticky="w", pady=(8, 0))
-        self.property_choice = tk.StringVar(value=property_live.OPTIONS[0])
+        self.property_choice = TextVariable(root, value=property_live.OPTIONS[0], choices=property_live.OPTIONS)
         self.property_selector = ttk.Combobox(buttons, textvariable=self.property_choice,
                                              values=property_live.OPTIONS, state="readonly", width=40)
         self.property_selector.grid(row=4, column=0, columnspan=2, sticky="ew", pady=(8, 0))
@@ -248,7 +261,7 @@ class Window:
         self.property_live_button.grid(row=5, column=0, columnspan=2, sticky="w", pady=(8, 0))
         self.cancel_button = ttk.Button(buttons, text="Остановить дальнейшие запросы", command=self.cancel_live, state="disabled")
         self.cancel_button.grid(row=2, column=2, columnspan=2, sticky="w", padx=8, pady=(8, 0))
-        self.status = tk.StringVar(value="Выберите пример, измените данные и нажмите «Проверить оба варианта».")
+        self.status = TextVariable(root, value="Выберите пример, измените данные и нажмите «Проверить оба варианта».")
         ttk.Label(body, textvariable=self.status, wraplength=1000).grid(row=6, sticky="ew", pady=(0, 8))
         self.tabs = ttk.Notebook(body)
         self.tabs.grid(row=7, sticky="nsew")
@@ -275,11 +288,28 @@ class Window:
         ttk.Label(body, text="Намеренные учебные ошибки. Результаты относятся только к заданным правилам расчёта.",
                   wraplength=1000).grid(row=8, sticky="ew", pady=(10, 0))
         self.populate()
+        self.localizer = Binder(self)
+        self.localizer.refresh()
         self.apply_theme()
         root.update_idletasks()
         root.minsize(max(820, root.winfo_reqwidth()), 650)
-        if theme_warning:
-            self.status.set(theme_warning)
+        if theme_warning or language_warning:
+            self.status.set(theme_warning or language_warning)
+
+    def change_language(self, event=None):
+        language = self.language_choice.get().lower()
+        if language not in loc.LANGUAGES:
+            self.language_choice.set(self.language.upper())
+            return
+        self.language = language
+        loc.set_language(language)
+        self.localizer.refresh()
+        self.root.update_idletasks()
+        self.root.minsize(max(820, self.root.winfo_reqwidth()), 650)
+        try:
+            loc.save_setting(language)
+        except (OSError, ValueError):
+            self.status.set("Язык применён, но сохранить настройку не удалось.")
 
     def apply_theme(self):
         colors = desktop_theme.apply_theme(self.root, self.theme)
@@ -303,7 +333,16 @@ class Window:
     def put(self, widget, text):
         widget.configure(state="normal")
         widget.delete("1.0", "end")
-        widget.insert("1.0", text)
+        if not hasattr(self, "_display_sources"):
+            self._display_sources = {}
+        self._display_sources[widget] = text
+        if widget is getattr(self, "raw", None):
+            shown = loc.text("Исходные данные: язык и поля сохранены без изменения.\n\n") + text if text else ""
+        else:
+            shown = loc.text(text)
+            if loc.get_language() == "en" and widget is getattr(self, "draft", None) and text and ("{\n" in text or "{\r\n" in text):
+                shown = loc.text("Предпросмотр исходного запроса. JSON ниже сохранён на исходном языке; переключатель его не меняет.\n\n") + shown
+        widget.insert("1.0", shown)
         widget.configure(state="disabled")
         if widget is self.explanation:
             self.copy_button.configure(state="normal" if text.strip() and not self.live_pending else "disabled")
@@ -391,6 +430,8 @@ class Window:
             self.ttk.Entry(self.form, textvariable=variable, width=21).grid(row=row, column=column + 1, sticky="w", padx=(0, 28), pady=6)
             variable.trace_add("write", self.clear)
             self.entries[key] = variable
+        if hasattr(self, "localizer"):
+            self.localizer.refresh()
 
     def fail(self, error):
         self.clear()
@@ -415,8 +456,8 @@ class Window:
         if getattr(self, "live_pending", False):
             return
         from tkinter import filedialog
-        path = filedialog.askopenfilename(parent=self.root, title="Выберите настройки ReproCase",
-                                         initialdir=app.ROOT / "examples", filetypes=[("Настройки JSON", "*.json")])
+        path = filedialog.askopenfilename(parent=self.root, title=loc.text("Выберите настройки ReproCase"),
+                                         initialdir=app.ROOT / "examples", filetypes=[(loc.text("Настройки JSON"), "*.json")])
         if not path:
             return
         try:
@@ -575,13 +616,13 @@ class Window:
         try:
             consent = (property_live.consent_text(case) if property_mode else
                        comparison_series.consent_text(case) if series else live_search.consent_text(case))
-            if not messagebox.askyesno("Разрешение на реальный запрос", consent, parent=self.root):
+            if not messagebox.askyesno(loc.text("Разрешение на реальный запрос"), loc.text(consent), parent=self.root):
                 self.status.set("Отправка отменена пользователем. Запросов не было.")
                 self.show_request_state("Запросы — отменено до отправки", "Подтверждение не получено. Попыток отправки: 0.")
                 return
             if self.live_start_cancelled:
                 return
-            key = simpledialog.askstring("Ключ Nebius — только в памяти", "Введите ключ. Он не будет сохранён:", show="*", parent=self.root)
+            key = simpledialog.askstring(loc.text("Ключ Nebius — только в памяти"), loc.text("Введите ключ. Он не будет сохранён:"), show="*", parent=self.root)
             if key is None or self.live_start_cancelled:
                 self.status.set("Ввод ключа отменён. Запросов не было.")
                 self.show_request_state("Запросы — отменено до отправки", "Ввод ключа или запуск отменён. Попыток отправки: 0.")
@@ -663,7 +704,7 @@ class Window:
     def close(self):
         if self.live_pending:
             from tkinter import messagebox
-            if messagebox.askyesno("Завершение запуска", "Остановить следующие запросы и закрыть окно после сохранения отчёта? Уже отправленный запрос может быть оплачен.", parent=self.root):
+            if messagebox.askyesno(loc.text("Завершение запуска"), loc.text("Остановить следующие запросы и закрыть окно после сохранения отчёта? Уже отправленный запрос может быть оплачен."), parent=self.root):
                 self.closing_after_live = True
                 self.cancel_live()
             return
@@ -671,14 +712,15 @@ class Window:
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description="Локальное окно ReproCase")
+    argv = loc.cli_args(argv)
+    parser = loc.ArgumentParser(description="Локальное окно ReproCase")
     parser.add_argument("--self-test", action="store_true", help="проверить собственные виджеты в скрытом окне")
     args = parser.parse_args(argv)
     # Для нового локального поиска используем уже подготовленное окружение; ключ ещё не вводился.
     isolated = app.ROOT / ".venv-historical/bin/python"
     if importlib.util.find_spec("hypothesis") is None and isolated.is_file():
         return subprocess.run([str(isolated), "-B", str(Path(__file__).resolve()),
-                               *(sys.argv[1:] if argv is None else argv)], cwd=app.ROOT).returncode
+                               *argv, *(["--language", loc.cli_language] if loc.cli_language else [])], cwd=app.ROOT).returncode
     try:
         import tkinter as tk
     except ImportError:
@@ -691,14 +733,15 @@ def main(argv=None):
         print("Причина: " + str(error), file=sys.stderr)
         return 2
     if args.self_test:
+        loc.cli_language = loc.cli_language or "ru"
         root.withdraw()
     try:
         window = Window(root)
         if args.self_test:
-            assert str(window.copy_button["text"]) == "Копировать результат"
+            assert str(window.copy_button["text"]) == loc.text("Копировать результат")
             assert window.copy_button.winfo_manager() == "grid"
             assert int(window.copy_button.grid_info()["column"]) == 4
-            assert list(window.theme_selector["values"]) == ["Светлая", "Тёмная"]
+            assert list(window.theme_selector["values"]) == [loc.text("Светлая"), loc.text("Тёмная")]
             assert window.theme_selector.winfo_manager() == "grid"
             assert int(window.theme_selector.grid_info()["column"]) == 2
             assert window.copy_button.winfo_x() >= window.save_button.winfo_x() + window.save_button.winfo_width()
@@ -714,7 +757,8 @@ def main(argv=None):
                 assert window.session.evidence["results"]["fixed"]["passed"]
                 window.prepare_button.invoke()
                 root.update_idletasks()
-                draft = json.loads(window.draft.get("1.0", "end-1c").split("\n\n", 1)[1])
+                raw_draft = window.draft.get("1.0", "end-1c")
+                draft = json.loads(raw_draft[raw_draft.index("{"):])
                 context = json.loads(draft["messages"][1]["content"])
                 assert draft["tool_choice"]["function"]["name"] == "diagnostic_action"
                 assert context["sample"]["operation"] == operation and context["history"] == []

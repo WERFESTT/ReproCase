@@ -1,8 +1,8 @@
 {
   "files": {
     ".gitignore": {
-      "bytes": 84,
-      "sha256": "b74169185a00c44bf12b83929827304bcba982e6989a22be24d7d0122af2d0d2"
+      "bytes": 111,
+      "sha256": "172d73c5b32c35cdd963b5d44bb525fa4e91e0bd6a74c5ebfb70ab590bd13624"
     },
     "BUILD_INFO.md": {
       "bytes": 512,
@@ -16,17 +16,25 @@
       "bytes": 1448,
       "sha256": "2aa6530e2217ecdc8c2d3112320a9d52597db2f3fb0297a903d9f568d2225038"
     },
+    "LOCALIZATION_EN.md": {
+      "bytes": 2028,
+      "sha256": "d386130886138ff49c66931dda7c979389dda339759f5abc2a5ae4b842ff6cad"
+    },
+    "LOCALIZATION_RU.md": {
+      "bytes": 3496,
+      "sha256": "383b6a1b4a087d915a0b6c548546416aa34d2490a12bcae21c49d18f34e61697"
+    },
     "README.md": {
-      "bytes": 1706,
-      "sha256": "7ddd22ac9016679ec5f49a30468ca181f49a575dbb02ee5fdea3d93d59b7298f"
+      "bytes": 2043,
+      "sha256": "5ecbdfef77c42f780540451915c599ba5013a5cbfa33cb9bde2af35475120ca1"
     },
     "README_EN.md": {
-      "bytes": 6421,
-      "sha256": "136ef3055414e206f727f4270ad74f9e4175e2237f51fd733bcb89a15f1bc020"
+      "bytes": 6671,
+      "sha256": "4002b7bfed326d082e4fb7d6ea1ba9de42cd69de345a67a1514ef10a839e59fa"
     },
     "README_RU.md": {
-      "bytes": 10354,
-      "sha256": "e9e1580dae286aa9d4672e68cfd953aff0f436c483ce94c251aba7c9abc11234"
+      "bytes": 10778,
+      "sha256": "3dfd7f89c9fb01e3abc87b35a8444a21f5d484c87da6d9f15c32bab73d30d335"
     },
     "SECURITY.md": {
       "bytes": 1952,
@@ -49,8 +57,8 @@
       "sha256": "3540ec10237b60d7a17d2954843d2e510e5da9bce3fcacb00034e73682ef87be"
     },
     "app/adaptive_benchmark.py": {
-      "bytes": 17314,
-      "sha256": "5b04b90162c597fa394302fdfa15675bb090cddf78a1a4eadab4c96fa0bae3c1"
+      "bytes": 17418,
+      "sha256": "7594c4c928e0078b6af800882891e6ef589586ea51b8c2e9381c09a1f05a2baf"
     },
     "app/adaptive_cases.json": {
       "bytes": 519,
@@ -61,12 +69,12 @@
       "sha256": "9927a4aa24f9df7ee5188fcab16b892aedccca4dea96c55168cda986001f62c0"
     },
     "app/benchmark.py": {
-      "bytes": 21558,
-      "sha256": "83364d2767e2504fe9c28025f1b4b9f17205d162784f892b519f4a1ef2df1a66"
+      "bytes": 21662,
+      "sha256": "49c5fa300b5a122e92a07f902314a065e66dbb159cb9bb66b4923deff79147de"
     },
     "app/benchmark_adapter.py": {
-      "bytes": 17643,
-      "sha256": "f07a88d0e22b87e78c2eb2a775701c0b9e3d2a59fc3aca44390fde3ea37fbfcf"
+      "bytes": 17727,
+      "sha256": "8093916d509daf055cfdabeb0b759a75ae84bf6ad361c060182b916d783f7f04"
     },
     "app/benchmark_diagnostics.py": {
       "bytes": 10071,
@@ -85,12 +93,12 @@
       "sha256": "574085d8c1478755993153193491db52fc033ba31e138a387a6243e8418706fa"
     },
     "app/comparison_series.py": {
-      "bytes": 16608,
-      "sha256": "bc3ce8d52ac3c59714bffeee62d4b3024800236d368176f95860b16768447dbd"
+      "bytes": 16651,
+      "sha256": "02672f834fe13ddc8c521d77607a3a4fe4068b28ffdc3398ca4af4065296c326"
     },
     "app/desktop.py": {
-      "bytes": 46289,
-      "sha256": "2e464cd8559b31bade23d07d2108a3317869d76e6057f533f65b1453e152023b"
+      "bytes": 49057,
+      "sha256": "8929024face370368af0bef5ebd6d099d1f6e6742b114a0a09eed2092fcf91b8"
     },
     "app/desktop_theme.py": {
       "bytes": 7545,
@@ -137,8 +145,8 @@
       "sha256": "205b6dfcce09f3719d7cbc621757ea8e5a1fd706af92bbd4b02d0d95af713bf5"
     },
     "app/historical_pilot.py": {
-      "bytes": 21971,
-      "sha256": "80eb07a8cfdf9de225996fee72b54ebfc4b0ce5eeb84be7d6fbeaf5442f99502"
+      "bytes": 22107,
+      "sha256": "f5993c43cde2b479469e302b82c7d8771add871bf29a447556bfe25625cf6bb2"
     },
     "app/historical_plan.json": {
       "bytes": 615,
@@ -217,16 +225,16 @@
       "sha256": "a163dcaede0f1c021485e957a39245190e74249897e2ae4b2aa38595db237ee0"
     },
     "app/input_search.py": {
-      "bytes": 21723,
-      "sha256": "a5c70cedc1f710a2ee6603845f07cc907676ff77a631929e1a7161bc62fd65de"
+      "bytes": 21827,
+      "sha256": "40c961dd70bef1c73a574177cb614b52e6b7641448b43024c5f704a7d3feeede"
     },
     "app/input_search_adapter.py": {
-      "bytes": 15849,
-      "sha256": "2ee3ec6bd877d033ee94ce6b50bd2466d5c6ea83a944ee797b971c2f1d1a46b5"
+      "bytes": 15933,
+      "sha256": "759cff6ad2d94ec7879b489c176cb231948260da20c15969a9771180c2900a39"
     },
     "app/input_search_benchmark.py": {
-      "bytes": 12445,
-      "sha256": "4958df387e41c302924ec7a45816396942785d8bcfc4bdd392a35f5af7262925"
+      "bytes": 12630,
+      "sha256": "b293981cd18ea5a7ca9b2048c142144f7a46fb0e75cb8cc5e816b623e9cfa0a0"
     },
     "app/input_search_evaluation.json": {
       "bytes": 1771,
@@ -237,28 +245,40 @@
       "sha256": "a172ec6b63c7ed1b0ae13b8e0c7d04d38267691612f34160177633a5b3d720d5"
     },
     "app/live_search.py": {
-      "bytes": 14230,
-      "sha256": "b9c060a07fcf7d5092dacebb6f38835e5a2fd102f7c2a65c47ccf8535dab59fd"
+      "bytes": 14273,
+      "sha256": "c05b250568715a07da1c178720bf916334280cc7b286c75867862494a3113675"
+    },
+    "app/localization.py": {
+      "bytes": 5599,
+      "sha256": "fa3605da8032ea05b9c418e35a7d7d97369bfd0f43ff1e5eb23abe8ab48fabc3"
+    },
+    "app/localization_gui.py": {
+      "bytes": 4076,
+      "sha256": "2a92a1be9547c31cd9b3249843977f43e4dc859f4cb294bc6f8de4b6db48d93a"
+    },
+    "app/localization_gui_check.py": {
+      "bytes": 2986,
+      "sha256": "fff52e228a057659f9690f729125b8ca82db170e15ac1746b2c613a3e5a8e987"
     },
     "app/nebius_client.py": {
-      "bytes": 14607,
-      "sha256": "9c22630a9aaf38c17b213124f9574858f0a2cf7f188d8dfc7a48d173973ad2d6"
+      "bytes": 14666,
+      "sha256": "dce02b246fd54ee235efe5749153988c8187693a3c8dc7aaa8c9970a68cada30"
     },
     "app/portable_export.py": {
-      "bytes": 9223,
-      "sha256": "73ee941362973be671f19552cdfe974f90d4fdfb3aa9588a496df9eb65b2e868"
+      "bytes": 9260,
+      "sha256": "2dc84fcca3df9d6ec6857d2661b1c0584dbece2555f314aac7a18d27ebea5eea"
     },
     "app/property_contract.py": {
       "bytes": 12213,
       "sha256": "eda44ed8fe0e19b150de05a5c48e3bfd85c396135bf3233d7c886a6c1dfbf7c6"
     },
     "app/property_live.py": {
-      "bytes": 25732,
-      "sha256": "96212a5a536a2d56aad0a0abc4cc1fb2f36771d433749b4d15b58db6bf08b5f2"
+      "bytes": 25775,
+      "sha256": "a8c78b32cff5b6fed1c9d3d8e8137019b8f313940b4bd93c6c6fa423bfe8fcc3"
     },
     "app/property_preparation.py": {
-      "bytes": 26863,
-      "sha256": "9e182412a892e8be4713c824bbc03452eba354d1bab7a49150afffe074362eae"
+      "bytes": 26999,
+      "sha256": "db3cb9ad662d6533e57f7017821b1214259fd10c76283dedb8d351cfd31a0e90"
     },
     "app/property_protocol.json": {
       "bytes": 2381,
@@ -281,12 +301,16 @@
       "sha256": "2c063ed41d079b3c2a12e32cf23da73a963ad4c3e7cb91fc6a6c100af04b4d14"
     },
     "app/reporting.py": {
-      "bytes": 15263,
-      "sha256": "4302fe865ecf1d0f670f46a68f64f95af09dc0721618d6b486639281529d0adc"
+      "bytes": 15331,
+      "sha256": "7016a2b55532329914e00f8e90726b693fc77ed0664342fc521a286bd92b1e1b"
     },
     "app/reprocase.py": {
-      "bytes": 17261,
-      "sha256": "98924c86edbeaee4cf86867c129dcf04176c57963e612a3eb147b59dfed684b0"
+      "bytes": 17345,
+      "sha256": "e90a653fb4f3b592824039ed5a6ad7e6eca6ee27441d8905aec893e97a2ba93f"
+    },
+    "app/translations.json": {
+      "bytes": 127829,
+      "sha256": "e63f62bc5ac69faf0ec77caecfc39d875881eb1b3f92b6d4afa87476e48418ee"
     },
     "evidence/offline-repair.json": {
       "bytes": 221737,
@@ -616,13 +640,17 @@
       "bytes": 514254,
       "sha256": "f9e34d2d6760784826cac050d7a991ab215187fe71b308145d30e93ea1ef8dd5"
     },
+    "index-ru.html": {
+      "bytes": 2954,
+      "sha256": "fa06cec112a543564ffea936ea7efaf0fa548825b3250f95c55aaf0aac876ff8"
+    },
     "index.html": {
-      "bytes": 3039,
-      "sha256": "0f93e198cef43924ec79e98015d289bc0d9804616d21809d9044694f5d6764af"
+      "bytes": 1903,
+      "sha256": "a08468d2c54eba655a99da8fc399ea43886c46a252ec54fed319291d7cdfaed5"
     },
     "judge.py": {
-      "bytes": 7185,
-      "sha256": "6cb9cba20a3ff080c7af0e611f346a4fce93d1397201007611d9483729030a95"
+      "bytes": 7336,
+      "sha256": "1b7dfc25e64295ec58337feb6a5aa6583e86eb8c8762a9a2d66903fa2fad09b3"
     },
     "requirements-pilot.txt": {
       "bytes": 342,
@@ -647,16 +675,34 @@
     "user settings",
     "full test-suite logs"
   ],
+  "presentation_languages": [
+    "ru",
+    "en"
+  ],
   "provenance": {
+    ".gitignore": {
+      "source": "ReproCase localization update",
+      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
+    },
+    "LOCALIZATION_EN.md": {
+      "source": "ReproCase localization update",
+      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
+    },
+    "LOCALIZATION_RU.md": {
+      "source": "ReproCase localization update",
+      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
+    },
+    "README.md": {
+      "source": "ReproCase localization update",
+      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
+    },
     "README_EN.md": {
-      "source": "JUDGE_README_EN.md",
-      "source_sha256": "ad6881008a459f63132787c1bcc0c563de0a026b758249b0ae1addb906b42984",
-      "transformation": "Publication review labels and MIT/setup wording updated from original local source; checking logic unchanged"
+      "source": "ReproCase localization update",
+      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
     },
     "README_RU.md": {
-      "source": "JUDGE_README_RU.md",
-      "source_sha256": "525785624f1f675b8f1afd5e4fd7399f153470c9198b273dfc9ee572f69dad9d",
-      "transformation": "Publication review labels and MIT/setup wording updated from original local source; checking logic unchanged"
+      "source": "ReproCase localization update",
+      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
     },
     "app/adaptive_adapter.py": {
       "source": "adaptive_adapter.py",
@@ -664,9 +710,8 @@
       "transformation": "none"
     },
     "app/adaptive_benchmark.py": {
-      "source": "adaptive_benchmark.py",
-      "source_sha256": "5b04b90162c597fa394302fdfa15675bb090cddf78a1a4eadab4c96fa0bae3c1",
-      "transformation": "none"
+      "source": "ReproCase localization update",
+      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
     },
     "app/adaptive_cases.json": {
       "source": "adaptive_cases.json",
@@ -679,14 +724,12 @@
       "transformation": "none"
     },
     "app/benchmark.py": {
-      "source": "benchmark.py",
-      "source_sha256": "83364d2767e2504fe9c28025f1b4b9f17205d162784f892b519f4a1ef2df1a66",
-      "transformation": "none"
+      "source": "ReproCase localization update",
+      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
     },
     "app/benchmark_adapter.py": {
-      "source": "benchmark_adapter.py",
-      "source_sha256": "f07a88d0e22b87e78c2eb2a775701c0b9e3d2a59fc3aca44390fde3ea37fbfcf",
-      "transformation": "none"
+      "source": "ReproCase localization update",
+      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
     },
     "app/benchmark_diagnostics.py": {
       "source": "benchmark_diagnostics.py",
@@ -709,14 +752,12 @@
       "transformation": "none"
     },
     "app/comparison_series.py": {
-      "source": "comparison_series.py",
-      "source_sha256": "bc3ce8d52ac3c59714bffeee62d4b3024800236d368176f95860b16768447dbd",
-      "transformation": "none"
+      "source": "ReproCase localization update",
+      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
     },
     "app/desktop.py": {
-      "source": "desktop.py",
-      "source_sha256": "2e464cd8559b31bade23d07d2108a3317869d76e6057f533f65b1453e152023b",
-      "transformation": "none"
+      "source": "ReproCase localization update",
+      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
     },
     "app/desktop_theme.py": {
       "source": "desktop_theme.py",
@@ -774,9 +815,8 @@
       "transformation": "none"
     },
     "app/historical_pilot.py": {
-      "source": "historical_pilot.py",
-      "source_sha256": "80eb07a8cfdf9de225996fee72b54ebfc4b0ce5eeb84be7d6fbeaf5442f99502",
-      "transformation": "none"
+      "source": "ReproCase localization update",
+      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
     },
     "app/historical_plan.json": {
       "source": "historical_plan.json",
@@ -864,19 +904,16 @@
       "transformation": "none"
     },
     "app/input_search.py": {
-      "source": "input_search.py",
-      "source_sha256": "a5c70cedc1f710a2ee6603845f07cc907676ff77a631929e1a7161bc62fd65de",
-      "transformation": "none"
+      "source": "ReproCase localization update",
+      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
     },
     "app/input_search_adapter.py": {
-      "source": "input_search_adapter.py",
-      "source_sha256": "2ee3ec6bd877d033ee94ce6b50bd2466d5c6ea83a944ee797b971c2f1d1a46b5",
-      "transformation": "none"
+      "source": "ReproCase localization update",
+      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
     },
     "app/input_search_benchmark.py": {
-      "source": "input_search_benchmark.py",
-      "source_sha256": "4958df387e41c302924ec7a45816396942785d8bcfc4bdd392a35f5af7262925",
-      "transformation": "none"
+      "source": "ReproCase localization update",
+      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
     },
     "app/input_search_evaluation.json": {
       "source": "input_search_evaluation.json",
@@ -889,19 +926,28 @@
       "transformation": "none"
     },
     "app/live_search.py": {
-      "source": "live_search.py",
-      "source_sha256": "b9c060a07fcf7d5092dacebb6f38835e5a2fd102f7c2a65c47ccf8535dab59fd",
-      "transformation": "none"
+      "source": "ReproCase localization update",
+      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
+    },
+    "app/localization.py": {
+      "source": "ReproCase localization update",
+      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
+    },
+    "app/localization_gui.py": {
+      "source": "ReproCase localization update",
+      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
+    },
+    "app/localization_gui_check.py": {
+      "source": "ReproCase localization update",
+      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
     },
     "app/nebius_client.py": {
-      "source": "nebius_client.py",
-      "source_sha256": "9c22630a9aaf38c17b213124f9574858f0a2cf7f188d8dfc7a48d173973ad2d6",
-      "transformation": "none"
+      "source": "ReproCase localization update",
+      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
     },
     "app/portable_export.py": {
-      "source": "portable_export.py",
-      "source_sha256": "73ee941362973be671f19552cdfe974f90d4fdfb3aa9588a496df9eb65b2e868",
-      "transformation": "none"
+      "source": "ReproCase localization update",
+      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
     },
     "app/property_contract.py": {
       "source": "property_contract.py",
@@ -909,14 +955,12 @@
       "transformation": "none"
     },
     "app/property_live.py": {
-      "source": "property_live.py",
-      "source_sha256": "96212a5a536a2d56aad0a0abc4cc1fb2f36771d433749b4d15b58db6bf08b5f2",
-      "transformation": "none"
+      "source": "ReproCase localization update",
+      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
     },
     "app/property_preparation.py": {
-      "source": "property_preparation.py",
-      "source_sha256": "9e182412a892e8be4713c824bbc03452eba354d1bab7a49150afffe074362eae",
-      "transformation": "none"
+      "source": "ReproCase localization update",
+      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
     },
     "app/property_protocol.json": {
       "source": "property_protocol.json",
@@ -944,14 +988,16 @@
       "transformation": "none"
     },
     "app/reporting.py": {
-      "source": "reporting.py",
-      "source_sha256": "4302fe865ecf1d0f670f46a68f64f95af09dc0721618d6b486639281529d0adc",
-      "transformation": "none"
+      "source": "ReproCase localization update",
+      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
     },
     "app/reprocase.py": {
-      "source": "reprocase.py",
-      "source_sha256": "98924c86edbeaee4cf86867c129dcf04176c57963e612a3eb147b59dfed684b0",
-      "transformation": "none"
+      "source": "ReproCase localization update",
+      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
+    },
+    "app/translations.json": {
+      "source": "ReproCase localization update",
+      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
     },
     "evidence/offline-repair.json": {
       "source": "outputs/export-incident-review/proposal-2-replay.json",
@@ -998,10 +1044,17 @@
       "source_sha256": "1102faed5093ea3b2ae8007e22ded8fa3c7082a6eb53752db039621dc6f01d1c",
       "transformation": "Original path strings replaced; explicit derivative wrapper added and relabelled for public review; underlying report data unchanged"
     },
+    "index-ru.html": {
+      "source": "ReproCase localization update",
+      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
+    },
+    "index.html": {
+      "source": "ReproCase localization update",
+      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
+    },
     "judge.py": {
-      "source": "judge_runner.py",
-      "source_sha256": "0aa83a39994d69083bee4cff23e819e9ce12243bcc93049f1858c8ef42214dbf",
-      "transformation": "Publication review labels and MIT/setup wording updated from original local source; checking logic unchanged"
+      "source": "ReproCase localization update",
+      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
     }
   },
   "status": "OFFLINE_REVIEW_BUILD"

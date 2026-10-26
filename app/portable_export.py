@@ -7,11 +7,11 @@ import json
 from pathlib import Path
 
 
-MODULES = ('benchmark', 'benchmark_adapter', 'benchmark_diagnostics', 'calculations', 'catalog',
+MODULES = ('localization', 'benchmark', 'benchmark_adapter', 'benchmark_diagnostics', 'calculations', 'catalog',
            'historical_core', 'historical_pilot', 'input_search', 'input_search_adapter',
            'live_search', 'nebius_client', 'property_contract', 'property_live',
            'property_preparation', 'proposals', 'reference', 'regression', 'reporting', 'reprocase')
-DATA_FILES = ('historical_plan.json', 'property_protocol.json', 'historical_vendor/manifest.json')
+DATA_FILES = ('translations.json', 'historical_plan.json', 'property_protocol.json', 'historical_vendor/manifest.json')
 
 TEMPLATE = r'''"""Закреплённый локальный тест; рядом должны быть все файлы комплекта."""
 import sys

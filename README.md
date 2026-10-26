@@ -20,3 +20,7 @@ Run these from the repository root, or provide the full path to judge.py from an
 The real single-request evidence, later incomplete series and offline repair are separate. A saved real model response is not a live API demonstration. There is no demonstrated AI advantage, measured time saving, blind benchmark or arbitrary-project support. The vocabulary, semantic validation and historical case selection were prepared manually. The incomplete six-position series retains its first unhelpful proposal, local export failure and four unrun positions.
 
 Own code: MIT, Copyright (c) 2026 WERFESTT. Upstream code retains its original terms. No video is published here as a completed contest demonstration, and no contest submission is claimed.
+
+## RU / EN
+
+Use **Language / Язык: RU / EN** next to Theme. English demo window: `python3 -I -B judge.py gui --language en`. Offline replay: `python3 -I -B judge.py demo --language en`. Switching preserves state and sends no request. [English guide](LOCALIZATION_EN.md) · [Русская инструкция](LOCALIZATION_RU.md).

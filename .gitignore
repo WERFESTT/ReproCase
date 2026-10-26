@@ -5,3 +5,4 @@ __pycache__/
 review-output/
 app/outputs/
 app/ui_settings.json
+app/language_settings.json

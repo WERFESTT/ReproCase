@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Воспроизводимая оценка обычного метода. Модель здесь не вызывается."""
 
+from localization import print
+import localization as loc
+
 import argparse
 import copy
 import hashlib
@@ -158,6 +161,7 @@ def create_evaluation():
     return report, public, truth
 
 
+@loc.localized_html
 def render_html(report):
     m = report["baseline"]["metrics"]
     metric_rows = [
@@ -239,7 +243,8 @@ def write_evaluation(output_dir=ROOT / "outputs"):
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description="Измерить обычный диагностический метод на учебном наборе.")
+    argv = loc.cli_args(argv)
+    parser = loc.ArgumentParser(description="Измерить обычный диагностический метод на учебном наборе.")
     parser.add_argument("--output-dir", type=Path, default=ROOT / "outputs")
     args = parser.parse_args(argv)
     report = write_evaluation(args.output_dir)

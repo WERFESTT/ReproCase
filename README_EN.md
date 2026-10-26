@@ -22,7 +22,7 @@ Open index.html locally for the evidence overview. No server or internet connect
 python3 -I -B judge.py gui
 ```
 
-This is the existing desktop UI: three educational cases, local checks, input search, theme selection, copying and request preview. Its title identifies OFFLINE_REVIEW/OFFLINE. The three network buttons are disabled; no key is requested. Click “Проверить оба варианта” (check both variants) for the educational calculation, or “Данные для подготовки теста” (property request preview) to inspect the public context without sending it. The saved real response is viewed separately through index.html; the window does not load it as a new session. Current educational values are not historical model results.
+This is the existing desktop UI: three educational cases, local checks, input search, theme selection, copying and request preview. Its title identifies OFFLINE_REVIEW/OFFLINE. The three network buttons are disabled; no key is requested. In EN mode, click “Check both versions” for the educational calculation, or “Test preparation preview” to inspect the public context without sending it. The saved real response is viewed separately through index.html; the window does not load it as a new session. Current educational values are not historical model results.
 
 The commands also work from another working directory: supply the full path to judge.py in the NEW location. The original project location is unnecessary. The GUI requires Tkinter and a graphical session; no OS configuration is changed. Without Tk, use demo and HTML. The gui --hidden-check option tests widgets, not visual appearance. The UI remains Russian; this guide translates the review route.
 
@@ -62,3 +62,7 @@ MANIFEST.json lists every included file, size, hash and selected-copy provenance
 Run `python3 -I -B judge.py verify` to check hashes without calculations. The entry point validates files before imports, loads only pinned application modules and disables network actions in this route. -I is mandatory; cwd/PYTHONPATH cannot choose application code. Use only the documented entry point. This is not a general sandbox for untrusted Python. Matching hashes do not prove authorship or prevent coordinated replacement of the manifest, loader and contents.
 
 The repository is an experimental source release, not a claim of general model usefulness. The video remains an unapproved review draft; no YouTube link or contest submission is claimed. The owner separately controls any future model requests or submission.
+
+## RU / EN
+
+Use **Language / Язык: RU / EN** next to Theme. English demo window: `python3 -I -B judge.py gui --language en`. Offline replay: `python3 -I -B judge.py demo --language en`. Switching preserves state and sends no request. [English guide](LOCALIZATION_EN.md) · [Русская инструкция](LOCALIZATION_RU.md).

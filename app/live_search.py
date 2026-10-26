@@ -1,5 +1,7 @@
 """Подтверждаемый пользователем поиск: один рабочий поток, ключ только в памяти."""
 
+import localization as loc
+
 import copy
 import html
 import json
@@ -149,7 +151,7 @@ def save_report(record, directory):
             "Модель выбирает вход; доказательство проверяется локально. Это не оценка качества на всём наборе.</p>"
             f"<p>Источник: {html.escape(record['origin'])}; модель: {html.escape(record['model'])}</p>"
             f"<pre>{html.escape(record['summary_ru'])}</pre><p><a href='result.json'>Данные запуска</a></p></html>\n")
-    (directory / "report.html").write_text(body, encoding="utf-8")
+    (directory / "report.html").write_text(loc.html_text(body), encoding="utf-8")
     return directory / "report.html"
 
 

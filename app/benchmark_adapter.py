@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Адаптер Nebius к benchmark. Командный запуск допускает только синтетический прогон."""
 
+from localization import print
+import localization as loc
+
 import argparse
 import copy
 import hashlib
@@ -303,7 +306,8 @@ def write_synthetic_evidence(output_dir=ROOT / "outputs"):
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description="Проверить адаптер только на синтетических ответах, без сети и ключа.")
+    argv = loc.cli_args(argv)
+    parser = loc.ArgumentParser(description="Проверить адаптер только на синтетических ответах, без сети и ключа.")
     parser.add_argument("--synthetic", action="store_true", required=True, help="явно выбрать искусственные ответы")
     args = parser.parse_args(argv)
     result = write_synthetic_evidence()
