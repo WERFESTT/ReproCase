@@ -5,8 +5,8 @@
       "sha256": "172d73c5b32c35cdd963b5d44bb525fa4e91e0bd6a74c5ebfb70ab590bd13624"
     },
     "BUILD_INFO.md": {
-      "bytes": 512,
-      "sha256": "35f4682511625cd4aeecb52f413eddead6f6f30018e4ad49c6f4cfb8b2cf9283"
+      "bytes": 1186,
+      "sha256": "07ab1e16bda8ef0dea5876c133e47cd7c2025187aab2b8af0ea974930332f2dc"
     },
     "LICENSE": {
       "bytes": 1065,
@@ -25,20 +25,20 @@
       "sha256": "383b6a1b4a087d915a0b6c548546416aa34d2490a12bcae21c49d18f34e61697"
     },
     "README.md": {
-      "bytes": 2043,
-      "sha256": "5ecbdfef77c42f780540451915c599ba5013a5cbfa33cb9bde2af35475120ca1"
+      "bytes": 2501,
+      "sha256": "eaa58308059d66989b45e0506126405b458bc7f95c7606d86a18e0fd3f939bfa"
     },
     "README_EN.md": {
-      "bytes": 6671,
-      "sha256": "4002b7bfed326d082e4fb7d6ea1ba9de42cd69de345a67a1514ef10a839e59fa"
+      "bytes": 10993,
+      "sha256": "548a694ece3a72a1dda7d2ad32556a7f47621320c5b51c909609afdb726c0a0e"
     },
     "README_RU.md": {
-      "bytes": 10778,
-      "sha256": "3dfd7f89c9fb01e3abc87b35a8444a21f5d484c87da6d9f15c32bab73d30d335"
+      "bytes": 17431,
+      "sha256": "dd528634f754241b52614f2d97686c3b42859f2dcfa0a29ac85b34b008b907ec"
     },
     "SECURITY.md": {
-      "bytes": 1952,
-      "sha256": "56806399e12fe98a04d61b77eb37c6672549c47646e56f3eebe738ae1cedb4ef"
+      "bytes": 2917,
+      "sha256": "688451c1e5e40a2929a588682212225ce818d0d05c75b4b9e5900a731054b24f"
     },
     "SOURCE_NOTICE.json": {
       "bytes": 522,
@@ -684,6 +684,11 @@
       "source": "ReproCase localization update",
       "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
     },
+    "BUILD_INFO.md": {
+      "previous_sha256": "35f4682511625cd4aeecb52f413eddead6f6f30018e4ad49c6f4cfb8b2cf9283",
+      "source": "ReproCase documentation update, 2026-10-26",
+      "transformation": "Document existing optional live route and published video; no code/evidence changes"
+    },
     "LOCALIZATION_EN.md": {
       "source": "ReproCase localization update",
       "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
@@ -693,16 +698,24 @@
       "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
     },
     "README.md": {
-      "source": "ReproCase localization update",
-      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
+      "previous_sha256": "5ecbdfef77c42f780540451915c599ba5013a5cbfa33cb9bde2af35475120ca1",
+      "source": "ReproCase documentation update, 2026-10-26",
+      "transformation": "Document existing optional live route and published video; no code/evidence changes"
     },
     "README_EN.md": {
-      "source": "ReproCase localization update",
-      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
+      "previous_sha256": "4002b7bfed326d082e4fb7d6ea1ba9de42cd69de345a67a1514ef10a839e59fa",
+      "source": "ReproCase documentation update, 2026-10-26",
+      "transformation": "Document existing optional live route and published video; no code/evidence changes"
     },
     "README_RU.md": {
-      "source": "ReproCase localization update",
-      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
+      "previous_sha256": "3dfd7f89c9fb01e3abc87b35a8444a21f5d484c87da6d9f15c32bab73d30d335",
+      "source": "ReproCase documentation update, 2026-10-26",
+      "transformation": "Document existing optional live route and published video; no code/evidence changes"
+    },
+    "SECURITY.md": {
+      "previous_sha256": "56806399e12fe98a04d61b77eb37c6672549c47646e56f3eebe738ae1cedb4ef",
+      "source": "ReproCase documentation update, 2026-10-26",
+      "transformation": "Document existing optional live route and published video; no code/evidence changes"
     },
     "app/adaptive_adapter.py": {
       "source": "adaptive_adapter.py",
