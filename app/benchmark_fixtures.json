@@ -1,0 +1,32 @@
+{
+  "version": "educational-variations-v1",
+  "note": "Ручные учебные эталоны оценщика. Не передавать диагностическому методу или модели.",
+  "variations": [
+    {"id":"u1","operation":"travel_time","inputs":{"distance_mm":120,"speed_m_s":0.04},"check":{"absolute_tolerance_s":1e-9},"separable":true,"correct":3,"faulty":3000},
+    {"id":"u2","operation":"travel_time","inputs":{"distance_mm":80,"speed_m_s":0.02},"check":{"absolute_tolerance_s":1e-9},"separable":true,"correct":4,"faulty":4000},
+    {"id":"u3","operation":"travel_time","inputs":{"distance_mm":1,"speed_m_s":0.1},"check":{"absolute_tolerance_s":1e-9},"separable":true,"correct":0.01,"faulty":10},
+    {"id":"u4","operation":"travel_time","inputs":{"distance_mm":2500,"speed_m_s":2.5},"check":{"absolute_tolerance_s":1e-9},"separable":true,"correct":1,"faulty":1000},
+    {"id":"u5","operation":"travel_time","inputs":{"distance_mm":17.5,"speed_m_s":0.25},"check":{"absolute_tolerance_s":1e-9},"separable":true,"correct":0.07,"faulty":70},
+    {"id":"u6","operation":"travel_time","inputs":{"distance_mm":1000000,"speed_m_s":1000},"check":{"absolute_tolerance_s":1e-9},"separable":true,"correct":1,"faulty":1000},
+    {"id":"u7","operation":"travel_time","inputs":{"distance_mm":0,"speed_m_s":0.04},"check":{"absolute_tolerance_s":1e-9},"separable":false,"correct":0,"faulty":0},
+    {"id":"u8","operation":"travel_time","inputs":{"distance_mm":1e-12,"speed_m_s":1000},"check":{"absolute_tolerance_s":1e-9},"separable":false,"correct":1e-18,"faulty":1e-15},
+
+    {"id":"s1","operation":"seeded_sequence","inputs":{"seed":3,"count":5},"check":{"comparison":"exact"},"separable":true,"correct":[0,1,6,15,12],"faulty":[1,6,15,12,13]},
+    {"id":"s2","operation":"seeded_sequence","inputs":{"seed":1,"count":4},"check":{"comparison":"exact"},"separable":true,"correct":[6,15,12,13],"faulty":[1,6,15,12]},
+    {"id":"s3","operation":"seeded_sequence","inputs":{"seed":15,"count":1},"check":{"comparison":"exact"},"separable":true,"correct":[12],"faulty":[1]},
+    {"id":"s4","operation":"seeded_sequence","inputs":{"seed":2,"count":3},"check":{"comparison":"exact"},"separable":true,"correct":[11,8,9],"faulty":[1,6,15]},
+    {"id":"s5","operation":"seeded_sequence","inputs":{"seed":7,"count":2},"check":{"comparison":"exact"},"separable":true,"correct":[4,5],"faulty":[1,6]},
+    {"id":"s6","operation":"seeded_sequence","inputs":{"seed":10,"count":3},"check":{"comparison":"exact"},"separable":true,"correct":[3,0,1],"faulty":[1,6,15]},
+    {"id":"s7","operation":"seeded_sequence","inputs":{"seed":0,"count":5},"check":{"comparison":"exact"},"separable":false,"correct":[1,6,15,12,13],"faulty":[1,6,15,12,13]},
+    {"id":"s8","operation":"seeded_sequence","inputs":{"seed":3,"count":0},"check":{"comparison":"exact"},"separable":false,"correct":[],"faulty":[]},
+
+    {"id":"t1","operation":"constant_rate_steps","inputs":{"initial":0,"rate":2,"duration_s":1,"steps":4},"check":{"absolute_tolerance":1e-9},"separable":true,"correct":2,"faulty":2.6666666666666665},
+    {"id":"t2","operation":"constant_rate_steps","inputs":{"initial":10,"rate":-3,"duration_s":2,"steps":5},"check":{"absolute_tolerance":1e-9},"separable":true,"correct":4,"faulty":2.5},
+    {"id":"t3","operation":"constant_rate_steps","inputs":{"initial":1,"rate":0.5,"duration_s":2,"steps":2},"check":{"absolute_tolerance":1e-9},"separable":true,"correct":2,"faulty":3},
+    {"id":"t4","operation":"constant_rate_steps","inputs":{"initial":-5,"rate":2,"duration_s":3,"steps":3},"check":{"absolute_tolerance":1e-9},"separable":true,"correct":1,"faulty":4},
+    {"id":"t5","operation":"constant_rate_steps","inputs":{"initial":100,"rate":-1,"duration_s":0.5,"steps":10},"check":{"absolute_tolerance":1e-9},"separable":true,"correct":99.5,"faulty":99.44444444444444},
+    {"id":"t6","operation":"constant_rate_steps","inputs":{"initial":0.125,"rate":0.25,"duration_s":0.5,"steps":7},"check":{"absolute_tolerance":1e-9},"separable":true,"correct":0.25,"faulty":0.2708333333333333},
+    {"id":"t7","operation":"constant_rate_steps","inputs":{"initial":2,"rate":0,"duration_s":4,"steps":4},"check":{"absolute_tolerance":1e-9},"separable":false,"correct":2,"faulty":2},
+    {"id":"t8","operation":"constant_rate_steps","inputs":{"initial":2,"rate":3,"duration_s":0,"steps":4},"check":{"absolute_tolerance":1e-9},"separable":false,"correct":2,"faulty":2}
+  ]
+}

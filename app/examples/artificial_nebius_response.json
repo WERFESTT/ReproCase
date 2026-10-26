@@ -1,0 +1,25 @@
+{
+  "id": "artificial-offline-example",
+  "model": "nvidia/Nemotron-3_5-Lightning",
+  "usage": null,
+  "choices": [
+    {
+      "index": 0,
+      "finish_reason": "tool_calls",
+      "message": {
+        "role": "assistant",
+        "content": null,
+        "tool_calls": [
+          {
+            "id": "artificial-call",
+            "type": "function",
+            "function": {
+              "name": "propose_check",
+              "arguments": "{\"schema_version\": 1, \"case_id\": \"units\", \"hypothesis_id\": \"millimetres_used_as_metres\", \"action\": \"run_check\", \"check_id\": \"independent_mm_oracle\", \"input_sha256\": \"15dc314c86732f6cc17bb892cfbe2ab06eeabe4bdfc348db11c044bb80e7dce3\"}"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

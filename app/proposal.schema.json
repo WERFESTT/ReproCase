@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Предложение одной разрешённой проверки ReproCase",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "case_id",
+    "hypothesis_id",
+    "action",
+    "check_id",
+    "input_sha256"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "case_id": {
+      "type": "string",
+      "enum": [
+        "units",
+        "seed",
+        "step"
+      ]
+    },
+    "hypothesis_id": {
+      "type": "string",
+      "enum": [
+        "millimetres_used_as_metres",
+        "configured_seed_ignored",
+        "step_denominator_off_by_one"
+      ]
+    },
+    "action": {
+      "type": "string",
+      "const": "run_check"
+    },
+    "check_id": {
+      "type": "string",
+      "enum": [
+        "independent_mm_oracle",
+        "closed_form_seed_oracle",
+        "analytic_constant_rate_oracle"
+      ]
+    },
+    "input_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "oneOf": [
+    {
+      "properties": {
+        "case_id": {
+          "const": "units"
+        },
+        "hypothesis_id": {
+          "const": "millimetres_used_as_metres"
+        },
+        "check_id": {
+          "const": "independent_mm_oracle"
+        }
+      }
+    },
+    {
+      "properties": {
+        "case_id": {
+          "const": "seed"
+        },
+        "hypothesis_id": {
+          "const": "configured_seed_ignored"
+        },
+        "check_id": {
+          "const": "closed_form_seed_oracle"
+        }
+      }
+    },
+    {
+      "properties": {
+        "case_id": {
+          "const": "step"
+        },
+        "hypothesis_id": {
+          "const": "step_denominator_off_by_one"
+        },
+        "check_id": {
+          "const": "analytic_constant_rate_oracle"
+        }
+      }
+    }
+  ]
+}

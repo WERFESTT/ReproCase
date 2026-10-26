@@ -1,0 +1,15 @@
+{
+  "upstream_local_build": "judge-private-draft-v2",
+  "source_archive_sha256": "f17c4069fcba576875b5866cd12a2e92a298a94449c21ce76d4c7b4a549a8902",
+  "changes": [
+    "Public review labels and MIT scope added",
+    "Root setup/security documentation added",
+    "Derived report wrappers relabelled; report data and original hashes unchanged"
+  ],
+  "untouched": [
+    "historical sources and upstream licenses",
+    "pinned replay code and witnesses",
+    "saved real report data"
+  ],
+  "git_history_inherited": false
+}

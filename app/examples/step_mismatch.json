@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "operation": "constant_rate_steps",
+  "hypothesis": "step_denominator_off_by_one",
+  "inputs": {"initial": 0, "rate": 2, "duration_s": 1, "steps": 4},
+  "check": {"absolute_tolerance": 1e-9}
+}

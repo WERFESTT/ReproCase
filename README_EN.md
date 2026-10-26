@@ -1,0 +1,64 @@
+# ReproCase — OFFLINE_REVIEW: review without an API key
+
+This is an experimental offline review build of ReproCase. Its own code is MIT licensed, Copyright (c) 2026 WERFESTT; third-party components retain their licenses. See LICENSE_SCOPE.md and THIRD_PARTY.txt. It is not a completed contest submission.
+
+## Quick review
+
+Clone or download the entire repository into a new directory. Keep the directory structure and all manifest-listed files. Run the verified entry point below; it checks hashes before loading application modules. Do not merge an archive over an existing installation.
+
+From the extracted directory:
+
+```bash
+python3 -I -B judge.py demo
+```
+
+This replays two selected saved witnesses: one from the earlier successful real response and one from the separate offline repair of a later series. Each test must fail its assertion on before and pass on after, with zero harness errors. The combined command exits 0 when all four expected outcomes match. It writes review-output/demo.json without overwriting the supplied evidence. No new model request is sent.
+
+Open index.html locally for the evidence overview. No server or internet connection is needed. Saved reports are explicitly labelled DERIVED_REDACTED_COPY: original project-root path strings have been replaced with SOURCE_PROJECT, and a wrapper records the original hash and transformation. Commands inside those historical records are data, not runnable instructions. Pinned replay sources and witness.json files are unchanged.
+
+## Desktop window
+
+```bash
+python3 -I -B judge.py gui
+```
+
+This is the existing desktop UI: three educational cases, local checks, input search, theme selection, copying and request preview. Its title identifies OFFLINE_REVIEW/OFFLINE. The three network buttons are disabled; no key is requested. Click “Проверить оба варианта” (check both variants) for the educational calculation, or “Данные для подготовки теста” (property request preview) to inspect the public context without sending it. The saved real response is viewed separately through index.html; the window does not load it as a new session. Current educational values are not historical model results.
+
+The commands also work from another working directory: supply the full path to judge.py in the NEW location. The original project location is unnecessary. The GUI requires Tkinter and a graphical session; no OS configuration is changed. Without Tk, use demo and HTML. The gui --hidden-check option tests widgets, not visual appearance. The UI remains Russian; this guide translates the review route.
+
+## Dependencies
+
+| Mode | Requirements |
+| --- | --- |
+| Read HTML/JSON | Browser or text editor; no Python needed |
+| demo, verify, pinned replay | CPython 3.14 and its standard library; no Hypothesis, Tk, key or network |
+| gui | Above plus installed Tkinter and a graphical session; educational checks do not need Hypothesis |
+| pilot, synthetic | Above plus Hypothesis 6.170.9 and sortedcontainers 2.4.0 in a local venv |
+
+Tested platform: CPython 3.14.4, Linux x86_64. The included Hypothesis wheel targets CPython 3.14/Linux x86_64. Python and system Tk are not bundled; this is not a standalone binary or a cross-platform guarantee.
+
+For the full existing historical comparison, from the kit root:
+
+```bash
+python3 -m venv .venv
+.venv/bin/python -I -m pip --isolated --disable-pip-version-check install --no-index --no-deps --no-cache-dir --require-hashes -r requirements-pilot.txt
+.venv/bin/python -I -B judge.py pilot
+```
+
+Pinned wheels are already in app/historical_vendor/wheels. Installation uses no package index and changes no global environment. The pilot compares boundary search and Hypothesis on two known historical defects, without a model. `.venv/bin/python -I -B judge.py synthetic` runs the existing route with explicitly artificial responses; it tests the software, not NVIDIA quality. These modes write new reports under app/outputs.
+
+## Evidence and limits
+
+- Earlier successful single request: 1,551 input and 195 output tokens; two exported files/four executions; 767 calculation executions for both the model property and manual control. This kit selects its Hypothesis test.
+- Separate partial series: two requests out of six scheduled. The first valid narrow-domain property found no counterexample. The second exposed a regression but hit a local exporter/runtime version mismatch. Four positions were not run; the original series remains 0/6 confirmed exports. Usage: 3,102 input and 513 output tokens. Failures remain in the record.
+- After repairing the harness, the second saved proposal was replayed offline. The selected boundary-search test confirms that repair. This is not a new model response or a successful completion of the original series.
+
+Recorded cost estimates are not billing confirmations or monetary caps. The property vocabulary, semantic acceptance and historical case selection were prepared manually. Arbitrary-project support, autonomy, superiority over Hypothesis, developer-time savings and statistical reliability have not been demonstrated. No counterexample within budget does not establish correctness.
+
+## Contents and integrity
+
+MANIFEST.json lists every included file, size, hash and selected-copy provenance. app contains an explicit allowlist of application sources, plans and examples; historical_vendor contains pinned upstream sources/licenses and two wheels; evidence contains two replay kits and three derived records. The remaining files are the offline entry point, overview, RU/EN guides and notices. Full outputs, venvs, keys, user theme preferences and intermediate logs are excluded.
+
+Run `python3 -I -B judge.py verify` to check hashes without calculations. The entry point validates files before imports, loads only pinned application modules and disables network actions in this route. -I is mandatory; cwd/PYTHONPATH cannot choose application code. Use only the documented entry point. This is not a general sandbox for untrusted Python. Matching hashes do not prove authorship or prevent coordinated replacement of the manifest, loader and contents.
+
+The repository is an experimental source release, not a claim of general model usefulness. The video remains an unapproved review draft; no YouTube link or contest submission is claimed. The owner separately controls any future model requests or submission.
