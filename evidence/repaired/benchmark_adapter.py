@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Адаптер Nebius к benchmark. Командный запуск допускает только синтетический прогон."""
+"""Адаптер model API к benchmark. Командный запуск допускает только синтетический прогон."""
 
 import argparse
 import copy
@@ -10,7 +10,7 @@ from pathlib import Path
 import threading
 
 import benchmark_diagnostics as diag
-import nebius_client as client
+import model_client as client
 
 
 MAX_MODEL_REQUESTS = diag.MAX_CHECKS + 1
@@ -154,7 +154,7 @@ class DiagnosticSession:
 
     @property
     def origin(self):
-        return "SYNTHETIC" if self.transport is not None else "NEBIUS_NOT_AUTOMATICALLY_AUTHORIZED"
+        return "SYNTHETIC" if self.transport is not None else "MODEL_API_NOT_AUTOMATICALLY_AUTHORIZED"
 
     def _validate_context(self, context):
         return validate_context(context)
@@ -289,7 +289,7 @@ def run_synthetic_suite():
         "checks_executed": sum(run["diagnosis"]["checks_run"] for run in runs),
         "runs": runs,
         "source_sha256": {name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest() for name in
-                          ("benchmark_adapter.py", "nebius_client.py", "benchmark_diagnostics.py", "benchmark_fixtures.json")},
+                          ("benchmark_adapter.py", "model_client.py", "benchmark_diagnostics.py", "benchmark_fixtures.json")},
     }
 
 

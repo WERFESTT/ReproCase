@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "operation": "travel_time",
+  "hypothesis": "millimetres_used_as_metres",
+  "inputs": {
+    "distance_mm": 120,
+    "speed_m_s": 0.04
+  },
+  "check": {
+    "absolute_tolerance_s": 1e-9
+  }
+}

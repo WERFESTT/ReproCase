@@ -1,0 +1,104 @@
+{
+  "anchors": {
+    "constant_rate_steps": {
+      "c01": {
+        "correct": 0,
+        "faulty": 0
+      },
+      "c02": {
+        "correct": 1,
+        "faulty": 2
+      },
+      "c03": {
+        "correct": -2,
+        "faulty": -2.5
+      },
+      "c04": {
+        "correct": 1000000,
+        "faulty": 1000000
+      }
+    },
+    "seeded_sequence": {
+      "c01": {
+        "correct": [
+          1
+        ],
+        "faulty": [
+          1
+        ]
+      },
+      "c02": {
+        "correct": [
+          6
+        ],
+        "faulty": [
+          1
+        ]
+      },
+      "c03": {
+        "correct": [
+          12,
+          13
+        ],
+        "faulty": [
+          1,
+          6
+        ]
+      },
+      "c04": {
+        "correct": [],
+        "faulty": []
+      }
+    },
+    "travel_time": {
+      "c01": {
+        "correct": 0,
+        "faulty": 0
+      },
+      "c02": {
+        "correct": 0.001,
+        "faulty": 1
+      },
+      "c03": {
+        "correct": 1,
+        "faulty": 1000
+      },
+      "c04": {
+        "correct": 1,
+        "faulty": 1000
+      }
+    }
+  },
+  "control": [
+    "u2",
+    "u3",
+    "u4",
+    "u5",
+    "u6",
+    "u8",
+    "s2",
+    "s3",
+    "s4",
+    "s5",
+    "s6",
+    "s8",
+    "t2",
+    "t3",
+    "t4",
+    "t5",
+    "t6",
+    "t8"
+  ],
+  "fixtures_sha256": "7ca08905a0a581951f493f7aa08296c9391c05e00aa30be93542afc480744f96",
+  "note": "Разделение и ручные ответы кандидатов зафиксированы до прогона. Не передавать диагностике.",
+  "plan_sha256": "a172ec6b63c7ed1b0ae13b8e0c7d04d38267691612f34160177633a5b3d720d5",
+  "tuning": [
+    "u1",
+    "u7",
+    "s1",
+    "s7",
+    "t1",
+    "t7"
+  ],
+  "version": "input-search-evaluation-v1"
+}

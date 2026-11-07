@@ -1,0 +1,7 @@
+{"tests": 1, "failures": 0, "errors": 0}
+test_property (__main__.Regression.test_property) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.031s
+
+OK

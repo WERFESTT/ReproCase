@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "operation": "seeded_sequence",
+  "hypothesis": "configured_seed_ignored",
+  "inputs": {"seed": 3, "count": 5},
+  "check": {"comparison": "exact"}
+}

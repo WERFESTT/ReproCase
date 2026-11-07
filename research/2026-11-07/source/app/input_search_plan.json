@@ -1,0 +1,104 @@
+{
+  "candidates": {
+    "constant_rate_steps": [
+      {
+        "id": "c01",
+        "inputs": {
+          "duration_s": 1,
+          "initial": 0,
+          "rate": 0,
+          "steps": 2
+        }
+      },
+      {
+        "id": "c02",
+        "inputs": {
+          "duration_s": 1,
+          "initial": 0,
+          "rate": 1,
+          "steps": 2
+        }
+      },
+      {
+        "id": "c03",
+        "inputs": {
+          "duration_s": 1,
+          "initial": -1,
+          "rate": -1,
+          "steps": 3
+        }
+      },
+      {
+        "id": "c04",
+        "inputs": {
+          "duration_s": 0,
+          "initial": 1000000,
+          "rate": 1000,
+          "steps": 1000
+        }
+      }
+    ],
+    "seeded_sequence": [
+      {
+        "id": "c01",
+        "inputs": {
+          "count": 1,
+          "seed": 0
+        }
+      },
+      {
+        "id": "c02",
+        "inputs": {
+          "count": 1,
+          "seed": 1
+        }
+      },
+      {
+        "id": "c03",
+        "inputs": {
+          "count": 2,
+          "seed": 15
+        }
+      },
+      {
+        "id": "c04",
+        "inputs": {
+          "count": 0,
+          "seed": 15
+        }
+      }
+    ],
+    "travel_time": [
+      {
+        "id": "c01",
+        "inputs": {
+          "distance_mm": 0,
+          "speed_m_s": 1
+        }
+      },
+      {
+        "id": "c02",
+        "inputs": {
+          "distance_mm": 1,
+          "speed_m_s": 1
+        }
+      },
+      {
+        "id": "c03",
+        "inputs": {
+          "distance_mm": 1000,
+          "speed_m_s": 1
+        }
+      },
+      {
+        "id": "c04",
+        "inputs": {
+          "distance_mm": 1000000,
+          "speed_m_s": 1000
+        }
+      }
+    ]
+  },
+  "max_trials": 3,
+  "version": "bounded-input-search-v1"
+}

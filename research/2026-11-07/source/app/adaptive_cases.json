@@ -1,0 +1,13 @@
+{
+  "version": "adaptive-threshold-v1",
+  "variants": ["fixed", "late", "early"],
+  "rows": [
+    {"threshold": 2, "expected": [0, 1, 1, 1, 1, 1, 1, 1]},
+    {"threshold": 3, "expected": [0, 0, 1, 1, 1, 1, 1, 1]},
+    {"threshold": 4, "expected": [0, 0, 0, 1, 1, 1, 1, 1]},
+    {"threshold": 5, "expected": [0, 0, 0, 0, 1, 1, 1, 1]},
+    {"threshold": 6, "expected": [0, 0, 0, 0, 0, 1, 1, 1]},
+    {"threshold": 7, "expected": [0, 0, 0, 0, 0, 0, 1, 1]},
+    {"threshold": 8, "expected": [0, 0, 0, 0, 0, 0, 0, 1]}
+  ]
+}

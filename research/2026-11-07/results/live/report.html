@@ -1,0 +1,275 @@
+<!doctype html><html lang='ru'><meta charset='utf-8'><title>ReproCase — подготовка теста</title><style>body{font:17px/1.5 system-ui;max-width:1100px;margin:24px auto;padding:16px}pre{white-space:pre-wrap;overflow-wrap:anywhere}</style><h1>Подготовка свойства и регрессионного теста</h1><p>Исторические открытые случаи; ручная грамматика. Результат модели отделён от локальной проверки.</p><pre>Подготовка свойства: завершено.
+
+Источник: REAL_API.
+
+Попыток запросов: 6 из 6; по одному на независимый сеанс.
+
+Принято по структуре: 6/6; по контракту: 6/6; подтверждённый экспорт: 6/6.
+
+Незапущенных позиций: 0; расхождений на исправленной версии: 0.
+
+Исполнения для свойства модели: 3911; ручного контроля: 3911.
+Файлов тестов: 12; попыток запуска этих файлов до/после: 24.
+Дополнительные исполнения расчёта: 24.
+
+Токены: вход 9282, выход 1571. None означает неизвестно.
+
+Оценка $0.00346890–$0.00346890.
+
+CPython: корреляция при разных масштабах, повтор 1: завершено. 
+
+Предложение:
+{
+  &quot;action&quot;: &quot;propose_property&quot;,
+  &quot;assertion&quot;: {
+    &quot;max&quot;: 1,
+    &quot;min&quot;: -1,
+    &quot;op&quot;: &quot;between&quot;
+  },
+  &quot;context_sha256&quot;: &quot;953c3dc93ef8505c39f0176adc59b0d9ed114be80333de30f65b7c8366cdf16c&quot;,
+  &quot;domain&quot;: [
+    [
+      -500,
+      500
+    ],
+    [
+      -500,
+      500
+    ]
+  ],
+  &quot;version&quot;: &quot;property-v1&quot;
+}
+
+
+boundary_grid / before: REGRESSION_CONFIRMED; исполнений 195; пример [-39, -500].
+
+boundary_grid / after: NO_COUNTEREXAMPLE_WITHIN_BUDGET; исполнений 252; пример None.
+
+hypothesis / before: REGRESSION_CONFIRMED; исполнений 68; пример [-39, -500].
+
+hypothesis / after: NO_COUNTEREXAMPLE_WITHIN_BUDGET; исполнений 252; пример None.
+
+python3 -I -S -B /home/e/Downloads/reprocase_research_20261107/source/app/outputs/property-live-mb6m3tqn/case-1-boundary_grid/test_prepared.py --version before
+
+python3 -I -S -B /home/e/Downloads/reprocase_research_20261107/source/app/outputs/property-live-mb6m3tqn/case-1-boundary_grid/test_prepared.py --version after
+
+python3 -I -S -B /home/e/Downloads/reprocase_research_20261107/source/app/outputs/property-live-mb6m3tqn/case-1-hypothesis/test_prepared.py --version before
+
+python3 -I -S -B /home/e/Downloads/reprocase_research_20261107/source/app/outputs/property-live-mb6m3tqn/case-1-hypothesis/test_prepared.py --version after
+
+CPython: корреляция при разных масштабах, повтор 2: завершено. 
+
+Предложение:
+{
+  &quot;action&quot;: &quot;propose_property&quot;,
+  &quot;assertion&quot;: {
+    &quot;max&quot;: 1,
+    &quot;min&quot;: -1,
+    &quot;op&quot;: &quot;between&quot;
+  },
+  &quot;context_sha256&quot;: &quot;953c3dc93ef8505c39f0176adc59b0d9ed114be80333de30f65b7c8366cdf16c&quot;,
+  &quot;domain&quot;: [
+    [
+      -500,
+      500
+    ],
+    [
+      -500,
+      500
+    ]
+  ],
+  &quot;version&quot;: &quot;property-v1&quot;
+}
+
+
+boundary_grid / before: REGRESSION_CONFIRMED; исполнений 195; пример [-39, -500].
+
+boundary_grid / after: NO_COUNTEREXAMPLE_WITHIN_BUDGET; исполнений 252; пример None.
+
+hypothesis / before: REGRESSION_CONFIRMED; исполнений 101; пример [11, 500].
+
+hypothesis / after: NO_COUNTEREXAMPLE_WITHIN_BUDGET; исполнений 252; пример None.
+
+python3 -I -S -B /home/e/Downloads/reprocase_research_20261107/source/app/outputs/property-live-mb6m3tqn/case-2-boundary_grid/test_prepared.py --version before
+
+python3 -I -S -B /home/e/Downloads/reprocase_research_20261107/source/app/outputs/property-live-mb6m3tqn/case-2-boundary_grid/test_prepared.py --version after
+
+python3 -I -S -B /home/e/Downloads/reprocase_research_20261107/source/app/outputs/property-live-mb6m3tqn/case-2-hypothesis/test_prepared.py --version before
+
+python3 -I -S -B /home/e/Downloads/reprocase_research_20261107/source/app/outputs/property-live-mb6m3tqn/case-2-hypothesis/test_prepared.py --version after
+
+CPython: корреляция при разных масштабах, повтор 3: завершено. 
+
+Предложение:
+{
+  &quot;action&quot;: &quot;propose_property&quot;,
+  &quot;assertion&quot;: {
+    &quot;max&quot;: 1,
+    &quot;min&quot;: -1,
+    &quot;op&quot;: &quot;between&quot;
+  },
+  &quot;context_sha256&quot;: &quot;953c3dc93ef8505c39f0176adc59b0d9ed114be80333de30f65b7c8366cdf16c&quot;,
+  &quot;domain&quot;: [
+    [
+      -500,
+      500
+    ],
+    [
+      -500,
+      500
+    ]
+  ],
+  &quot;version&quot;: &quot;property-v1&quot;
+}
+
+
+boundary_grid / before: REGRESSION_CONFIRMED; исполнений 195; пример [-39, -500].
+
+boundary_grid / after: NO_COUNTEREXAMPLE_WITHIN_BUDGET; исполнений 252; пример None.
+
+hypothesis / before: REGRESSION_CONFIRMED; исполнений 97; пример [11, 500].
+
+hypothesis / after: NO_COUNTEREXAMPLE_WITHIN_BUDGET; исполнений 252; пример None.
+
+python3 -I -S -B /home/e/Downloads/reprocase_research_20261107/source/app/outputs/property-live-mb6m3tqn/case-3-boundary_grid/test_prepared.py --version before
+
+python3 -I -S -B /home/e/Downloads/reprocase_research_20261107/source/app/outputs/property-live-mb6m3tqn/case-3-boundary_grid/test_prepared.py --version after
+
+python3 -I -S -B /home/e/Downloads/reprocase_research_20261107/source/app/outputs/property-live-mb6m3tqn/case-3-hypothesis/test_prepared.py --version before
+
+python3 -I -S -B /home/e/Downloads/reprocase_research_20261107/source/app/outputs/property-live-mb6m3tqn/case-3-hypothesis/test_prepared.py --version after
+
+more-itertools: обратный числовой диапазон, повтор 1: завершено. 
+
+Предложение:
+{
+  &quot;action&quot;: &quot;propose_property&quot;,
+  &quot;assertion&quot;: {
+    &quot;op&quot;: &quot;completes&quot;
+  },
+  &quot;context_sha256&quot;: &quot;d8ac5f691967e335d132d9d300795cb2fac58d9ac6e681266ea354dca3055677&quot;,
+  &quot;domain&quot;: [
+    [
+      -16,
+      16
+    ],
+    [
+      -16,
+      16
+    ],
+    [
+      -8,
+      8
+    ]
+  ],
+  &quot;version&quot;: &quot;property-v1&quot;
+}
+
+
+boundary_grid / before: REGRESSION_CONFIRMED; исполнений 5; пример [0, 0, 1].
+
+boundary_grid / after: NO_COUNTEREXAMPLE_WITHIN_BUDGET; исполнений 252; пример None.
+
+hypothesis / before: REGRESSION_CONFIRMED; исполнений 7; пример [0, 0, -1].
+
+hypothesis / after: NO_COUNTEREXAMPLE_WITHIN_BUDGET; исполнений 252; пример None.
+
+python3 -I -S -B /home/e/Downloads/reprocase_research_20261107/source/app/outputs/property-live-mb6m3tqn/case-4-boundary_grid/test_prepared.py --version before
+
+python3 -I -S -B /home/e/Downloads/reprocase_research_20261107/source/app/outputs/property-live-mb6m3tqn/case-4-boundary_grid/test_prepared.py --version after
+
+python3 -I -S -B /home/e/Downloads/reprocase_research_20261107/source/app/outputs/property-live-mb6m3tqn/case-4-hypothesis/test_prepared.py --version before
+
+python3 -I -S -B /home/e/Downloads/reprocase_research_20261107/source/app/outputs/property-live-mb6m3tqn/case-4-hypothesis/test_prepared.py --version after
+
+more-itertools: обратный числовой диапазон, повтор 2: завершено. 
+
+Предложение:
+{
+  &quot;action&quot;: &quot;propose_property&quot;,
+  &quot;assertion&quot;: {
+    &quot;op&quot;: &quot;completes&quot;
+  },
+  &quot;context_sha256&quot;: &quot;d8ac5f691967e335d132d9d300795cb2fac58d9ac6e681266ea354dca3055677&quot;,
+  &quot;domain&quot;: [
+    [
+      -16,
+      16
+    ],
+    [
+      -16,
+      16
+    ],
+    [
+      -8,
+      8
+    ]
+  ],
+  &quot;version&quot;: &quot;property-v1&quot;
+}
+
+
+boundary_grid / before: REGRESSION_CONFIRMED; исполнений 5; пример [0, 0, 1].
+
+boundary_grid / after: NO_COUNTEREXAMPLE_WITHIN_BUDGET; исполнений 252; пример None.
+
+hypothesis / before: REGRESSION_CONFIRMED; исполнений 7; пример [0, 0, -1].
+
+hypothesis / after: NO_COUNTEREXAMPLE_WITHIN_BUDGET; исполнений 252; пример None.
+
+python3 -I -S -B /home/e/Downloads/reprocase_research_20261107/source/app/outputs/property-live-mb6m3tqn/case-5-boundary_grid/test_prepared.py --version before
+
+python3 -I -S -B /home/e/Downloads/reprocase_research_20261107/source/app/outputs/property-live-mb6m3tqn/case-5-boundary_grid/test_prepared.py --version after
+
+python3 -I -S -B /home/e/Downloads/reprocase_research_20261107/source/app/outputs/property-live-mb6m3tqn/case-5-hypothesis/test_prepared.py --version before
+
+python3 -I -S -B /home/e/Downloads/reprocase_research_20261107/source/app/outputs/property-live-mb6m3tqn/case-5-hypothesis/test_prepared.py --version after
+
+more-itertools: обратный числовой диапазон, повтор 3: завершено. 
+
+Предложение:
+{
+  &quot;action&quot;: &quot;propose_property&quot;,
+  &quot;assertion&quot;: {
+    &quot;op&quot;: &quot;completes&quot;
+  },
+  &quot;context_sha256&quot;: &quot;d8ac5f691967e335d132d9d300795cb2fac58d9ac6e681266ea354dca3055677&quot;,
+  &quot;domain&quot;: [
+    [
+      -16,
+      16
+    ],
+    [
+      -16,
+      16
+    ],
+    [
+      -8,
+      8
+    ]
+  ],
+  &quot;version&quot;: &quot;property-v1&quot;
+}
+
+
+boundary_grid / before: REGRESSION_CONFIRMED; исполнений 5; пример [0, 0, 1].
+
+boundary_grid / after: NO_COUNTEREXAMPLE_WITHIN_BUDGET; исполнений 252; пример None.
+
+hypothesis / before: REGRESSION_CONFIRMED; исполнений 7; пример [0, 0, -1].
+
+hypothesis / after: NO_COUNTEREXAMPLE_WITHIN_BUDGET; исполнений 252; пример None.
+
+python3 -I -S -B /home/e/Downloads/reprocase_research_20261107/source/app/outputs/property-live-mb6m3tqn/case-6-boundary_grid/test_prepared.py --version before
+
+python3 -I -S -B /home/e/Downloads/reprocase_research_20261107/source/app/outputs/property-live-mb6m3tqn/case-6-boundary_grid/test_prepared.py --version after
+
+python3 -I -S -B /home/e/Downloads/reprocase_research_20261107/source/app/outputs/property-live-mb6m3tqn/case-6-hypothesis/test_prepared.py --version before
+
+python3 -I -S -B /home/e/Downloads/reprocase_research_20261107/source/app/outputs/property-live-mb6m3tqn/case-6-hypothesis/test_prepared.py --version after
+
+Отказы и незапущенные позиции остаются в знаменателе. Отсутствие находки не доказывает исправность.
+
+Словарь свойств и приёмка подготовлены вручную; это не доказательство автономности или экономии труда.
+
+Оценка не является денежным лимитом. Отмена и тайм-аут не доказывают отмену или отсутствие списания у поставщика.</pre><a href='result.json'>Полные результаты и попытки</a></html>

@@ -1,0 +1,314 @@
+[
+  {
+    "bundle": "case-1-boundary_grid",
+    "version": "before",
+    "counts": {
+      "tests": 1,
+      "failures": 1,
+      "errors": 0
+    },
+    "exit_code": 1,
+    "matched_expected": true,
+    "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+    "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/live_review/audit_01/raw-2pep1p4j/source/app/outputs/property-live-mb6m3tqn/case-1-boundary_grid/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/live_review/audit_01/raw-2pep1p4j/source/app/outputs/property-live-mb6m3tqn/case-1-boundary_grid/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"StatisticsError\",\n  \"input\": [\n    -39,\n    -500\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.011s\n\nFAILED (failures=1)\n"
+  },
+  {
+    "bundle": "case-1-boundary_grid",
+    "version": "after",
+    "counts": {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0
+    },
+    "exit_code": 0,
+    "matched_expected": true,
+    "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+    "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.012s\n\nOK\n"
+  },
+  {
+    "bundle": "case-1-hypothesis",
+    "version": "before",
+    "counts": {
+      "tests": 1,
+      "failures": 1,
+      "errors": 0
+    },
+    "exit_code": 1,
+    "matched_expected": true,
+    "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+    "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/live_review/audit_01/raw-2pep1p4j/source/app/outputs/property-live-mb6m3tqn/case-1-hypothesis/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/live_review/audit_01/raw-2pep1p4j/source/app/outputs/property-live-mb6m3tqn/case-1-hypothesis/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"StatisticsError\",\n  \"input\": [\n    -39,\n    -500\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.012s\n\nFAILED (failures=1)\n"
+  },
+  {
+    "bundle": "case-1-hypothesis",
+    "version": "after",
+    "counts": {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0
+    },
+    "exit_code": 0,
+    "matched_expected": true,
+    "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+    "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.013s\n\nOK\n"
+  },
+  {
+    "bundle": "case-2-boundary_grid",
+    "version": "before",
+    "counts": {
+      "tests": 1,
+      "failures": 1,
+      "errors": 0
+    },
+    "exit_code": 1,
+    "matched_expected": true,
+    "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+    "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/live_review/audit_01/raw-2pep1p4j/source/app/outputs/property-live-mb6m3tqn/case-2-boundary_grid/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/live_review/audit_01/raw-2pep1p4j/source/app/outputs/property-live-mb6m3tqn/case-2-boundary_grid/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"StatisticsError\",\n  \"input\": [\n    -39,\n    -500\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.014s\n\nFAILED (failures=1)\n"
+  },
+  {
+    "bundle": "case-2-boundary_grid",
+    "version": "after",
+    "counts": {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0
+    },
+    "exit_code": 0,
+    "matched_expected": true,
+    "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+    "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.010s\n\nOK\n"
+  },
+  {
+    "bundle": "case-2-hypothesis",
+    "version": "before",
+    "counts": {
+      "tests": 1,
+      "failures": 1,
+      "errors": 0
+    },
+    "exit_code": 1,
+    "matched_expected": true,
+    "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+    "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/live_review/audit_01/raw-2pep1p4j/source/app/outputs/property-live-mb6m3tqn/case-2-hypothesis/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/live_review/audit_01/raw-2pep1p4j/source/app/outputs/property-live-mb6m3tqn/case-2-hypothesis/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": {\n    \"nonfinite\": \"nan\"\n  },\n  \"exception_type\": null,\n  \"input\": [\n    11,\n    500\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.015s\n\nFAILED (failures=1)\n"
+  },
+  {
+    "bundle": "case-2-hypothesis",
+    "version": "after",
+    "counts": {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0
+    },
+    "exit_code": 0,
+    "matched_expected": true,
+    "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+    "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.025s\n\nOK\n"
+  },
+  {
+    "bundle": "case-3-boundary_grid",
+    "version": "before",
+    "counts": {
+      "tests": 1,
+      "failures": 1,
+      "errors": 0
+    },
+    "exit_code": 1,
+    "matched_expected": true,
+    "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+    "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/live_review/audit_01/raw-2pep1p4j/source/app/outputs/property-live-mb6m3tqn/case-3-boundary_grid/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/live_review/audit_01/raw-2pep1p4j/source/app/outputs/property-live-mb6m3tqn/case-3-boundary_grid/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"StatisticsError\",\n  \"input\": [\n    -39,\n    -500\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.041s\n\nFAILED (failures=1)\n"
+  },
+  {
+    "bundle": "case-3-boundary_grid",
+    "version": "after",
+    "counts": {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0
+    },
+    "exit_code": 0,
+    "matched_expected": true,
+    "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+    "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.015s\n\nOK\n"
+  },
+  {
+    "bundle": "case-3-hypothesis",
+    "version": "before",
+    "counts": {
+      "tests": 1,
+      "failures": 1,
+      "errors": 0
+    },
+    "exit_code": 1,
+    "matched_expected": true,
+    "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+    "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/live_review/audit_01/raw-2pep1p4j/source/app/outputs/property-live-mb6m3tqn/case-3-hypothesis/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/live_review/audit_01/raw-2pep1p4j/source/app/outputs/property-live-mb6m3tqn/case-3-hypothesis/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": {\n    \"nonfinite\": \"nan\"\n  },\n  \"exception_type\": null,\n  \"input\": [\n    11,\n    500\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.013s\n\nFAILED (failures=1)\n"
+  },
+  {
+    "bundle": "case-3-hypothesis",
+    "version": "after",
+    "counts": {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0
+    },
+    "exit_code": 0,
+    "matched_expected": true,
+    "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+    "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.013s\n\nOK\n"
+  },
+  {
+    "bundle": "case-4-boundary_grid",
+    "version": "before",
+    "counts": {
+      "tests": 1,
+      "failures": 1,
+      "errors": 0
+    },
+    "exit_code": 1,
+    "matched_expected": true,
+    "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+    "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/live_review/audit_01/raw-2pep1p4j/source/app/outputs/property-live-mb6m3tqn/case-4-boundary_grid/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/live_review/audit_01/raw-2pep1p4j/source/app/outputs/property-live-mb6m3tqn/case-4-boundary_grid/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"IndexError\",\n  \"input\": [\n    0,\n    0,\n    1\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.045s\n\nFAILED (failures=1)\n"
+  },
+  {
+    "bundle": "case-4-boundary_grid",
+    "version": "after",
+    "counts": {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0
+    },
+    "exit_code": 0,
+    "matched_expected": true,
+    "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+    "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.046s\n\nOK\n"
+  },
+  {
+    "bundle": "case-4-hypothesis",
+    "version": "before",
+    "counts": {
+      "tests": 1,
+      "failures": 1,
+      "errors": 0
+    },
+    "exit_code": 1,
+    "matched_expected": true,
+    "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+    "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/live_review/audit_01/raw-2pep1p4j/source/app/outputs/property-live-mb6m3tqn/case-4-hypothesis/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/live_review/audit_01/raw-2pep1p4j/source/app/outputs/property-live-mb6m3tqn/case-4-hypothesis/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"IndexError\",\n  \"input\": [\n    0,\n    0,\n    -1\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.045s\n\nFAILED (failures=1)\n"
+  },
+  {
+    "bundle": "case-4-hypothesis",
+    "version": "after",
+    "counts": {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0
+    },
+    "exit_code": 0,
+    "matched_expected": true,
+    "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+    "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.048s\n\nOK\n"
+  },
+  {
+    "bundle": "case-5-boundary_grid",
+    "version": "before",
+    "counts": {
+      "tests": 1,
+      "failures": 1,
+      "errors": 0
+    },
+    "exit_code": 1,
+    "matched_expected": true,
+    "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+    "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/live_review/audit_01/raw-2pep1p4j/source/app/outputs/property-live-mb6m3tqn/case-5-boundary_grid/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/live_review/audit_01/raw-2pep1p4j/source/app/outputs/property-live-mb6m3tqn/case-5-boundary_grid/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"IndexError\",\n  \"input\": [\n    0,\n    0,\n    1\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.062s\n\nFAILED (failures=1)\n"
+  },
+  {
+    "bundle": "case-5-boundary_grid",
+    "version": "after",
+    "counts": {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0
+    },
+    "exit_code": 0,
+    "matched_expected": true,
+    "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+    "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.052s\n\nOK\n"
+  },
+  {
+    "bundle": "case-5-hypothesis",
+    "version": "before",
+    "counts": {
+      "tests": 1,
+      "failures": 1,
+      "errors": 0
+    },
+    "exit_code": 1,
+    "matched_expected": true,
+    "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+    "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/live_review/audit_01/raw-2pep1p4j/source/app/outputs/property-live-mb6m3tqn/case-5-hypothesis/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/live_review/audit_01/raw-2pep1p4j/source/app/outputs/property-live-mb6m3tqn/case-5-hypothesis/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"IndexError\",\n  \"input\": [\n    0,\n    0,\n    -1\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.059s\n\nFAILED (failures=1)\n"
+  },
+  {
+    "bundle": "case-5-hypothesis",
+    "version": "after",
+    "counts": {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0
+    },
+    "exit_code": 0,
+    "matched_expected": true,
+    "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+    "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.052s\n\nOK\n"
+  },
+  {
+    "bundle": "case-6-boundary_grid",
+    "version": "before",
+    "counts": {
+      "tests": 1,
+      "failures": 1,
+      "errors": 0
+    },
+    "exit_code": 1,
+    "matched_expected": true,
+    "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+    "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/live_review/audit_01/raw-2pep1p4j/source/app/outputs/property-live-mb6m3tqn/case-6-boundary_grid/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/live_review/audit_01/raw-2pep1p4j/source/app/outputs/property-live-mb6m3tqn/case-6-boundary_grid/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"IndexError\",\n  \"input\": [\n    0,\n    0,\n    1\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.047s\n\nFAILED (failures=1)\n"
+  },
+  {
+    "bundle": "case-6-boundary_grid",
+    "version": "after",
+    "counts": {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0
+    },
+    "exit_code": 0,
+    "matched_expected": true,
+    "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+    "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.046s\n\nOK\n"
+  },
+  {
+    "bundle": "case-6-hypothesis",
+    "version": "before",
+    "counts": {
+      "tests": 1,
+      "failures": 1,
+      "errors": 0
+    },
+    "exit_code": 1,
+    "matched_expected": true,
+    "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+    "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/live_review/audit_01/raw-2pep1p4j/source/app/outputs/property-live-mb6m3tqn/case-6-hypothesis/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/live_review/audit_01/raw-2pep1p4j/source/app/outputs/property-live-mb6m3tqn/case-6-hypothesis/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"IndexError\",\n  \"input\": [\n    0,\n    0,\n    -1\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.040s\n\nFAILED (failures=1)\n"
+  },
+  {
+    "bundle": "case-6-hypothesis",
+    "version": "after",
+    "counts": {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0
+    },
+    "exit_code": 0,
+    "matched_expected": true,
+    "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+    "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.062s\n\nOK\n"
+  }
+]

@@ -1,0 +1,33 @@
+{
+  "id": "reprocase-domain-budget-20261107-v1",
+  "status": "FROZEN_BEFORE_NEW_RUN",
+  "date_local": "2026-11-07",
+  "source_commit": "c8c7edc0a92a81183f1f8670871892cf9a4120f7",
+  "question_ru": "Как ограничение области входов и числа вычислений влияет на обнаружение и воспроизводимый экспорт известной ошибки при фиксированном свойстве?",
+  "design_ru": "Ретроспективный вопрос из опубликованного пилота; новая заранее заданная серия локальных измерений. Не слепое испытание и не оценка качества генерации модели.",
+  "environment": {
+    "python_major_minor": [3, 12],
+    "hypothesis": "6.98.15",
+    "sortedcontainers": "2.4.0",
+    "distinction_ru": "Отдельная среда; исходный пилот использовал Python 3.14.4 и Hypothesis 6.170.9. Результаты не объединяются."
+  },
+  "budgets_search_and_shrink": [16, 64, 252],
+  "confirmation_calls_max_per_search": 4,
+  "export_processes_per_confirmed_search": 2,
+  "methods": {"boundary_grid": [0], "hypothesis": [0, 1, 2]},
+  "versions": ["before", "after"],
+  "conditions": [
+    {"id": "model_wide", "case_id": "cpython_correlation", "origin": "SAVED_REAL_API_REPLAY", "record": "evidence/successful-response.json", "row_index": 0, "domain": [[-500, 500], [-500, 500]], "assertion": {"op": "between", "min": -1, "max": 1}},
+    {"id": "model_narrow", "case_id": "cpython_correlation", "origin": "SAVED_REAL_API_REPLAY", "record": "evidence/partial-series.json", "row_index": 0, "domain": [[-10, 10], [-10, 10]], "assertion": {"op": "between", "min": -1, "max": 1}},
+    {"id": "manual_wide", "case_id": "cpython_correlation", "origin": "MANUAL_CONTROL", "domain": [[-500, 500], [-500, 500]], "assertion": {"op": "equal_number", "value": 1}},
+    {"id": "manual_narrow", "case_id": "cpython_correlation", "origin": "MANUAL_COUNTERFACTUAL_CONTROL", "domain": [[-10, 10], [-10, 10]], "assertion": {"op": "equal_number", "value": 1}},
+    {"id": "range_manual_control", "case_id": "more_reversed", "origin": "MANUAL_CONTROL", "domain": [[-16, 16], [-16, 16], [-8, 8]], "assertion": {"op": "sequence_equal", "order": "reverse"}}
+  ],
+  "planned_searches": 120,
+  "primary_metrics": ["confirmed_exported_test", "false_findings_on_fixed", "search_shrink_calls", "confirmation_calls", "export_process_attempts", "harness_errors", "not_started"],
+  "secondary_metrics": ["method_wall_ns", "minimization_completed", "witness"],
+  "network_calls": 0,
+  "failure_policy_ru": "Сохранять каждую запланированную строку, неудачу и незапущенную позицию. Ошибка контура не считается найденным дефектом. Повторов неудачного поиска нет.",
+  "interpretation_ru": "Повторы по разным начальным состояниям относятся к поиску, а не к независимым ответам модели. Детерминированный метод не размножается по начальным состояниям. Два исторических дефекта, сохранённые ответы модели только для одного. Два широких ответа из старых журналов одинаковы по свойству и области и не считаются разными экспериментальными условиями.",
+  "publishing": "NOT_AUTHORIZED"
+}

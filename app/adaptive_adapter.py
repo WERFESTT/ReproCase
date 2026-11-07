@@ -6,7 +6,7 @@ import json
 import adaptive_contract as contract
 import benchmark_adapter as transport
 import input_search_adapter as old_adapter
-import nebius_client as client
+import model_client as client
 
 FUNCTION_NAME = "input_search_action"
 

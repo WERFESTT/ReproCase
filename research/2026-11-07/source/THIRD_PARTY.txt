@@ -1,0 +1,9 @@
+Third-party sources / Сторонние исходники
+CPython: pinned unmodified modules; app/historical_vendor/cpython_correlation/*/LICENSE (PSF terms and included notices).
+more-itertools: pinned unmodified modules; app/historical_vendor/more_reversed/*/LICENSE (MIT).
+Upstream URLs, exact commits and file hashes: app/historical_vendor/manifest.json.
+Hypothesis 6.170.9: MPL-2.0, third-party/hypothesis-LICENSE.txt. Original unmodified wheel; source: https://github.com/HypothesisWorks/hypothesis/tree/hypothesis-python-6.170.9/hypothesis-python .
+sortedcontainers 2.4.0: Apache-2.0, third-party/sortedcontainers-LICENSE.txt. Original unmodified wheel; source: https://github.com/grantjenks/python-sortedcontainers/tree/v2.4.0 .
+Wheel download URLs/hashes: app/historical_vendor/wheels/manifest.json. License files also remain inside the original wheels.
+The historical modules are unchanged; ReproCase adds separate checking/packaging code and runs them on current CPython, not a historical interpreter build.
+ReproCase's own code: MIT, Copyright (c) 2026 WERFESTT. See LICENSE_SCOPE.md. Third-party terms are not replaced.

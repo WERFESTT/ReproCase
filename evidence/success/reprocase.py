@@ -22,7 +22,7 @@ ROOT = Path(__file__).resolve().parent
 DEFAULT_CASE = ROOT / "examples" / "unit_mismatch.json"
 MAX_INPUT_BYTES = 16_384
 SOURCE_FILES = ("calculations.py", "reference.py", "regression.py", "reprocase.py",
-                "catalog.py", "proposals.py", "reporting.py", "nebius_client.py", "desktop.py")
+                "catalog.py", "proposals.py", "reporting.py", "model_client.py", "desktop.py")
 CHECKS = {(op, item["hypothesis"]): item["check_id"] for op, item in CATALOG.items()}
 DISCLAIMER = (
     "Учебный пример с намеренно внесённой ошибкой. "

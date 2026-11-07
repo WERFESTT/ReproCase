@@ -16,7 +16,7 @@ import time
 import benchmark_adapter as transport
 import historical_core as core
 import historical_pilot as search
-import nebius_client as client
+import model_client as client
 import property_contract as contract
 import reprocase as app
 

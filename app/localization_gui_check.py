@@ -7,7 +7,7 @@ from unittest import mock
 import desktop
 import localization as loc
 import desktop_theme
-import nebius_client
+import model_client
 
 
 def main():
@@ -21,7 +21,7 @@ def main():
         with tempfile.TemporaryDirectory(dir=desktop.app.ROOT/'outputs') as temp, \
              mock.patch.object(loc,'SETTINGS_PATH',Path(temp)/'language.json'), \
              mock.patch.object(desktop_theme,'SETTINGS_PATH',Path(temp)/'theme.json'), \
-             mock.patch.object(nebius_client,'_https_once',side_effect=AssertionError('NETWORK_FORBIDDEN')) as send:
+             mock.patch.object(model_client,'_https_once',side_effect=AssertionError('NETWORK_FORBIDDEN')) as send:
             w=desktop.Window(root)
             for language in ('en','ru','en'):
                 w.language_choice.set(language.upper());w.change_language()

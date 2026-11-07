@@ -1,0 +1,985 @@
+{
+  "status": "VERIFIED",
+  "primary_run": "offline_v2",
+  "searches": 120,
+  "condition_totals": {
+    "model_wide": {
+      "before": 12,
+      "confirmed_exports": 12,
+      "after": 12,
+      "after_findings": 0
+    },
+    "model_narrow": {
+      "before": 12,
+      "confirmed_exports": 0,
+      "after": 12,
+      "after_findings": 0
+    },
+    "manual_wide": {
+      "before": 12,
+      "confirmed_exports": 12,
+      "after": 12,
+      "after_findings": 0
+    },
+    "manual_narrow": {
+      "before": 12,
+      "confirmed_exports": 0,
+      "after": 12,
+      "after_findings": 0
+    },
+    "range_manual_control": {
+      "before": 12,
+      "confirmed_exports": 12,
+      "after": 12,
+      "after_findings": 0
+    }
+  },
+  "portable_test_replays": [
+    {
+      "id": 1,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-001/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-001/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"StatisticsError\",\n  \"input\": [\n    -62,\n    -500\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.012s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 1,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.010s\n\nOK\n"
+    },
+    {
+      "id": 3,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-003/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-003/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": {\n    \"nonfinite\": \"nan\"\n  },\n  \"exception_type\": null,\n  \"input\": [\n    101,\n    454\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.012s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 3,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.009s\n\nOK\n"
+    },
+    {
+      "id": 5,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-005/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-005/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"StatisticsError\",\n  \"input\": [\n    -303,\n    -422\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.013s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 5,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.011s\n\nOK\n"
+    },
+    {
+      "id": 7,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-007/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-007/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"StatisticsError\",\n  \"input\": [\n    -500,\n    -57\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.014s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 7,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.010s\n\nOK\n"
+    },
+    {
+      "id": 9,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-009/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-009/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"StatisticsError\",\n  \"input\": [\n    -55,\n    -500\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.013s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 9,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.010s\n\nOK\n"
+    },
+    {
+      "id": 11,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-011/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-011/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": {\n    \"nonfinite\": \"nan\"\n  },\n  \"exception_type\": null,\n  \"input\": [\n    11,\n    500\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.017s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 11,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.010s\n\nOK\n"
+    },
+    {
+      "id": 13,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-013/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-013/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": {\n    \"nonfinite\": \"nan\"\n  },\n  \"exception_type\": null,\n  \"input\": [\n    11,\n    500\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.012s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 13,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.011s\n\nOK\n"
+    },
+    {
+      "id": 15,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-015/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-015/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"StatisticsError\",\n  \"input\": [\n    -39,\n    -500\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.013s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 15,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.013s\n\nOK\n"
+    },
+    {
+      "id": 17,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-017/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-017/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"StatisticsError\",\n  \"input\": [\n    -39,\n    -500\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.012s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 17,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.013s\n\nOK\n"
+    },
+    {
+      "id": 19,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-019/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-019/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": {\n    \"nonfinite\": \"nan\"\n  },\n  \"exception_type\": null,\n  \"input\": [\n    11,\n    500\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.010s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 19,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.009s\n\nOK\n"
+    },
+    {
+      "id": 21,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-021/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-021/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": {\n    \"nonfinite\": \"nan\"\n  },\n  \"exception_type\": null,\n  \"input\": [\n    11,\n    500\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.011s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 21,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.011s\n\nOK\n"
+    },
+    {
+      "id": 23,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-023/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-023/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": {\n    \"nonfinite\": \"nan\"\n  },\n  \"exception_type\": null,\n  \"input\": [\n    11,\n    500\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.012s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 23,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.019s\n\nOK\n"
+    },
+    {
+      "id": 49,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-049/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-049/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"StatisticsError\",\n  \"input\": [\n    -62,\n    -500\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.010s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 49,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.011s\n\nOK\n"
+    },
+    {
+      "id": 51,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-051/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-051/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": {\n    \"nonfinite\": \"nan\"\n  },\n  \"exception_type\": null,\n  \"input\": [\n    101,\n    454\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.009s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 51,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.010s\n\nOK\n"
+    },
+    {
+      "id": 53,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-053/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-053/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"StatisticsError\",\n  \"input\": [\n    -303,\n    -422\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.011s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 53,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.010s\n\nOK\n"
+    },
+    {
+      "id": 55,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-055/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-055/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"StatisticsError\",\n  \"input\": [\n    -500,\n    -57\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.011s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 55,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.010s\n\nOK\n"
+    },
+    {
+      "id": 57,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-057/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-057/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"StatisticsError\",\n  \"input\": [\n    -55,\n    -500\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.011s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 57,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.011s\n\nOK\n"
+    },
+    {
+      "id": 59,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-059/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-059/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": {\n    \"nonfinite\": \"nan\"\n  },\n  \"exception_type\": null,\n  \"input\": [\n    11,\n    500\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.011s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 59,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.010s\n\nOK\n"
+    },
+    {
+      "id": 61,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-061/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-061/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": {\n    \"nonfinite\": \"nan\"\n  },\n  \"exception_type\": null,\n  \"input\": [\n    11,\n    500\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.011s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 61,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.011s\n\nOK\n"
+    },
+    {
+      "id": 63,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-063/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-063/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"StatisticsError\",\n  \"input\": [\n    -39,\n    -500\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.018s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 63,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.010s\n\nOK\n"
+    },
+    {
+      "id": 65,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-065/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-065/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"StatisticsError\",\n  \"input\": [\n    -39,\n    -500\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.012s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 65,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.011s\n\nOK\n"
+    },
+    {
+      "id": 67,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-067/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-067/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": {\n    \"nonfinite\": \"nan\"\n  },\n  \"exception_type\": null,\n  \"input\": [\n    11,\n    500\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.010s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 67,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.010s\n\nOK\n"
+    },
+    {
+      "id": 69,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-069/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-069/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": {\n    \"nonfinite\": \"nan\"\n  },\n  \"exception_type\": null,\n  \"input\": [\n    11,\n    500\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.011s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 69,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.012s\n\nOK\n"
+    },
+    {
+      "id": 71,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-071/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-071/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": {\n    \"nonfinite\": \"nan\"\n  },\n  \"exception_type\": null,\n  \"input\": [\n    11,\n    500\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.012s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 71,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.009s\n\nOK\n"
+    },
+    {
+      "id": 97,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-097/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-097/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"IndexError\",\n  \"input\": [\n    0,\n    0,\n    1\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.064s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 97,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.050s\n\nOK\n"
+    },
+    {
+      "id": 99,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-099/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-099/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"IndexError\",\n  \"input\": [\n    0,\n    0,\n    -1\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.062s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 99,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.045s\n\nOK\n"
+    },
+    {
+      "id": 101,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-101/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-101/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"IndexError\",\n  \"input\": [\n    0,\n    0,\n    -1\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.047s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 101,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.056s\n\nOK\n"
+    },
+    {
+      "id": 103,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-103/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-103/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"IndexError\",\n  \"input\": [\n    0,\n    0,\n    -1\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.054s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 103,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.043s\n\nOK\n"
+    },
+    {
+      "id": 105,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-105/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-105/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"IndexError\",\n  \"input\": [\n    0,\n    0,\n    1\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.050s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 105,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.061s\n\nOK\n"
+    },
+    {
+      "id": 107,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-107/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-107/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"IndexError\",\n  \"input\": [\n    0,\n    0,\n    -1\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.043s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 107,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.049s\n\nOK\n"
+    },
+    {
+      "id": 109,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-109/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-109/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"IndexError\",\n  \"input\": [\n    0,\n    0,\n    -1\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.049s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 109,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.045s\n\nOK\n"
+    },
+    {
+      "id": 111,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-111/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-111/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"IndexError\",\n  \"input\": [\n    0,\n    0,\n    -1\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.059s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 111,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.075s\n\nOK\n"
+    },
+    {
+      "id": 113,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-113/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-113/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"IndexError\",\n  \"input\": [\n    0,\n    0,\n    1\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.055s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 113,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.054s\n\nOK\n"
+    },
+    {
+      "id": 115,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-115/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-115/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"IndexError\",\n  \"input\": [\n    0,\n    0,\n    -1\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.056s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 115,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.059s\n\nOK\n"
+    },
+    {
+      "id": 117,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-117/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-117/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"IndexError\",\n  \"input\": [\n    0,\n    0,\n    -1\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.067s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 117,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.064s\n\nOK\n"
+    },
+    {
+      "id": 119,
+      "version": "before",
+      "matched": true,
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-119/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-119/property_live.py\", line 161, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"IndexError\",\n  \"input\": [\n    0,\n    0,\n    -1\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.061s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "id": 119,
+      "version": "after",
+      "matched": true,
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.069s\n\nOK\n"
+    }
+  ],
+  "verified_replays": 72,
+  "primary_results_sha256": "9799fbe23ec2df7870fc925ed069aee4d5627839b21a24b15eaf0461d67a55d7",
+  "prior_run": {
+    "id": "offline_v1",
+    "included_in_primary": false,
+    "saved_state": "RUNNING",
+    "saved_completed_rows": 119,
+    "reason_ru": "Полная сводка не совпала с сохранностью подробного журнала. Данные оставлены отдельно; серия повторена целиком."
+  },
+  "new_model_requests": 0
+}

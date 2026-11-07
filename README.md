@@ -1,28 +1,39 @@
 # ReproCase
 
-**From a numerical bug symptom to a locally checked regression test.**
+**Turn a numerical failure into a locally checked regression test.**
 
-Experimental, limited prototype. The default review route is offline and needs no API key. It supports two pinned historical regressions plus clearly labelled educational calculations. Model proposals use a manually designed declarative property vocabulary; arbitrary generated Python is not executed.
+An independent project by **WERFESTT**. ReproCase combines a restricted test-property format, local counterexample search, and portable tests checked against versions before and after a fix. It includes a desktop interface in Russian and English, educational examples, and reproducible research on two pinned historical regressions.
+
+## Run locally
 
 ```bash
+python3 -I -B judge.py verify
 python3 -I -B judge.py demo
 python3 -I -B judge.py gui
 ```
 
-Run these from the repository root, or provide the full path to judge.py from another working directory. Replay requires CPython 3.14; GUI additionally requires Tkinter and a graphical session. The full historical comparison requires the pinned local dependencies. Tested on Linux x86_64 / CPython 3.14.4 only.
+The default entry point verifies the application files and blocks network connections. Replay needs no API key. The desktop window additionally needs Tkinter and a graphical session.
 
-- [English setup and review instructions](README_EN.md)
-- [Optional live client: preview, consent and memory-only key](README_EN.md#optional-live-client)
-- [Published demonstration (1:02)](https://youtu.be/WmZ8xFPvyf8): English UI and titles, no audio; saved real response and offline replay, not a fresh API call
 - [Русская инструкция](README_RU.md)
-- [Saved evidence overview](index.html)
-- [License scope](LICENSE_SCOPE.md) and [third-party sources](THIRD_PARTY.txt)
-- [Security review and limitations](SECURITY.md)
+- [English instructions](README_EN.md)
+- [Results and saved evidence](index.html)
+- [Research: 7 November 2026](research/README.md)
+- [Recorded demonstration](https://youtu.be/WmZ8xFPvyf8)
 
-The real single-request evidence, later incomplete series and offline repair are separate. A saved real model response is not a live API demonstration. There is no demonstrated AI advantage, measured time saving, blind benchmark or arbitrary-project support. The vocabulary, semantic validation and historical case selection were prepared manually. The incomplete six-position series retains its first unhelpful proposal, local export failure and four unrun positions.
+## Research results
 
-Own code: MIT, Copyright (c) 2026 WERFESTT. Upstream code retains its original terms. The video is linked above; no contest submission is claimed. Free offline review needs no key. Optional live inference requires separately authorized Nebius access and may incur charges. Free live access for judges and acceptance of offline replay plus BYOK have not been confirmed with the organizers.
+The research package contains six recorded model responses, twelve portable tests from those responses, and a separate local experiment with 120 searches and 36 exported tests. Two deliberately constructed outputs expose permissive assertions. The model-generated assertions did not outperform the corresponding manual controls on the studied cases.
 
-## RU / EN
+```bash
+python3 -B research/2026-11-07/verify_public.py --replay
+```
 
-Use **Language / Язык: RU / EN** next to Theme. English demo window: `python3 -I -B judge.py gui --language en`. Offline replay: `python3 -I -B judge.py demo --language en`. Switching preserves state and sends no request. [English guide](LOCALIZATION_EN.md) · [Русская инструкция](LOCALIZATION_RU.md).
+This checks the research package and replays 100 recorded before/after outcomes: 24 from the six-response series, 72 from the local experiment, and four earlier examples. These are replay checks, not 100 new independent experiments. The earlier incomplete series is preserved with its original outcome and is separate from the later completed research.
+
+## Scope
+
+The property vocabulary, semantic validation, and case selection are manually designed. Model output is validated as data; arbitrary generated Python is not executed. The current evidence covers two historical defects and does not establish general model superiority or support for arbitrary repositories.
+
+The optional client source is in `app/model_client.py`. Public connection addresses are non-working placeholders; a new model experiment requires explicit connection configuration. Offline use is complete without that configuration.
+
+Own code: MIT, Copyright (c) 2026 WERFESTT. [License scope](LICENSE_SCOPE.md), [component notices](THIRD_PARTY.txt), and [security information](SECURITY.md).

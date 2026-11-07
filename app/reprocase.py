@@ -25,7 +25,7 @@ ROOT = Path(__file__).resolve().parent
 DEFAULT_CASE = ROOT / "examples" / "unit_mismatch.json"
 MAX_INPUT_BYTES = 16_384
 SOURCE_FILES = ("calculations.py", "reference.py", "regression.py", "reprocase.py",
-                "catalog.py", "proposals.py", "reporting.py", "nebius_client.py", "desktop.py")
+                "catalog.py", "proposals.py", "reporting.py", "model_client.py", "desktop.py")
 CHECKS = {(op, item["hypothesis"]): item["check_id"] for op, item in CATALOG.items()}
 DISCLAIMER = (
     "Учебный пример с намеренно внесённой ошибкой. "
@@ -221,7 +221,7 @@ def make_evidence(case):
             "selection": "deterministic_demo",
             "reference_description": item["reference_text"],
             "relative_tolerance": RELATIVE_TOLERANCE,
-            "nvidia_adapter_connected": False,
+            "model_adapter_connected": False,
             "model_calls": 0,
         },
         "results": {"buggy": buggy, "fixed": fixed},

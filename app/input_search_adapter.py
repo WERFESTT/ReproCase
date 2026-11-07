@@ -14,7 +14,7 @@ import math
 import benchmark_adapter as transport
 import benchmark_diagnostics as diagnostic
 import input_search as search
-import nebius_client as client
+import model_client as client
 import reprocase as app
 from reference import RELATIVE_TOLERANCE
 
@@ -189,7 +189,7 @@ def run_synthetic_suite():
             runs.append(record)
     return {
         "schema_version": 1, "origin": "SYNTHETIC", "model_evaluation": "NOT_EVALUATED",
-        "warning": "Ответы искусственные и повторяют обычное правило. Проверяется соединение клиента с поиском, не качество NVIDIA.",
+        "warning": "Ответы искусственные и повторяют обычное правило. Проверяется соединение клиента с поиском, без оценки качества модели.",
         "model_metrics": None, "real_api_calls": 0, "samples": len(runs), "matching_baseline_routes": matches,
         "synthetic_responses": sum(run["accounting"]["attempted_requests"] for run in runs),
         "probe_attempts": sum(run["result"]["probe_attempts"] for run in runs),
@@ -199,7 +199,7 @@ def run_synthetic_suite():
         "replayed_proofs": replayed, "max_trials": search.MAX_TRIALS, "max_requests": MAX_MODEL_REQUESTS,
         "runs": runs,
         "source_sha256": {name: hashlib.sha256((search.ROOT / name).read_bytes()).hexdigest() for name in
-                          (*search.SOURCE_FILES, "input_search_adapter.py", "benchmark_adapter.py", "nebius_client.py", "benchmark_fixtures.json")},
+                          (*search.SOURCE_FILES, "input_search_adapter.py", "benchmark_adapter.py", "model_client.py", "benchmark_fixtures.json")},
     }
 
 
@@ -209,7 +209,7 @@ def write_synthetic_evidence(output_dir=search.ROOT / "outputs"):
     report = run_synthetic_suite()
     (directory / FILES[0]).write_text(app.json_text(report), encoding="utf-8")
     body = ("<h2>СИНТЕТИЧЕСКАЯ проверка соединения</h2>"
-            "<p>Ответы создаёт локальное фиксированное правило. Это не результат настоящей NVIDIA и не сравнение качества моделей.</p>"
+            "<p>Ответы создаёт локальное фиксированное правило. Это искусственные ответы, а не сравнение качества моделей.</p>"
             f"<p>Совпало с обычным маршрутом: {report['matching_baseline_routes']} из {report['samples']}. "
             f"Искусственных ответов: {report['synthetic_responses']}; новых проб: {report['probe_attempts']}. "
             f"Исходных расхождений: {report['initial_mismatches']}; новым вводом воспроизведено: {report['newly_reproduced']}; "

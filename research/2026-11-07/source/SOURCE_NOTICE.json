@@ -1,0 +1,24 @@
+{
+  "upstream_local_build": "judge-private-draft-v2",
+  "source_archive_sha256": "f17c4069fcba576875b5866cd12a2e92a298a94449c21ce76d4c7b4a549a8902",
+  "changes": [
+    "Public review labels and MIT scope added",
+    "Root setup/security documentation added",
+    "Derived report wrappers relabelled; report data and original hashes unchanged",
+    "API identifiers normalized; replay integrity metadata regenerated for this derivative"
+  ],
+  "untouched": [
+    "historical sources and upstream licenses",
+    "witness assertions, domains and inputs",
+    "recorded numerical measurements"
+  ],
+  "git_history_inherited": false,
+  "public_derivative": {
+    "base_git_commit": "c8c7edc0a92a81183f1f8670871892cf9a4120f7",
+    "neutral_api_identifiers": true,
+    "connection_hosts_removed": true,
+    "integrity_metadata_rebuilt": true,
+    "historical_source_bytes_unchanged": true,
+    "new_model_requests": 0
+  }
+}

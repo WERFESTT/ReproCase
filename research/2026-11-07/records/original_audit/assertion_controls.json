@@ -1,0 +1,98 @@
+{
+  "design": "POST_HOC_CONSTRUCTED_OUTPUT_CONTROLS",
+  "not_real_defects": true,
+  "new_model_calls": 0,
+  "sut_calls": 0,
+  "rows": [
+    {
+      "case_id": "cpython_correlation",
+      "input": [
+        0,
+        0
+      ],
+      "kind": "correct",
+      "constructed_value": 1.0,
+      "model_assertion": {
+        "op": "between",
+        "min": -1,
+        "max": 1
+      },
+      "manual_assertion": {
+        "op": "equal_number",
+        "value": 1
+      },
+      "model_accepts_value": true,
+      "manual_accepts_value": true
+    },
+    {
+      "case_id": "cpython_correlation",
+      "input": [
+        0,
+        0
+      ],
+      "kind": "constructed_incorrect",
+      "constructed_value": 0.0,
+      "model_assertion": {
+        "op": "between",
+        "min": -1,
+        "max": 1
+      },
+      "manual_assertion": {
+        "op": "equal_number",
+        "value": 1
+      },
+      "model_accepts_value": true,
+      "manual_accepts_value": false
+    },
+    {
+      "case_id": "more_reversed",
+      "input": [
+        0,
+        5,
+        1
+      ],
+      "kind": "correct",
+      "constructed_value": [
+        4,
+        3,
+        2,
+        1,
+        0
+      ],
+      "model_assertion": {
+        "op": "completes"
+      },
+      "manual_assertion": {
+        "op": "sequence_equal",
+        "order": "reverse"
+      },
+      "model_accepts_value": true,
+      "manual_accepts_value": true
+    },
+    {
+      "case_id": "more_reversed",
+      "input": [
+        0,
+        5,
+        1
+      ],
+      "kind": "constructed_incorrect",
+      "constructed_value": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "model_assertion": {
+        "op": "completes"
+      },
+      "manual_assertion": {
+        "op": "sequence_equal",
+        "order": "reverse"
+      },
+      "model_accepts_value": true,
+      "manual_accepts_value": false
+    }
+  ]
+}

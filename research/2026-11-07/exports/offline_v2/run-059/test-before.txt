@@ -1,0 +1,29 @@
+{"tests": 1, "failures": 1, "errors": 0}
+test_property (__main__.Regression.test_property) ... FAIL
+
+======================================================================
+FAIL: test_property (__main__.Regression.test_property)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-059/test_prepared.py", line 70, in test_property
+    replay(ROOT / 'witness.json', args.version)
+  File "/workspace/scratch/9944298f7295/reprocase_research_20261107/source/app/outputs/research-domain-budget-offline_v2/run-059/property_live.py", line 161, in replay
+    assert checked['status']=='PASS',app.json_text(checked)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {
+  "actual": {
+    "nonfinite": "nan"
+  },
+  "exception_type": null,
+  "input": [
+    11,
+    500
+  ],
+  "status": "PROPERTY_VIOLATION"
+}
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.012s
+
+FAILED (failures=1)

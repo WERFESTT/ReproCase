@@ -11,10 +11,10 @@ import threading
 
 import input_search as search
 import input_search_adapter as adapter
-import nebius_client as client
+import model_client as client
 import reprocase as app
 
-HOST = "api.tokenfactory.us-central1.nebius.com"
+HOST = "model-api-alt.invalid"
 MODEL = "nvidia/nemotron-3-super-120b-a12b"
 MAX_REQUEST_BYTES = 16000
 MAX_COMPLETION_TOKENS = 1024
@@ -24,7 +24,7 @@ RATES = {"input": 0.30, "cached_input": 0.06, "output": 0.90}
 
 def consent_text(case):
     case = app.validate_case(case)
-    return (f"Реальный поиск через Nebius\nМодель: {MODEL}\nАдрес: https://{HOST}{client.PATH}\n\n"
+    return (f"Реальный поиск через model API\nМодель: {MODEL}\nАдрес: https://{HOST}{client.PATH}\n\n"
             "Будут отправлены правило учебной задачи, эти входные числа, наблюдение, разрешённые кандидаты и результаты проверок:\n"
             + app.json_text(case["inputs"]) + "\nВариант реализации и метки оценщика не отправляются. Проверяется намеренно ошибочный учебный вариант.\n\n"
             "Максимум 4 последовательных запроса, 3 новые пробы, 1024 токена ответа на запрос (включая reasoning), "

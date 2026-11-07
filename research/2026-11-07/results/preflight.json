@@ -1,0 +1,87 @@
+{
+  "source_check": {
+    "checked_text_files": 165,
+    "matched": true,
+    "commit": "c8c7edc0a92a81183f1f8670871892cf9a4120f7",
+    "binary_wheels_transferred": false
+  },
+  "python": "3.12.3 (main, Jul 15 2026, 23:46:41) [GCC 13.3.0]",
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+  "new_model_requests": 0,
+  "qualification": "Новая среда Python 3.12; не точный повтор исходной среды Python 3.14.",
+  "runs": [
+    {
+      "evidence": "success",
+      "version": "before",
+      "returncode": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "expected_counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "matched": true,
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/evidence/success/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/evidence/success/property_live.py\", line 136, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"StatisticsError\",\n  \"input\": [\n    -39,\n    -500\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.014s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "evidence": "success",
+      "version": "after",
+      "returncode": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "expected_counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "matched": true,
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.015s\n\nOK\n"
+    },
+    {
+      "evidence": "repaired",
+      "version": "before",
+      "returncode": 1,
+      "counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "expected_counts": {
+        "tests": 1,
+        "failures": 1,
+        "errors": 0
+      },
+      "matched": true,
+      "stdout": "{\"tests\": 1, \"failures\": 1, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... FAIL\n\n======================================================================\nFAIL: test_property (__main__.Regression.test_property)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/evidence/repaired/test_prepared.py\", line 70, in test_property\n    replay(ROOT / 'witness.json', args.version)\n  File \"/workspace/scratch/9944298f7295/reprocase_research_20261107/source/evidence/repaired/property_live.py\", line 159, in replay\n    assert checked['status']=='PASS',app.json_text(checked)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {\n  \"actual\": null,\n  \"exception_type\": \"StatisticsError\",\n  \"input\": [\n    -39,\n    -500\n  ],\n  \"status\": \"PROPERTY_VIOLATION\"\n}\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.015s\n\nFAILED (failures=1)\n"
+    },
+    {
+      "evidence": "repaired",
+      "version": "after",
+      "returncode": 0,
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "expected_counts": {
+        "tests": 1,
+        "failures": 0,
+        "errors": 0
+      },
+      "matched": true,
+      "stdout": "{\"tests\": 1, \"failures\": 0, \"errors\": 0}\n",
+      "stderr": "test_property (__main__.Regression.test_property) ... ok\n\n----------------------------------------------------------------------\nRan 1 test in 0.015s\n\nOK\n"
+    }
+  ],
+  "passed": true
+}

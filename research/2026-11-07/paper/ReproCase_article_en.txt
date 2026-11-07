@@ -1,0 +1,121 @@
+Reproducibility and Assertion Strength in ReproCase
+Two historical defects and six new model responses
+WERFESTT | 7 November 2026
+
+Abstract
+
+A generated test can reproduce a known bug and pass after its fix while still accepting incorrect results. We examine this gap using ReproCase, where a language model selects an input domain and an assertion from a restricted schema, and a local program searches for a counterexample. Six new Nemotron responses produced 12 portable test bundles for two historical defects. All 24 executions before and after the fixes matched their expected outcomes. Handwritten assertions achieved the same confirmations with the same number of calls to the tested functions. Two incorrect outputs constructed after the experiment passed the model assertions but failed the handwritten assertions. In a separate series of 120 searches, narrowing the input domain prevented detection in the tested configurations, and increasing the search budget did not recover it. These results show a specific limitation of using regression reproduction as evidence of assertion strength.
+
+Introduction
+
+Developer assistants can use generated tests to check proposed fixes. A test that fails before a known fix and passes after it provides evidence about that regression. It does not establish how well its assertion distinguishes other correct and incorrect outputs.
+
+We study this distinction with the previously published ReproCase tool [5]. The new experiments examine input domains and search budgets, collect six fresh model responses, and verify the exported tests. We then probe the accepted assertions with two constructed incorrect outputs. The study concerns assertion preparation within a constrained testing workflow. It does not evaluate repository navigation, autonomous patch generation, or model training.
+
+Method
+
+The cases are two known defects: numerical instability in CPython correlation and failure when reversing an empty numeric range in more-itertools. We use pinned source versions before and after pull requests 107855 and 1153 [6, 7]. The original ReproCase revision is c8c7edc0a92a81183f1f8670871892cf9a4120f7.
+
+Each request supplies a symptom, a public behavioral contract, a human-written input generator, and a response schema. The model chooses subranges of the allowed inputs and an assertion from a fixed set of operations. It returns data rather than executable code. The request excludes the historical patch, a known counterexample, and local search results. The saved request bodies were checked against the pinned request builder.
+
+The program checks response structure and whether the assertion holds under the supplied contract. For correlation, the generator creates two symmetric, positively proportional pairs, whose mathematical correlation is one. For integer ranges, validation exhaustively checks the proposed finite domain against an independent reference operation. This rejects false properties but does not measure how many incorrect results a valid property would accept.
+
+Boundary search and Hypothesis each receive at most 252 calls for search and shrinking. Confirmation permits up to four additional calls, two before and two after the fix. If the budget expires, a found counterexample can be confirmed without completed shrinking. The logs distinguish those outcomes. The fixed implementation is used for confirmation, not to select the proposal or search input.
+
+The manual control uses the same permitted domains and search methods. Its correlation assertion requires a result within an absolute tolerance of 1e-12 of one. Its range assertion requires exact equality with the built-in integer range in reverse order. These are stronger handwritten assertions, not responses from another model.
+
+New model responses
+
+We made six requests to nvidia/nemotron-3-super-120b-a12b through a remote API, three per case. Each session allowed one request without an automatic retry, at most 1024 completion tokens, and a serialized request body of at most 16000 bytes. Seeds 0, 1, and 2 control local search, not model generation. The recorded environment was Python 3.14.4 with Hypothesis 6.170.9.
+
+All six proposals passed structural and contract validation. For correlation, all three responses selected a finite result between -1 and 1 and exponents between -500 and 500. For reversed ranges, all three selected completion without an exception over the full allowed domain. The six responses therefore contain two distinct proposals.
+
+Each group of six confirmations in Table 1 combines two search methods across three sessions. The model and manual assertions detected the same historical defects. On the fixed versions, none of the 12 model searches or 12 manual searches found a counterexample within budget. This result does not establish that the fixed versions contain no other defects.
+
+Table 1. New responses and manual controls
+Case | Requests | Confirmed
+model / manual | Calls per
+condition
+CPython correlation | 3 | 6/6 / 6/6 | 2363
+Reversed range | 3 | 6/6 / 6/6 | 1548
+
+The 12 confirmed model searches produced 12 bundles for two defects. Model and manual conditions each used 3911 calls to the tested functions, including 48 confirmation calls. Initial export checks added 24 calls. We observed no advantage in detection or function-call count for the model on these cases. Time spent preparing the manual assertions was not measured.
+
+Input domains and search budgets
+
+A separate local experiment reused earlier saved proposals without new model requests. Its question was chosen after reviewing the earlier pilot, and the protocol was fixed before this series ran. Five conditions were tested at budgets of 16, 64, and 252 calls. For each budget, boundary search ran once and Hypothesis used three seeds. Testing both historical versions produced 120 searches, 60 before the fixes and 60 after.
+
+This series used Python 3.12.3, Hypothesis 6.98.15, and sortedcontainers 2.4.0. Its results are kept separate from the new API series. The wide correlation domain uses exponents from -500 to 500; the narrow domain uses -10 to 10. The saved model assertion requires a finite value between -1 and 1. The manual assertion requires one. A manual reversed-range condition serves as a control.
+
+Table 2. Separate local search series
+Condition | Confirmed before fix | Findings after fix
+Model, wide domain | 12/12 | 0/12
+Model, narrow domain | 0/12 | 0/12
+Manual, wide domain | 12/12 | 0/12
+Manual, narrow domain | 0/12 | 0/12
+Manual, reversed range | 12/12 | 0/12
+
+Each denominator of 12 combines three budgets with one boundary search and three Hypothesis runs per budget. All tested wide-domain searches confirmed the regression. No tested narrow-domain search did, including at the largest budget. This observation is specific to the generators and defects used here; it does not imply that wider domains are generally better.
+
+The accepted series produced 36 portable bundles. Their 72 separate executions matched the expected outcomes. An earlier attempt left a partial detailed log with 119 completed rows and one unstarted row, despite a full summary. That log was retained but excluded. After fixing the save operation, the complete series was repeated. The two attempts were not pooled.
+
+Assertion sensitivity
+
+After examining the new responses, we constructed two incorrect outputs and passed them directly to the existing assertion evaluator. These controls were chosen after the experiment, not drawn from a predefined independent defect set. They did not modify the historical implementations or require model requests.
+
+Table 3. Constructed incorrect outputs
+Input and incorrect output | Model assertion | Manual assertion
+Correlation of two pairs [-1, 1]
+Output 0 instead of 1 | Accepts | Rejects
+Reversed range from 0 to 5, step 1
+Output [0, 1, 2, 3, 4] | Accepts | Rejects
+
+Both conditions accepted the correct outputs for the same inputs: one for correlation and [4, 3, 2, 1, 0] for the reversed range. The manual assertion therefore did not reject the constructed errors merely by rejecting every value.
+
+The model assertions are valid but weaker than the manual controls. Completion without an exception does not check the returned sequence. Requiring correlation to lie between -1 and 1 accepts zero even when the generated pairs require one. These controls demonstrate specific omissions. They are not additional historical bugs and are not included in defect-detection rates.
+
+Reproducibility
+
+The original audit matched the two saved copies of the live result and verified 165 text files against the pinned Git revision. Each live bundle contained 39 source files checked against that revision, plus a test checked against the export template. Each witness was linked to its proposal, case, method, and search seed.
+
+All 12 live tests were rerun before and after the fixes with isolated Python imports. All 24 outcomes matched: one assertion failure before each fix and a passing test after it, with no test-harness errors. This replay used Python 3.12.3. It establishes compatibility of these bundles with a second environment, not a repetition of model generation or search under Python 3.14.4.
+
+The shared source copy uses neutral API identifiers and omits connection addresses. Its replay bundles were repackaged with updated integrity metadata and checked separately. The assertions, domains, inputs, and historical implementations were preserved. The package identifies these files as derivatives of the original run rather than byte-identical originals.
+
+The client logs report 9282 prompt tokens, including 3040 cached prompt tokens, and 1571 completion tokens. Client records are not independent provider attestations. File hashes detect changes relative to the recorded files; they do not authenticate the origin of a model response.
+
+Related work
+
+QuickCheck introduced property-based testing with generated inputs and custom generators [1]. Hypothesis provides this approach for Python, including example generation and shrinking [2]. ReproCase uses these existing mechanisms rather than proposing a new search or shrinking algorithm.
+
+CodaMOSA combines search-based test generation with language-model calls when coverage plateaus [3]. Our experiment instead constrains the model to a declarative assertion and tests it against known historical regressions. We did not compare with CodaMOSA or measure its coverage objectives.
+
+Deciding whether an output is correct is the established test-oracle problem [4]. The weak assertions observed here are an instance of that problem. The contribution is an inspectable comparison of contract acceptance, regression reproduction, and rejection of specific incorrect outputs within one small workflow.
+
+Limitations
+
+The corpus contains only two preselected historical defects and two operation types. Human-written contracts, generators, and assertion operators substantially constrain the model task. The model may have encountered the public fixes during training. The immutable revision of the served weights is unknown, so repeating a request need not reproduce its response.
+
+Three responses per case do not support a representative estimate of model quality. Repeated boundary searches are deterministic and add no independent tasks. We did not perform a statistical superiority test, measure developer effort, test unfamiliar repositories, or compare models. The constructed output controls do not estimate a general false-acceptance rate. Different Python and Hypothesis versions also limit direct comparison between the two series.
+
+Gemma was not tested. Model inference was remote, while search and replay ran locally. The experiments therefore provide no evidence about a small local model or autonomous code repair.
+
+Conclusion
+
+ReproCase reproduced the selected regressions in portable tests, but the model assertions offered no observed advantage over the manual controls. Input-domain choice affected detection, and two constructed outputs exposed checks that the model assertions omitted. A test can preserve a known regression while providing incomplete checks of returned values. Further evaluation should use new tasks and incorrect-output controls defined before inspecting model responses.
+
+References
+
+[1] Claessen K., Hughes J. QuickCheck: A lightweight tool for random testing of Haskell programs. ICFP, 2000, pp. 268-279. https://research.chalmers.se/en/publication/237427
+
+[2] MacIver D. R., Hatfield-Dodds Z., and contributors. Hypothesis: A new approach to property-based testing. JOSS, 2019, 4(43), 1891. DOI 10.21105/joss.01891. https://joss.theoj.org/papers/10.21105/joss.01891
+
+[3] Lemieux C., Inala J. P., Lahiri S. K., Sen S. CODAMOSA: Escaping Coverage Plateaus in Test Generation with Pre-trained Large Language Models. ICSE, 2023. https://www.microsoft.com/en-us/research/publication/codamosa-escaping-coverage-plateaus-in-test-generation-with-pre-trained-large-language-models/
+
+[4] Barr E. T., Harman M., McMinn P., Shahbaz M., Yoo S. The Oracle Problem in Software Testing: A Survey. IEEE TSE, 2015, 41(5), pp. 507-525. DOI 10.1109/TSE.2014.2372785. https://discovery.ucl.ac.uk/id/eprint/1471263/
+
+[5] WERFESTT. ReproCase. Original code and previously published evidence. Revision c8c7edc0a92a81183f1f8670871892cf9a4120f7. https://github.com/WERFESTT/ReproCase/tree/c8c7edc0a92a81183f1f8670871892cf9a4120f7
+
+[6] CPython. Correlation fix, pull request 107855. Source versions are pinned in the ReproCase manifest. https://github.com/python/cpython/pull/107855
+
+[7] more-itertools. Reversed numeric range fix, pull request 1153. Source versions are pinned in the ReproCase manifest. https://github.com/more-itertools/more-itertools/pull/1153

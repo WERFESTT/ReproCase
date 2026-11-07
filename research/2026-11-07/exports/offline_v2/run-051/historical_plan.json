@@ -1,0 +1,19 @@
+{
+  "version": "historical-pilot-v1",
+  "cases": ["cpython_correlation", "more_reversed"],
+  "methods": ["boundary_grid", "hypothesis"],
+  "versions": ["before", "after"],
+  "hypothesis_seeds": [0, 1, 2, 3, 4],
+  "repetitions": 2,
+  "sut_call_limit": 256,
+  "search_and_shrink_limit": 252,
+  "reserved_replay_calls": 4,
+  "domains": {
+    "cpython_correlation": [[-500, 500], [-500, 500]],
+    "more_reversed": [[-16, 16], [-16, 16], [-8, 8]]
+  },
+  "excluded_values": {"more_reversed": {"2": [0]}},
+  "hypothesis_version": "6.170.9",
+  "hypothesis_database": false,
+  "hypothesis_phases": ["generate", "shrink"]
+}

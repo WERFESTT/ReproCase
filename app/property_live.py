@@ -15,7 +15,7 @@ import threading
 import benchmark_adapter as transport
 import historical_core as core
 import live_search as live
-import nebius_client as client
+import model_client as client
 import property_contract as contract
 import property_preparation as prep
 import reprocase as app

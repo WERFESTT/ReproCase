@@ -622,7 +622,7 @@ class Window:
                 return
             if self.live_start_cancelled:
                 return
-            key = simpledialog.askstring(loc.text("Ключ Nebius — только в памяти"), loc.text("Введите ключ. Он не будет сохранён:"), show="*", parent=self.root)
+            key = simpledialog.askstring(loc.text("Ключ model API — только в памяти"), loc.text("Введите ключ. Он не будет сохранён:"), show="*", parent=self.root)
             if key is None or self.live_start_cancelled:
                 self.status.set("Ввод ключа отменён. Запросов не было.")
                 self.show_request_state("Запросы — отменено до отправки", "Ввод ключа или запуск отменён. Попыток отправки: 0.")

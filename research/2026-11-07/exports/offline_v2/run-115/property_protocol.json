@@ -1,0 +1,97 @@
+{
+  "version": "property-preparation-protocol-v1",
+  "mode": "FUTURE_REAL_RUN_NOT_AUTHORIZED_OR_IMPLEMENTED",
+  "cases": [
+    "cpython_correlation",
+    "more_reversed"
+  ],
+  "independent_proposal_repetitions": [
+    0,
+    1,
+    2
+  ],
+  "model": "nvidia/nemotron-3-super-120b-a12b",
+  "proposal_requests_per_session": 1,
+  "automatic_retries": 0,
+  "max_completion_tokens_per_request": 1024,
+  "max_serialized_request_bytes": 16000,
+  "total_requests_upper_bound": 6,
+  "total_completion_tokens_upper_bound": 6144,
+  "total_serialized_request_bytes_upper_bound": 96000,
+  "search_methods": [
+    "boundary_grid",
+    "hypothesis"
+  ],
+  "target_versions_for_evaluation": [
+    "before",
+    "after"
+  ],
+  "search_and_shrink_calls_per_run": 252,
+  "confirmation_calls_per_run": 4,
+  "hypothesis_seed_by_repetition": [
+    0,
+    1,
+    2
+  ],
+  "denominator": "all_six_scheduled_sessions_including_refusals_invalid_answers_transport_failures_and_cancellations",
+  "metrics": [
+    "schema_acceptance",
+    "contract_acceptance",
+    "confirmed_exported_regression",
+    "false_findings_on_after",
+    "search_calls",
+    "shrinking_and_recheck_calls",
+    "confirmation_calls",
+    "usage_known_or_unknown"
+  ],
+  "human_work": [
+    "selection_of_historical_cases",
+    "symptom_paraphrases",
+    "public_contracts",
+    "generator_grammar",
+    "property_grammar",
+    "semantic_validation_rules"
+  ],
+  "human_time_savings": null,
+  "monetary_limit_guaranteed": false,
+  "manual_baseline": {
+    "cpython_correlation": {
+      "domain": [
+        [
+          -500,
+          500
+        ],
+        [
+          -500,
+          500
+        ]
+      ],
+      "assertion": {
+        "op": "equal_number",
+        "value": 1
+      }
+    },
+    "more_reversed": {
+      "domain": [
+        [
+          -16,
+          16
+        ],
+        [
+          -16,
+          16
+        ],
+        [
+          -8,
+          8
+        ]
+      ],
+      "assertion": {
+        "op": "sequence_equal",
+        "order": "reverse"
+      }
+    }
+  },
+  "manual_baseline_not_in_model_context": true,
+  "evaluation_rule": "Run each accepted proposal unchanged with both search methods and on both target versions. All failures stay in the six-session denominator. Evaluate generation acceptance and final exported-test utility separately from search performance. No results go back to the model."
+}

@@ -1,0 +1,15 @@
+{
+  "article_language": "en",
+  "article_words": 1979,
+  "article_long_dashes": 0,
+  "provider_identifiers_found": 0,
+  "unit_tests": 9,
+  "unit_tests_passed": true,
+  "unit_stderr": "test_balanced_cells (__main__.ResearchTests.test_balanced_cells) ... ok\ntest_boundary_not_replicated (__main__.ResearchTests.test_boundary_not_replicated) ... ok\ntest_count_and_versions (__main__.ResearchTests.test_count_and_versions) ... ok\ntest_errors_not_successful_exports (__main__.ResearchTests.test_errors_not_successful_exports) ... ok\ntest_network_guard (__main__.ResearchTests.test_network_guard) ... ok\ntest_not_started_kept (__main__.ResearchTests.test_not_started_kept) ... ok\ntest_original_proposals_unchanged (__main__.ResearchTests.test_original_proposals_unchanged) ... ok\ntest_random_seeds_distinct (__main__.ResearchTests.test_random_seeds_distinct) ... ok\ntest_source_matches (__main__.ResearchTests.test_source_matches) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 0.323s\n\nOK\n",
+  "portable_replay_attempts": 100,
+  "portable_expected_outcomes": 100,
+  "new_model_requests": 0,
+  "github_changed": false,
+  "original_archive_included": false,
+  "scope": "SANITIZED_DERIVATIVE"
+}

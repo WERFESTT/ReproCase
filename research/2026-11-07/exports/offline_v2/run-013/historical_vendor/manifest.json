@@ -1,0 +1,88 @@
+{
+  "cases": {
+    "cpython_correlation": {
+      "repository": "https://github.com/python/cpython",
+      "pull_request": "https://github.com/python/cpython/pull/107855",
+      "before_commit": "637f7ff2c60f262659da0334f1cb672bd361f398",
+      "after_commit": "52e0797f8e1c631eecf24cb3f997ace336f52271"
+    },
+    "more_reversed": {
+      "repository": "https://github.com/more-itertools/more-itertools",
+      "pull_request": "https://github.com/more-itertools/more-itertools/pull/1153",
+      "before_commit": "247e15b3a489d5805375c95dfa79486c9bd0eb1b",
+      "after_commit": "1806a75b836b9eff4a7885a96ece6183f5fb6409"
+    }
+  },
+  "files": {
+    "historical_vendor/cpython_correlation/before/Lib/statistics.py": {
+      "url": "https://raw.githubusercontent.com/python/cpython/637f7ff2c60f262659da0334f1cb672bd361f398/Lib/statistics.py",
+      "sha256": "62c87a06c233f8e49407201e1b5596beaac2ca255000c09317814c248ebc418a",
+      "bytes": 50579
+    },
+    "historical_vendor/cpython_correlation/before/LICENSE": {
+      "url": "https://raw.githubusercontent.com/python/cpython/637f7ff2c60f262659da0334f1cb672bd361f398/LICENSE",
+      "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf",
+      "bytes": 13936
+    },
+    "historical_vendor/cpython_correlation/after/Lib/statistics.py": {
+      "url": "https://raw.githubusercontent.com/python/cpython/52e0797f8e1c631eecf24cb3f997ace336f52271/Lib/statistics.py",
+      "sha256": "768169a7717439c0e043515ad2d315c619c99ca764a7bf0f5fdbf15cd48551f3",
+      "bytes": 51203
+    },
+    "historical_vendor/cpython_correlation/after/LICENSE": {
+      "url": "https://raw.githubusercontent.com/python/cpython/52e0797f8e1c631eecf24cb3f997ace336f52271/LICENSE",
+      "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf",
+      "bytes": 13936
+    },
+    "historical_vendor/cpython_correlation/fix-commit.json": {
+      "url": "https://api.github.com/repos/python/cpython/commits/52e0797f8e1c631eecf24cb3f997ace336f52271",
+      "sha256": "cde3be9f6580f2e68d53ef0af83c3281bf23fba62089117f5219fa7f4dbab867",
+      "bytes": 11344
+    },
+    "historical_vendor/more_reversed/before/more_itertools/__init__.py": {
+      "url": "https://raw.githubusercontent.com/more-itertools/more-itertools/247e15b3a489d5805375c95dfa79486c9bd0eb1b/more_itertools/__init__.py",
+      "sha256": "eeff04c91d301040b38262d7090133b042795dd44d5ecdcfd4d8269abcac0306",
+      "bytes": 149
+    },
+    "historical_vendor/more_reversed/before/more_itertools/more.py": {
+      "url": "https://raw.githubusercontent.com/more-itertools/more-itertools/247e15b3a489d5805375c95dfa79486c9bd0eb1b/more_itertools/more.py",
+      "sha256": "d4f4133e2c5b904ca0fa4f4a45063c50a5b5e2260f8e10670397afab4ca34cd7",
+      "bytes": 169186
+    },
+    "historical_vendor/more_reversed/before/more_itertools/recipes.py": {
+      "url": "https://raw.githubusercontent.com/more-itertools/more-itertools/247e15b3a489d5805375c95dfa79486c9bd0eb1b/more_itertools/recipes.py",
+      "sha256": "6aff1f84b0a70b96c102e3b92a70539255f1489765fc54140b1c1478f95b4828",
+      "bytes": 45752
+    },
+    "historical_vendor/more_reversed/before/LICENSE": {
+      "url": "https://raw.githubusercontent.com/more-itertools/more-itertools/247e15b3a489d5805375c95dfa79486c9bd0eb1b/LICENSE",
+      "sha256": "09f1c8c9e941af3e584d59641ea9b87d83c0cb0fd007eb5ef391a7e2643c1a46",
+      "bytes": 1053
+    },
+    "historical_vendor/more_reversed/after/more_itertools/__init__.py": {
+      "url": "https://raw.githubusercontent.com/more-itertools/more-itertools/1806a75b836b9eff4a7885a96ece6183f5fb6409/more_itertools/__init__.py",
+      "sha256": "eeff04c91d301040b38262d7090133b042795dd44d5ecdcfd4d8269abcac0306",
+      "bytes": 149
+    },
+    "historical_vendor/more_reversed/after/more_itertools/more.py": {
+      "url": "https://raw.githubusercontent.com/more-itertools/more-itertools/1806a75b836b9eff4a7885a96ece6183f5fb6409/more_itertools/more.py",
+      "sha256": "ba7159b4dbb69ddd0a4836369012ae26f4106d7570326c24d25774cd32173be2",
+      "bytes": 169276
+    },
+    "historical_vendor/more_reversed/after/more_itertools/recipes.py": {
+      "url": "https://raw.githubusercontent.com/more-itertools/more-itertools/1806a75b836b9eff4a7885a96ece6183f5fb6409/more_itertools/recipes.py",
+      "sha256": "6aff1f84b0a70b96c102e3b92a70539255f1489765fc54140b1c1478f95b4828",
+      "bytes": 45752
+    },
+    "historical_vendor/more_reversed/after/LICENSE": {
+      "url": "https://raw.githubusercontent.com/more-itertools/more-itertools/1806a75b836b9eff4a7885a96ece6183f5fb6409/LICENSE",
+      "sha256": "09f1c8c9e941af3e584d59641ea9b87d83c0cb0fd007eb5ef391a7e2643c1a46",
+      "bytes": 1053
+    },
+    "historical_vendor/more_reversed/fix-commit.json": {
+      "url": "https://api.github.com/repos/more-itertools/more-itertools/commits/1806a75b836b9eff4a7885a96ece6183f5fb6409",
+      "sha256": "c86e39ef4343743db0ac3c8fa8742a2725525ec301ee254d9b20993210c66620",
+      "bytes": 6883
+    }
+  }
+}

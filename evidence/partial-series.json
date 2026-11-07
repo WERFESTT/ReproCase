@@ -30,7 +30,7 @@
       },
       "requests_with_unknown_usage": 0
     },
-    "endpoint": "api.tokenfactory.us-central1.nebius.com",
+    "endpoint": "model-api-alt.invalid",
     "events": [
       {
         "action": {

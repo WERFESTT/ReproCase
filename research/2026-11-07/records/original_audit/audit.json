@@ -1,0 +1,1029 @@
+{
+  "state": "VERIFIED",
+  "client_study_date": "2026-11-07",
+  "archive_sha256": "4390d5b23d930e8cdbf95ee66332abbf1693d6abfe2d6798706c92015d473c43",
+  "archive_members": 688,
+  "source_commit": "c8c7edc0a92a81183f1f8670871892cf9a4120f7",
+  "source_files_verified": 165,
+  "source_files_per_bundle": 39,
+  "bundles_verified": 12,
+  "model_requests_as_logged": 6,
+  "independent_provider_attestation": false,
+  "unique_proposals": 2,
+  "unique_historical_cases": 2,
+  "live_python_as_logged": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "audit_python": "3.12.3",
+  "audit_interpretation_ru": "Повтор переносимых тестов в другой версии Python; не повтор генерации ответов и не повтор поиска.",
+  "usage_as_logged": {
+    "prompt_tokens": 9282,
+    "completion_tokens": 1571,
+    "total_tokens": 10853,
+    "cached_prompt_tokens": 3040
+  },
+  "cost_estimate_usd": 0.0034689,
+  "provider_invoice_verified": false,
+  "metrics_recomputed": {
+    "model": 3911,
+    "manual": 3911,
+    "model_confirmation": 48,
+    "manual_confirmation": 48
+  },
+  "portable_replay_attempts": 24,
+  "portable_replay_expected_outcomes": 24,
+  "recorded_metrics": {
+    "scheduled": 6,
+    "schema_accepted": 6,
+    "contract_accepted": 6,
+    "useful_exported_tests_sessions": 6,
+    "not_started": 0,
+    "fixed_counterexamples": 0,
+    "model_property_sut_calls": 3911,
+    "manual_baseline_sut_calls": 3911,
+    "export_test_process_attempts": 24,
+    "export_test_extra_sut_calls": 24
+  },
+  "rows": [
+    {
+      "case_id": "cpython_correlation",
+      "seed": 0,
+      "state": "COMPLETED",
+      "proposal": {
+        "action": "propose_property",
+        "version": "property-v1",
+        "context_sha256": "953c3dc93ef8505c39f0176adc59b0d9ed114be80333de30f65b7c8366cdf16c",
+        "domain": [
+          [
+            -500,
+            500
+          ],
+          [
+            -500,
+            500
+          ]
+        ],
+        "assertion": {
+          "op": "between",
+          "min": -1,
+          "max": 1
+        }
+      },
+      "runs": [
+        {
+          "method": "boundary_grid",
+          "target_version": "before",
+          "outcome": "REGRESSION_CONFIRMED",
+          "search_status": "COMPLETED",
+          "minimization_completed": true,
+          "search_shrink_calls": 191,
+          "confirmation_calls": 4,
+          "total_calls": 195,
+          "witness": [
+            -39,
+            -500
+          ],
+          "role": "model"
+        },
+        {
+          "method": "boundary_grid",
+          "target_version": "after",
+          "outcome": "NO_COUNTEREXAMPLE_WITHIN_BUDGET",
+          "search_status": "BUDGET_EXHAUSTED",
+          "minimization_completed": false,
+          "search_shrink_calls": 252,
+          "confirmation_calls": 0,
+          "total_calls": 252,
+          "witness": null,
+          "role": "model"
+        },
+        {
+          "method": "hypothesis",
+          "target_version": "before",
+          "outcome": "REGRESSION_CONFIRMED",
+          "search_status": "COMPLETED",
+          "minimization_completed": true,
+          "search_shrink_calls": 64,
+          "confirmation_calls": 4,
+          "total_calls": 68,
+          "witness": [
+            -39,
+            -500
+          ],
+          "role": "model"
+        },
+        {
+          "method": "hypothesis",
+          "target_version": "after",
+          "outcome": "NO_COUNTEREXAMPLE_WITHIN_BUDGET",
+          "search_status": "COMPLETED",
+          "minimization_completed": false,
+          "search_shrink_calls": 252,
+          "confirmation_calls": 0,
+          "total_calls": 252,
+          "witness": null,
+          "role": "model"
+        },
+        {
+          "method": "boundary_grid",
+          "target_version": "before",
+          "outcome": "REGRESSION_CONFIRMED",
+          "search_status": "COMPLETED",
+          "minimization_completed": true,
+          "search_shrink_calls": 191,
+          "confirmation_calls": 4,
+          "total_calls": 195,
+          "witness": [
+            -39,
+            -500
+          ],
+          "role": "manual"
+        },
+        {
+          "method": "boundary_grid",
+          "target_version": "after",
+          "outcome": "NO_COUNTEREXAMPLE_WITHIN_BUDGET",
+          "search_status": "BUDGET_EXHAUSTED",
+          "minimization_completed": false,
+          "search_shrink_calls": 252,
+          "confirmation_calls": 0,
+          "total_calls": 252,
+          "witness": null,
+          "role": "manual"
+        },
+        {
+          "method": "hypothesis",
+          "target_version": "before",
+          "outcome": "REGRESSION_CONFIRMED",
+          "search_status": "COMPLETED",
+          "minimization_completed": true,
+          "search_shrink_calls": 64,
+          "confirmation_calls": 4,
+          "total_calls": 68,
+          "witness": [
+            -39,
+            -500
+          ],
+          "role": "manual"
+        },
+        {
+          "method": "hypothesis",
+          "target_version": "after",
+          "outcome": "NO_COUNTEREXAMPLE_WITHIN_BUDGET",
+          "search_status": "COMPLETED",
+          "minimization_completed": false,
+          "search_shrink_calls": 252,
+          "confirmation_calls": 0,
+          "total_calls": 252,
+          "witness": null,
+          "role": "manual"
+        }
+      ]
+    },
+    {
+      "case_id": "cpython_correlation",
+      "seed": 1,
+      "state": "COMPLETED",
+      "proposal": {
+        "action": "propose_property",
+        "version": "property-v1",
+        "context_sha256": "953c3dc93ef8505c39f0176adc59b0d9ed114be80333de30f65b7c8366cdf16c",
+        "domain": [
+          [
+            -500,
+            500
+          ],
+          [
+            -500,
+            500
+          ]
+        ],
+        "assertion": {
+          "op": "between",
+          "min": -1,
+          "max": 1
+        }
+      },
+      "runs": [
+        {
+          "method": "boundary_grid",
+          "target_version": "before",
+          "outcome": "REGRESSION_CONFIRMED",
+          "search_status": "COMPLETED",
+          "minimization_completed": true,
+          "search_shrink_calls": 191,
+          "confirmation_calls": 4,
+          "total_calls": 195,
+          "witness": [
+            -39,
+            -500
+          ],
+          "role": "model"
+        },
+        {
+          "method": "boundary_grid",
+          "target_version": "after",
+          "outcome": "NO_COUNTEREXAMPLE_WITHIN_BUDGET",
+          "search_status": "BUDGET_EXHAUSTED",
+          "minimization_completed": false,
+          "search_shrink_calls": 252,
+          "confirmation_calls": 0,
+          "total_calls": 252,
+          "witness": null,
+          "role": "model"
+        },
+        {
+          "method": "hypothesis",
+          "target_version": "before",
+          "outcome": "REGRESSION_CONFIRMED",
+          "search_status": "COMPLETED",
+          "minimization_completed": true,
+          "search_shrink_calls": 97,
+          "confirmation_calls": 4,
+          "total_calls": 101,
+          "witness": [
+            11,
+            500
+          ],
+          "role": "model"
+        },
+        {
+          "method": "hypothesis",
+          "target_version": "after",
+          "outcome": "NO_COUNTEREXAMPLE_WITHIN_BUDGET",
+          "search_status": "COMPLETED",
+          "minimization_completed": false,
+          "search_shrink_calls": 252,
+          "confirmation_calls": 0,
+          "total_calls": 252,
+          "witness": null,
+          "role": "model"
+        },
+        {
+          "method": "boundary_grid",
+          "target_version": "before",
+          "outcome": "REGRESSION_CONFIRMED",
+          "search_status": "COMPLETED",
+          "minimization_completed": true,
+          "search_shrink_calls": 191,
+          "confirmation_calls": 4,
+          "total_calls": 195,
+          "witness": [
+            -39,
+            -500
+          ],
+          "role": "manual"
+        },
+        {
+          "method": "boundary_grid",
+          "target_version": "after",
+          "outcome": "NO_COUNTEREXAMPLE_WITHIN_BUDGET",
+          "search_status": "BUDGET_EXHAUSTED",
+          "minimization_completed": false,
+          "search_shrink_calls": 252,
+          "confirmation_calls": 0,
+          "total_calls": 252,
+          "witness": null,
+          "role": "manual"
+        },
+        {
+          "method": "hypothesis",
+          "target_version": "before",
+          "outcome": "REGRESSION_CONFIRMED",
+          "search_status": "COMPLETED",
+          "minimization_completed": true,
+          "search_shrink_calls": 97,
+          "confirmation_calls": 4,
+          "total_calls": 101,
+          "witness": [
+            11,
+            500
+          ],
+          "role": "manual"
+        },
+        {
+          "method": "hypothesis",
+          "target_version": "after",
+          "outcome": "NO_COUNTEREXAMPLE_WITHIN_BUDGET",
+          "search_status": "COMPLETED",
+          "minimization_completed": false,
+          "search_shrink_calls": 252,
+          "confirmation_calls": 0,
+          "total_calls": 252,
+          "witness": null,
+          "role": "manual"
+        }
+      ]
+    },
+    {
+      "case_id": "cpython_correlation",
+      "seed": 2,
+      "state": "COMPLETED",
+      "proposal": {
+        "action": "propose_property",
+        "version": "property-v1",
+        "context_sha256": "953c3dc93ef8505c39f0176adc59b0d9ed114be80333de30f65b7c8366cdf16c",
+        "domain": [
+          [
+            -500,
+            500
+          ],
+          [
+            -500,
+            500
+          ]
+        ],
+        "assertion": {
+          "op": "between",
+          "min": -1,
+          "max": 1
+        }
+      },
+      "runs": [
+        {
+          "method": "boundary_grid",
+          "target_version": "before",
+          "outcome": "REGRESSION_CONFIRMED",
+          "search_status": "COMPLETED",
+          "minimization_completed": true,
+          "search_shrink_calls": 191,
+          "confirmation_calls": 4,
+          "total_calls": 195,
+          "witness": [
+            -39,
+            -500
+          ],
+          "role": "model"
+        },
+        {
+          "method": "boundary_grid",
+          "target_version": "after",
+          "outcome": "NO_COUNTEREXAMPLE_WITHIN_BUDGET",
+          "search_status": "BUDGET_EXHAUSTED",
+          "minimization_completed": false,
+          "search_shrink_calls": 252,
+          "confirmation_calls": 0,
+          "total_calls": 252,
+          "witness": null,
+          "role": "model"
+        },
+        {
+          "method": "hypothesis",
+          "target_version": "before",
+          "outcome": "REGRESSION_CONFIRMED",
+          "search_status": "COMPLETED",
+          "minimization_completed": true,
+          "search_shrink_calls": 93,
+          "confirmation_calls": 4,
+          "total_calls": 97,
+          "witness": [
+            11,
+            500
+          ],
+          "role": "model"
+        },
+        {
+          "method": "hypothesis",
+          "target_version": "after",
+          "outcome": "NO_COUNTEREXAMPLE_WITHIN_BUDGET",
+          "search_status": "COMPLETED",
+          "minimization_completed": false,
+          "search_shrink_calls": 252,
+          "confirmation_calls": 0,
+          "total_calls": 252,
+          "witness": null,
+          "role": "model"
+        },
+        {
+          "method": "boundary_grid",
+          "target_version": "before",
+          "outcome": "REGRESSION_CONFIRMED",
+          "search_status": "COMPLETED",
+          "minimization_completed": true,
+          "search_shrink_calls": 191,
+          "confirmation_calls": 4,
+          "total_calls": 195,
+          "witness": [
+            -39,
+            -500
+          ],
+          "role": "manual"
+        },
+        {
+          "method": "boundary_grid",
+          "target_version": "after",
+          "outcome": "NO_COUNTEREXAMPLE_WITHIN_BUDGET",
+          "search_status": "BUDGET_EXHAUSTED",
+          "minimization_completed": false,
+          "search_shrink_calls": 252,
+          "confirmation_calls": 0,
+          "total_calls": 252,
+          "witness": null,
+          "role": "manual"
+        },
+        {
+          "method": "hypothesis",
+          "target_version": "before",
+          "outcome": "REGRESSION_CONFIRMED",
+          "search_status": "COMPLETED",
+          "minimization_completed": true,
+          "search_shrink_calls": 93,
+          "confirmation_calls": 4,
+          "total_calls": 97,
+          "witness": [
+            11,
+            500
+          ],
+          "role": "manual"
+        },
+        {
+          "method": "hypothesis",
+          "target_version": "after",
+          "outcome": "NO_COUNTEREXAMPLE_WITHIN_BUDGET",
+          "search_status": "COMPLETED",
+          "minimization_completed": false,
+          "search_shrink_calls": 252,
+          "confirmation_calls": 0,
+          "total_calls": 252,
+          "witness": null,
+          "role": "manual"
+        }
+      ]
+    },
+    {
+      "case_id": "more_reversed",
+      "seed": 0,
+      "state": "COMPLETED",
+      "proposal": {
+        "action": "propose_property",
+        "version": "property-v1",
+        "context_sha256": "d8ac5f691967e335d132d9d300795cb2fac58d9ac6e681266ea354dca3055677",
+        "domain": [
+          [
+            -16,
+            16
+          ],
+          [
+            -16,
+            16
+          ],
+          [
+            -8,
+            8
+          ]
+        ],
+        "assertion": {
+          "op": "completes"
+        }
+      },
+      "runs": [
+        {
+          "method": "boundary_grid",
+          "target_version": "before",
+          "outcome": "REGRESSION_CONFIRMED",
+          "search_status": "COMPLETED",
+          "minimization_completed": true,
+          "search_shrink_calls": 1,
+          "confirmation_calls": 4,
+          "total_calls": 5,
+          "witness": [
+            0,
+            0,
+            1
+          ],
+          "role": "model"
+        },
+        {
+          "method": "boundary_grid",
+          "target_version": "after",
+          "outcome": "NO_COUNTEREXAMPLE_WITHIN_BUDGET",
+          "search_status": "BUDGET_EXHAUSTED",
+          "minimization_completed": false,
+          "search_shrink_calls": 252,
+          "confirmation_calls": 0,
+          "total_calls": 252,
+          "witness": null,
+          "role": "model"
+        },
+        {
+          "method": "hypothesis",
+          "target_version": "before",
+          "outcome": "REGRESSION_CONFIRMED",
+          "search_status": "COMPLETED",
+          "minimization_completed": true,
+          "search_shrink_calls": 3,
+          "confirmation_calls": 4,
+          "total_calls": 7,
+          "witness": [
+            0,
+            0,
+            -1
+          ],
+          "role": "model"
+        },
+        {
+          "method": "hypothesis",
+          "target_version": "after",
+          "outcome": "NO_COUNTEREXAMPLE_WITHIN_BUDGET",
+          "search_status": "COMPLETED",
+          "minimization_completed": false,
+          "search_shrink_calls": 252,
+          "confirmation_calls": 0,
+          "total_calls": 252,
+          "witness": null,
+          "role": "model"
+        },
+        {
+          "method": "boundary_grid",
+          "target_version": "before",
+          "outcome": "REGRESSION_CONFIRMED",
+          "search_status": "COMPLETED",
+          "minimization_completed": true,
+          "search_shrink_calls": 1,
+          "confirmation_calls": 4,
+          "total_calls": 5,
+          "witness": [
+            0,
+            0,
+            1
+          ],
+          "role": "manual"
+        },
+        {
+          "method": "boundary_grid",
+          "target_version": "after",
+          "outcome": "NO_COUNTEREXAMPLE_WITHIN_BUDGET",
+          "search_status": "BUDGET_EXHAUSTED",
+          "minimization_completed": false,
+          "search_shrink_calls": 252,
+          "confirmation_calls": 0,
+          "total_calls": 252,
+          "witness": null,
+          "role": "manual"
+        },
+        {
+          "method": "hypothesis",
+          "target_version": "before",
+          "outcome": "REGRESSION_CONFIRMED",
+          "search_status": "COMPLETED",
+          "minimization_completed": true,
+          "search_shrink_calls": 3,
+          "confirmation_calls": 4,
+          "total_calls": 7,
+          "witness": [
+            0,
+            0,
+            -1
+          ],
+          "role": "manual"
+        },
+        {
+          "method": "hypothesis",
+          "target_version": "after",
+          "outcome": "NO_COUNTEREXAMPLE_WITHIN_BUDGET",
+          "search_status": "COMPLETED",
+          "minimization_completed": false,
+          "search_shrink_calls": 252,
+          "confirmation_calls": 0,
+          "total_calls": 252,
+          "witness": null,
+          "role": "manual"
+        }
+      ]
+    },
+    {
+      "case_id": "more_reversed",
+      "seed": 1,
+      "state": "COMPLETED",
+      "proposal": {
+        "action": "propose_property",
+        "version": "property-v1",
+        "context_sha256": "d8ac5f691967e335d132d9d300795cb2fac58d9ac6e681266ea354dca3055677",
+        "domain": [
+          [
+            -16,
+            16
+          ],
+          [
+            -16,
+            16
+          ],
+          [
+            -8,
+            8
+          ]
+        ],
+        "assertion": {
+          "op": "completes"
+        }
+      },
+      "runs": [
+        {
+          "method": "boundary_grid",
+          "target_version": "before",
+          "outcome": "REGRESSION_CONFIRMED",
+          "search_status": "COMPLETED",
+          "minimization_completed": true,
+          "search_shrink_calls": 1,
+          "confirmation_calls": 4,
+          "total_calls": 5,
+          "witness": [
+            0,
+            0,
+            1
+          ],
+          "role": "model"
+        },
+        {
+          "method": "boundary_grid",
+          "target_version": "after",
+          "outcome": "NO_COUNTEREXAMPLE_WITHIN_BUDGET",
+          "search_status": "BUDGET_EXHAUSTED",
+          "minimization_completed": false,
+          "search_shrink_calls": 252,
+          "confirmation_calls": 0,
+          "total_calls": 252,
+          "witness": null,
+          "role": "model"
+        },
+        {
+          "method": "hypothesis",
+          "target_version": "before",
+          "outcome": "REGRESSION_CONFIRMED",
+          "search_status": "COMPLETED",
+          "minimization_completed": true,
+          "search_shrink_calls": 3,
+          "confirmation_calls": 4,
+          "total_calls": 7,
+          "witness": [
+            0,
+            0,
+            -1
+          ],
+          "role": "model"
+        },
+        {
+          "method": "hypothesis",
+          "target_version": "after",
+          "outcome": "NO_COUNTEREXAMPLE_WITHIN_BUDGET",
+          "search_status": "COMPLETED",
+          "minimization_completed": false,
+          "search_shrink_calls": 252,
+          "confirmation_calls": 0,
+          "total_calls": 252,
+          "witness": null,
+          "role": "model"
+        },
+        {
+          "method": "boundary_grid",
+          "target_version": "before",
+          "outcome": "REGRESSION_CONFIRMED",
+          "search_status": "COMPLETED",
+          "minimization_completed": true,
+          "search_shrink_calls": 1,
+          "confirmation_calls": 4,
+          "total_calls": 5,
+          "witness": [
+            0,
+            0,
+            1
+          ],
+          "role": "manual"
+        },
+        {
+          "method": "boundary_grid",
+          "target_version": "after",
+          "outcome": "NO_COUNTEREXAMPLE_WITHIN_BUDGET",
+          "search_status": "BUDGET_EXHAUSTED",
+          "minimization_completed": false,
+          "search_shrink_calls": 252,
+          "confirmation_calls": 0,
+          "total_calls": 252,
+          "witness": null,
+          "role": "manual"
+        },
+        {
+          "method": "hypothesis",
+          "target_version": "before",
+          "outcome": "REGRESSION_CONFIRMED",
+          "search_status": "COMPLETED",
+          "minimization_completed": true,
+          "search_shrink_calls": 3,
+          "confirmation_calls": 4,
+          "total_calls": 7,
+          "witness": [
+            0,
+            0,
+            -1
+          ],
+          "role": "manual"
+        },
+        {
+          "method": "hypothesis",
+          "target_version": "after",
+          "outcome": "NO_COUNTEREXAMPLE_WITHIN_BUDGET",
+          "search_status": "COMPLETED",
+          "minimization_completed": false,
+          "search_shrink_calls": 252,
+          "confirmation_calls": 0,
+          "total_calls": 252,
+          "witness": null,
+          "role": "manual"
+        }
+      ]
+    },
+    {
+      "case_id": "more_reversed",
+      "seed": 2,
+      "state": "COMPLETED",
+      "proposal": {
+        "action": "propose_property",
+        "version": "property-v1",
+        "context_sha256": "d8ac5f691967e335d132d9d300795cb2fac58d9ac6e681266ea354dca3055677",
+        "domain": [
+          [
+            -16,
+            16
+          ],
+          [
+            -16,
+            16
+          ],
+          [
+            -8,
+            8
+          ]
+        ],
+        "assertion": {
+          "op": "completes"
+        }
+      },
+      "runs": [
+        {
+          "method": "boundary_grid",
+          "target_version": "before",
+          "outcome": "REGRESSION_CONFIRMED",
+          "search_status": "COMPLETED",
+          "minimization_completed": true,
+          "search_shrink_calls": 1,
+          "confirmation_calls": 4,
+          "total_calls": 5,
+          "witness": [
+            0,
+            0,
+            1
+          ],
+          "role": "model"
+        },
+        {
+          "method": "boundary_grid",
+          "target_version": "after",
+          "outcome": "NO_COUNTEREXAMPLE_WITHIN_BUDGET",
+          "search_status": "BUDGET_EXHAUSTED",
+          "minimization_completed": false,
+          "search_shrink_calls": 252,
+          "confirmation_calls": 0,
+          "total_calls": 252,
+          "witness": null,
+          "role": "model"
+        },
+        {
+          "method": "hypothesis",
+          "target_version": "before",
+          "outcome": "REGRESSION_CONFIRMED",
+          "search_status": "COMPLETED",
+          "minimization_completed": true,
+          "search_shrink_calls": 3,
+          "confirmation_calls": 4,
+          "total_calls": 7,
+          "witness": [
+            0,
+            0,
+            -1
+          ],
+          "role": "model"
+        },
+        {
+          "method": "hypothesis",
+          "target_version": "after",
+          "outcome": "NO_COUNTEREXAMPLE_WITHIN_BUDGET",
+          "search_status": "COMPLETED",
+          "minimization_completed": false,
+          "search_shrink_calls": 252,
+          "confirmation_calls": 0,
+          "total_calls": 252,
+          "witness": null,
+          "role": "model"
+        },
+        {
+          "method": "boundary_grid",
+          "target_version": "before",
+          "outcome": "REGRESSION_CONFIRMED",
+          "search_status": "COMPLETED",
+          "minimization_completed": true,
+          "search_shrink_calls": 1,
+          "confirmation_calls": 4,
+          "total_calls": 5,
+          "witness": [
+            0,
+            0,
+            1
+          ],
+          "role": "manual"
+        },
+        {
+          "method": "boundary_grid",
+          "target_version": "after",
+          "outcome": "NO_COUNTEREXAMPLE_WITHIN_BUDGET",
+          "search_status": "BUDGET_EXHAUSTED",
+          "minimization_completed": false,
+          "search_shrink_calls": 252,
+          "confirmation_calls": 0,
+          "total_calls": 252,
+          "witness": null,
+          "role": "manual"
+        },
+        {
+          "method": "hypothesis",
+          "target_version": "before",
+          "outcome": "REGRESSION_CONFIRMED",
+          "search_status": "COMPLETED",
+          "minimization_completed": true,
+          "search_shrink_calls": 3,
+          "confirmation_calls": 4,
+          "total_calls": 7,
+          "witness": [
+            0,
+            0,
+            -1
+          ],
+          "role": "manual"
+        },
+        {
+          "method": "hypothesis",
+          "target_version": "after",
+          "outcome": "NO_COUNTEREXAMPLE_WITHIN_BUDGET",
+          "search_status": "COMPLETED",
+          "minimization_completed": false,
+          "search_shrink_calls": 252,
+          "confirmation_calls": 0,
+          "total_calls": 252,
+          "witness": null,
+          "role": "manual"
+        }
+      ]
+    }
+  ],
+  "bundles": [
+    {
+      "name": "case-1-boundary_grid",
+      "source_files": 39,
+      "witness_sha256": "764d902692640fd0c1fca9064cc1accafb8544c414ca331dc9b9a5dc057fe37a",
+      "case_id": "cpython_correlation",
+      "seed": 0,
+      "method": "boundary_grid",
+      "input": [
+        -39,
+        -500
+      ]
+    },
+    {
+      "name": "case-1-hypothesis",
+      "source_files": 39,
+      "witness_sha256": "a0d5002c641b94e89319c37189db225747eaae57fa4229e41636b5f011753297",
+      "case_id": "cpython_correlation",
+      "seed": 0,
+      "method": "hypothesis",
+      "input": [
+        -39,
+        -500
+      ]
+    },
+    {
+      "name": "case-2-boundary_grid",
+      "source_files": 39,
+      "witness_sha256": "ed7b449c415adae6118bc34195fee808a401ceeb54284e5ec9744fc6fadd29ab",
+      "case_id": "cpython_correlation",
+      "seed": 1,
+      "method": "boundary_grid",
+      "input": [
+        -39,
+        -500
+      ]
+    },
+    {
+      "name": "case-2-hypothesis",
+      "source_files": 39,
+      "witness_sha256": "eae060585d4153afcdd8b6e1b0fd0cdd5ab3055c488c1c46cc74e5b35b83609c",
+      "case_id": "cpython_correlation",
+      "seed": 1,
+      "method": "hypothesis",
+      "input": [
+        11,
+        500
+      ]
+    },
+    {
+      "name": "case-3-boundary_grid",
+      "source_files": 39,
+      "witness_sha256": "dcdda17eab9a8adc66a2b7edb54c9da43810425d7469734bdc8a538a62943287",
+      "case_id": "cpython_correlation",
+      "seed": 2,
+      "method": "boundary_grid",
+      "input": [
+        -39,
+        -500
+      ]
+    },
+    {
+      "name": "case-3-hypothesis",
+      "source_files": 39,
+      "witness_sha256": "948addb1b20d6ac19b9552a92fa0f74d635af349e65ba35e01d68a2a4647ec6b",
+      "case_id": "cpython_correlation",
+      "seed": 2,
+      "method": "hypothesis",
+      "input": [
+        11,
+        500
+      ]
+    },
+    {
+      "name": "case-4-boundary_grid",
+      "source_files": 39,
+      "witness_sha256": "be753c47afe6021094d175ba5e6a4d43ef6ad3ca0240315f007ee344578039c1",
+      "case_id": "more_reversed",
+      "seed": 0,
+      "method": "boundary_grid",
+      "input": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "case-4-hypothesis",
+      "source_files": 39,
+      "witness_sha256": "01b689a1b64d30334ec08d65a733a647bff9ed38562a1b99e072486717fd00ec",
+      "case_id": "more_reversed",
+      "seed": 0,
+      "method": "hypothesis",
+      "input": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "name": "case-5-boundary_grid",
+      "source_files": 39,
+      "witness_sha256": "11c8508068b637ac2778f348d3b3329ab8b7857f6d8ac6e8808a434c7f9d9e4a",
+      "case_id": "more_reversed",
+      "seed": 1,
+      "method": "boundary_grid",
+      "input": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "case-5-hypothesis",
+      "source_files": 39,
+      "witness_sha256": "03bef3a9c5645dbaf671553579106bc5cc10d535962237885e2b6802c16f2c8a",
+      "case_id": "more_reversed",
+      "seed": 1,
+      "method": "hypothesis",
+      "input": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "name": "case-6-boundary_grid",
+      "source_files": 39,
+      "witness_sha256": "9a51a6493f1d71e19a1c4d925133f8a34ceac6d01c834591c122fdb3bc516a3c",
+      "case_id": "more_reversed",
+      "seed": 2,
+      "method": "boundary_grid",
+      "input": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "case-6-hypothesis",
+      "source_files": 39,
+      "witness_sha256": "992e069d3908ffb674510bcf833c2927edf625581cdfef86d953f563db344196",
+      "case_id": "more_reversed",
+      "seed": 2,
+      "method": "hypothesis",
+      "input": [
+        0,
+        0,
+        -1
+      ]
+    }
+  ],
+  "raw_subdir": "raw-2pep1p4j",
+  "source_unchanged_after_audit": true
+}

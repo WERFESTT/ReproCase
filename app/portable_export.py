@@ -9,7 +9,7 @@ from pathlib import Path
 
 MODULES = ('localization', 'benchmark', 'benchmark_adapter', 'benchmark_diagnostics', 'calculations', 'catalog',
            'historical_core', 'historical_pilot', 'input_search', 'input_search_adapter',
-           'live_search', 'nebius_client', 'property_contract', 'property_live',
+           'live_search', 'model_client', 'property_contract', 'property_live',
            'property_preparation', 'proposals', 'reference', 'regression', 'reporting', 'reprocase')
 DATA_FILES = ('translations.json', 'historical_plan.json', 'property_protocol.json', 'historical_vendor/manifest.json')
 

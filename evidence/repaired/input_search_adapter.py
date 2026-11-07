@@ -11,7 +11,7 @@ import math
 import benchmark_adapter as transport
 import benchmark_diagnostics as diagnostic
 import input_search as search
-import nebius_client as client
+import model_client as client
 import reprocase as app
 from reference import RELATIVE_TOLERANCE
 
@@ -196,7 +196,7 @@ def run_synthetic_suite():
         "replayed_proofs": replayed, "max_trials": search.MAX_TRIALS, "max_requests": MAX_MODEL_REQUESTS,
         "runs": runs,
         "source_sha256": {name: hashlib.sha256((search.ROOT / name).read_bytes()).hexdigest() for name in
-                          (*search.SOURCE_FILES, "input_search_adapter.py", "benchmark_adapter.py", "nebius_client.py", "benchmark_fixtures.json")},
+                          (*search.SOURCE_FILES, "input_search_adapter.py", "benchmark_adapter.py", "model_client.py", "benchmark_fixtures.json")},
     }
 
 

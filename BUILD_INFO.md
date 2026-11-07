@@ -1,9 +1,13 @@
-# Source review build: offline by default
+# ReproCase source build
 
-This is an experimental, limited source build, not a final contest product.
-It derives from an independently checked local allowlist; no pre-existing project Git history is included in the file export.
-Default: judge.py verify/demo/gui. This route rejects network connections and disables the three live GUI buttons.
-Optional: the existing app/desktop.py live-capable application, launched only after the documented preflight verification and local dependency setup. See README_EN.md / README_RU.md. Opening it sends nothing; sending requires separate consent and masked memory-only key entry.
-No application code, network guard, endpoint or request budget was changed for this documentation update. Direct launch uses a trusted verified copy, not judge.py's checked loader.
-No credentials or video files are bundled. The published 1:02 demonstration is https://youtu.be/WmZ8xFPvyf8 and shows saved evidence/offline replay, not a fresh API call.
-Free offline review is available. Free live access for judges and contest acceptance of offline replay plus BYOK remain unresolved with the organizers. No contest submission is made by this build.
+Independent project by WERFESTT. The default entry point is `judge.py`, with local verification, replay, desktop, and historical-search modes.
+
+The application uses neutral client names. Public connection hosts are non-working `.invalid` placeholders; offline use needs no connection setup or API key.
+
+The active application derives from commit `c8c7edc0a92a81183f1f8670871892cf9a4120f7`. Its manifest is regenerated for the current files. Computational conditions and numerical conclusions are retained.
+
+`research/2026-11-07/` contains the fixed, previously prepared research package, including its source snapshot, article, results, portable tests, transformation notes, and checksums. The package is kept byte-for-byte as prepared; it is independently verified by `verify_public.py`.
+
+The two pinned dependency wheels remain in `app/historical_vendor/wheels/`. Their hashes are enforced by `requirements-pilot.txt`. The archived research source snapshot omits binary wheels, as recorded in its original inventory.
+
+No credentials are included. [English instructions](README_EN.md) · [Русская инструкция](README_RU.md).

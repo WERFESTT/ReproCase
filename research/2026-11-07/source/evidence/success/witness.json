@@ -1,0 +1,76 @@
+{
+  "case_id": "cpython_correlation",
+  "content_sha256": "510d31bf33a15d24006046c3f01beb073e3315a10dfa89d56c5ad44fab20a3a3",
+  "context": {
+    "assertion_semantics": {
+      "between": "Число конечно и лежит между min и max включительно.",
+      "completes": "Вызов завершился без исключения; значение результата не проверяется.",
+      "equal_number": "Число конечно; абсолютная разница с value не больше 1e-12.",
+      "finite": "Результат — конечное число.",
+      "length_between": "Длина последовательности лежит между min и max включительно.",
+      "sequence_equal": "Точное совпадение со встроенным целочисленным range в выбранном порядке."
+    },
+    "available_domain": [
+      [
+        -500,
+        500
+      ],
+      [
+        -500,
+        500
+      ]
+    ],
+    "context_sha256": "953c3dc93ef8505c39f0176adc59b0d9ed114be80333de30f65b7c8366cdf16c",
+    "excluded_values": {},
+    "generator": "Пара целых показателей a,b задаёт x=[-2**a, 2**a], y=[-2**b, 2**b]. Выберите поддиапазоны показателей и утверждение. Выполнение арифметики генератора реализовано локально.",
+    "limits": {
+      "confirmation_calls": 4,
+      "max_completion_tokens": 1024,
+      "max_request_bytes": 16000,
+      "proposal_requests": 1,
+      "search_and_shrink_calls": 252
+    },
+    "operation": "correlation",
+    "public_contract": "Pearson correlation: ковариация, делённая на произведение стандартных отклонений. Для непостоянных конечных данных результат конечен и лежит в [-1, 1].",
+    "symptom": "Корреляция на некоторых допустимых непостоянных данных возвращает нечисловой результат или исключение о постоянном входе.",
+    "version": "property-v1"
+  },
+  "format": "live-prepared-property-v1",
+  "input": [
+    -39,
+    -500
+  ],
+  "method": "hypothesis",
+  "origin": "REAL_API",
+  "proposal": {
+    "action": "propose_property",
+    "assertion": {
+      "max": 1,
+      "min": -1,
+      "op": "between"
+    },
+    "context_sha256": "953c3dc93ef8505c39f0176adc59b0d9ed114be80333de30f65b7c8366cdf16c",
+    "domain": [
+      [
+        -500,
+        500
+      ],
+      [
+        -500,
+        500
+      ]
+    ],
+    "version": "property-v1"
+  },
+  "seed": 0,
+  "source_sha256": {
+    "property_contract.py": "9a1d7eca790d635118bd9eb658ec0b4e303b95cc02e2ae32b577729dfebebda9",
+    "property_preparation.py": "a9c89c06c9d040923d949a870d4009a3f3b8703ce42b4195c4ebc6c356a2d379",
+    "historical_core.py": "205b6dfcce09f3719d7cbc621757ea8e5a1fd706af92bbd4b02d0d95af713bf5",
+    "historical_pilot.py": "d0cc1ce2fda764b11a9f9883ff3909ddf90d69f7b4717f63e72be0524706ce6f",
+    "historical_plan.json": "af81d9a69a34848f39d72404ac4fcb67554bac16a8b6b792d430a13dc27fd2cc",
+    "historical_vendor/manifest.json": "36fd26e6e5f8c030631dcbcc180b78950076f27d0d141c3bb54dd5756c8ea3cb",
+    "property_protocol.json": "e42317321a60ba8831bc28a8b144a9a00b8afca0ad2add108d39a8350b630c56",
+    "property_live.py": "cc3c95039e68c550c315841cb02ca07631112e9dcfab4ab84224d4aaad152111"
+  }
+}

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Адаптер Nebius к benchmark. Командный запуск допускает только синтетический прогон."""
+"""Адаптер model API к benchmark. Командный запуск допускает только синтетический прогон."""
 
 from localization import print
 import localization as loc
@@ -13,7 +13,7 @@ from pathlib import Path
 import threading
 
 import benchmark_diagnostics as diag
-import nebius_client as client
+import model_client as client
 
 
 MAX_MODEL_REQUESTS = diag.MAX_CHECKS + 1
@@ -94,7 +94,7 @@ def decode_response(raw, context, model=client.DEFAULT_MODEL):
 
 
 def artificial_response(action, model=client.DEFAULT_MODEL, usage=None):
-    """Полный искусственный конверт. Это не ответ настоящей NVIDIA."""
+    """Полный искусственный конверт. Это искусственный ответ, а не результат обращения к модели."""
     return {
         "id": "SYNTHETIC-diagnostic-response", "model": model, "usage": usage,
         "choices": [{"index": 0, "finish_reason": "tool_calls", "message": {
@@ -157,7 +157,7 @@ class DiagnosticSession:
 
     @property
     def origin(self):
-        return "SYNTHETIC" if self.transport is not None else "NEBIUS_NOT_AUTOMATICALLY_AUTHORIZED"
+        return "SYNTHETIC" if self.transport is not None else "MODEL_API_NOT_AUTOMATICALLY_AUTHORIZED"
 
     def _validate_context(self, context):
         return validate_context(context)
@@ -284,7 +284,7 @@ def run_synthetic_suite():
         runs.append(record)
     return {
         "schema_version": 1, "origin": "SYNTHETIC", "model_evaluation": "NOT_EVALUATED",
-        "warning": "Ответы созданы локально обычным правилом. Это тест клиента и маршрута, не качество NVIDIA.",
+        "warning": "Ответы созданы локально обычным правилом. Это проверка клиента и маршрута, без оценки качества модели.",
         "real_api_calls": 0, "model_metrics": None, "samples": len(runs),
         "matching_baseline_routes": matches, "max_checks_per_sample": diag.MAX_CHECKS,
         "max_requests_per_sample": MAX_MODEL_REQUESTS,
@@ -292,7 +292,7 @@ def run_synthetic_suite():
         "checks_executed": sum(run["diagnosis"]["checks_run"] for run in runs),
         "runs": runs,
         "source_sha256": {name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest() for name in
-                          ("benchmark_adapter.py", "nebius_client.py", "benchmark_diagnostics.py", "benchmark_fixtures.json")},
+                          ("benchmark_adapter.py", "model_client.py", "benchmark_diagnostics.py", "benchmark_fixtures.json")},
     }
 
 

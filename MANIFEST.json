@@ -1,12 +1,16 @@
 {
+  "format": "reprocase-review-kit-v1",
+  "status": "OFFLINE_REVIEW_BUILD",
+  "derivative_of_git_commit": "c8c7edc0a92a81183f1f8670871892cf9a4120f7",
+  "release_scope": "INDEPENDENT_PROJECT_WITH_RESEARCH_ARCHIVE",
   "files": {
     ".gitignore": {
       "bytes": 111,
       "sha256": "172d73c5b32c35cdd963b5d44bb525fa4e91e0bd6a74c5ebfb70ab590bd13624"
     },
     "BUILD_INFO.md": {
-      "bytes": 1186,
-      "sha256": "07ab1e16bda8ef0dea5876c133e47cd7c2025187aab2b8af0ea974930332f2dc"
+      "bytes": 1168,
+      "sha256": "e21a7872e8b29186b06c273f155be8f6c53ca3f925f0a59c7acaeb603022d166"
     },
     "LICENSE": {
       "bytes": 1065,
@@ -25,24 +29,24 @@
       "sha256": "383b6a1b4a087d915a0b6c548546416aa34d2490a12bcae21c49d18f34e61697"
     },
     "README.md": {
-      "bytes": 2501,
-      "sha256": "eaa58308059d66989b45e0506126405b458bc7f95c7606d86a18e0fd3f939bfa"
+      "bytes": 2464,
+      "sha256": "4467c24fd6d2c4a7fb607569feaa85dad3203b9a822ca4a6bb560448b5e54cee"
     },
     "README_EN.md": {
-      "bytes": 10993,
-      "sha256": "548a694ece3a72a1dda7d2ad32556a7f47621320c5b51c909609afdb726c0a0e"
+      "bytes": 5501,
+      "sha256": "bac314fb63bcff04068bc248bf8794a88ff4f88fe0ec183638e95d836eba6be9"
     },
     "README_RU.md": {
-      "bytes": 17431,
-      "sha256": "dd528634f754241b52614f2d97686c3b42859f2dcfa0a29ac85b34b008b907ec"
+      "bytes": 9651,
+      "sha256": "c49c7b2afbb047c6aa2989b4424d72f91974b2f384d55aed60f535b7ce67f051"
     },
     "SECURITY.md": {
-      "bytes": 2917,
-      "sha256": "688451c1e5e40a2929a588682212225ce818d0d05c75b4b9e5900a731054b24f"
+      "bytes": 1608,
+      "sha256": "946a49ae6f7f03cc27aa3f9e27aaf642983065860fbfbb15af11b7054fe26bd3"
     },
     "SOURCE_NOTICE.json": {
-      "bytes": 522,
-      "sha256": "91917e0c44ccffed28cb8eacf0e41c2c68ae50687fc15d701433d09fd216a23d"
+      "bytes": 917,
+      "sha256": "6f9a932409c36dcc101b8f54c86ea5fb646c7cc704660fb7d92d361e372ee984"
     },
     "THIRD_PARTY.txt": {
       "bytes": 1135,
@@ -53,8 +57,8 @@
       "sha256": "ada3618ad9b96043bb8d1cfa6d5408321befe5731d4d8b635b189422ea239cd6"
     },
     "app/adaptive_adapter.py": {
-      "bytes": 3361,
-      "sha256": "3540ec10237b60d7a17d2954843d2e510e5da9bce3fcacb00034e73682ef87be"
+      "bytes": 3360,
+      "sha256": "c54aefc487d3c6f9f75ad7bca8ea628e35afe00a1efaa97abc9668d008ca8fb8"
     },
     "app/adaptive_benchmark.py": {
       "bytes": 17418,
@@ -73,8 +77,8 @@
       "sha256": "49c5fa300b5a122e92a07f902314a065e66dbb159cb9bb66b4923deff79147de"
     },
     "app/benchmark_adapter.py": {
-      "bytes": 17727,
-      "sha256": "8093916d509daf055cfdabeb0b759a75ae84bf6ad361c060182b916d783f7f04"
+      "bytes": 17819,
+      "sha256": "f17f516815922f674a0a9ebbc540ddebf7c6f9d8d528c1a2aeab282bc31dfba7"
     },
     "app/benchmark_diagnostics.py": {
       "bytes": 10071,
@@ -93,18 +97,18 @@
       "sha256": "574085d8c1478755993153193491db52fc033ba31e138a387a6243e8418706fa"
     },
     "app/comparison_series.py": {
-      "bytes": 16651,
-      "sha256": "02672f834fe13ddc8c521d77607a3a4fe4068b28ffdc3398ca4af4065296c326"
+      "bytes": 16652,
+      "sha256": "b3ba01e18b526961c4aaa22bec294ea0ba6f832535c83b5838bbb30a77cb82aa"
     },
     "app/desktop.py": {
-      "bytes": 49057,
-      "sha256": "8929024face370368af0bef5ebd6d099d1f6e6742b114a0a09eed2092fcf91b8"
+      "bytes": 49060,
+      "sha256": "6a080282bfdd53463e0d24ac2505cb7c8e851c474159c4646f39c22051c542ed"
     },
     "app/desktop_theme.py": {
       "bytes": 7545,
       "sha256": "c5b4fef289097cc19ae55ff730cca1938763b1b7d0ef3fb5ee2a5a802d8cb3dc"
     },
-    "app/examples/artificial_nebius_response.json": {
+    "app/examples/artificial_model_api_response.json": {
       "bytes": 760,
       "sha256": "360d084ae9bb63509136ab2269054717f535b2d0a632d08be091ee7341c31ab7"
     },
@@ -212,25 +216,17 @@
       "bytes": 6883,
       "sha256": "c86e39ef4343743db0ac3c8fa8742a2725525ec301ee254d9b20993210c66620"
     },
-    "app/historical_vendor/wheels/hypothesis-6.170.9-cp314-cp314-manylinux_2_17_x86_64.manylinux2014_x86_64.whl": {
-      "bytes": 1164997,
-      "sha256": "073c9617650ad0fab0cd8b86becb29c662c57da40bf54ccb11d62654b2dd9ef4"
-    },
     "app/historical_vendor/wheels/manifest.json": {
       "bytes": 1041,
       "sha256": "21c4e39d924354bae2fc91359a11ad6d4e2c7058a0b94542cc30377a488f1f63"
-    },
-    "app/historical_vendor/wheels/sortedcontainers-2.4.0-py2.py3-none-any.whl": {
-      "bytes": 29575,
-      "sha256": "a163dcaede0f1c021485e957a39245190e74249897e2ae4b2aa38595db237ee0"
     },
     "app/input_search.py": {
       "bytes": 21827,
       "sha256": "40c961dd70bef1c73a574177cb614b52e6b7641448b43024c5f704a7d3feeede"
     },
     "app/input_search_adapter.py": {
-      "bytes": 15933,
-      "sha256": "759cff6ad2d94ec7879b489c176cb231948260da20c15969a9771180c2900a39"
+      "bytes": 15943,
+      "sha256": "cc9e10675b0fb51f640fb2f308624c81a223f7dacf9bb351ed569097aec7f104"
     },
     "app/input_search_benchmark.py": {
       "bytes": 12630,
@@ -245,8 +241,8 @@
       "sha256": "a172ec6b63c7ed1b0ae13b8e0c7d04d38267691612f34160177633a5b3d720d5"
     },
     "app/live_search.py": {
-      "bytes": 14273,
-      "sha256": "c05b250568715a07da1c178720bf916334280cc7b286c75867862494a3113675"
+      "bytes": 14257,
+      "sha256": "23aaf8eb85a7bdb1a80b256ae9bee036f66e2379c5ce8bb6d93c252339d259c5"
     },
     "app/localization.py": {
       "bytes": 5599,
@@ -257,28 +253,28 @@
       "sha256": "2a92a1be9547c31cd9b3249843977f43e4dc859f4cb294bc6f8de4b6db48d93a"
     },
     "app/localization_gui_check.py": {
-      "bytes": 2986,
-      "sha256": "fff52e228a057659f9690f729125b8ca82db170e15ac1746b2c613a3e5a8e987"
+      "bytes": 2984,
+      "sha256": "fe92c260c382dffe8893a07eab8e1c9e938a3112741a56fe444e61a2bb821dab"
     },
-    "app/nebius_client.py": {
-      "bytes": 14666,
-      "sha256": "dce02b246fd54ee235efe5749153988c8187693a3c8dc7aaa8c9970a68cada30"
+    "app/model_client.py": {
+      "bytes": 14668,
+      "sha256": "402a33a6562e51ef4ad46c685f86bc87558ea0fb34a53c29295184ec1c8781a0"
     },
     "app/portable_export.py": {
-      "bytes": 9260,
-      "sha256": "2dc84fcca3df9d6ec6857d2661b1c0584dbece2555f314aac7a18d27ebea5eea"
+      "bytes": 9259,
+      "sha256": "c2f029989ad990110590de569bf99079c855a5ecd7cb8c5cdf9cae4d40c977d0"
     },
     "app/property_contract.py": {
-      "bytes": 12213,
-      "sha256": "eda44ed8fe0e19b150de05a5c48e3bfd85c396135bf3233d7c886a6c1dfbf7c6"
+      "bytes": 12212,
+      "sha256": "9a1d7eca790d635118bd9eb658ec0b4e303b95cc02e2ae32b577729dfebebda9"
     },
     "app/property_live.py": {
-      "bytes": 25775,
-      "sha256": "a8c78b32cff5b6fed1c9d3d8e8137019b8f313940b4bd93c6c6fa423bfe8fcc3"
+      "bytes": 25774,
+      "sha256": "171dfb8911c6c6a7eacdaa281ce9dae71a82e12497a5436b298e696e78be78b1"
     },
     "app/property_preparation.py": {
-      "bytes": 26999,
-      "sha256": "db3cb9ad662d6533e57f7017821b1214259fd10c76283dedb8d351cfd31a0e90"
+      "bytes": 26998,
+      "sha256": "77438527cecf3b94b30e3621bf3ce7bff32c240090424eb30f5f76a1eccfd801"
     },
     "app/property_protocol.json": {
       "bytes": 2381,
@@ -301,32 +297,32 @@
       "sha256": "2c063ed41d079b3c2a12e32cf23da73a963ad4c3e7cb91fc6a6c100af04b4d14"
     },
     "app/reporting.py": {
-      "bytes": 15331,
-      "sha256": "7016a2b55532329914e00f8e90726b693fc77ed0664342fc521a286bd92b1e1b"
+      "bytes": 15375,
+      "sha256": "3ea4e4ffa4cb8f3b12dbc4747cbb84d0b267283116c43e295140f92cbaa0f849"
     },
     "app/reprocase.py": {
-      "bytes": 17345,
-      "sha256": "e90a653fb4f3b592824039ed5a6ad7e6eca6ee27441d8905aec893e97a2ba93f"
+      "bytes": 17343,
+      "sha256": "f01e52a13922fca8d2d1a6ac625df7ee7972613e1d48e35bc2478e46b0ef1c92"
     },
     "app/translations.json": {
-      "bytes": 127829,
-      "sha256": "e63f62bc5ac69faf0ec77caecfc39d875881eb1b3f92b6d4afa87476e48418ee"
+      "bytes": 127866,
+      "sha256": "243d128741fa45c681ef1e51ce0e57d6fb8e97bd9d9b3dc8545083fd387df380"
     },
     "evidence/offline-repair.json": {
       "bytes": 221737,
       "sha256": "61fcb1702eb9893185bb5c2195076a27f50ae5615780c15fb23d49fef4973efa"
     },
     "evidence/partial-series.json": {
-      "bytes": 1114282,
-      "sha256": "956b1162a59177e4229694079c1887dcfdbc2f0d0fedd71c4950458c7397d274"
+      "bytes": 1114264,
+      "sha256": "2f229566f77f084ce3eaa13dfe6f31fbd07d7c863a0ca33930813d16c6ad873f"
     },
     "evidence/repaired/benchmark.py": {
       "bytes": 21558,
       "sha256": "83364d2767e2504fe9c28025f1b4b9f17205d162784f892b519f4a1ef2df1a66"
     },
     "evidence/repaired/benchmark_adapter.py": {
-      "bytes": 17643,
-      "sha256": "f07a88d0e22b87e78c2eb2a775701c0b9e3d2a59fc3aca44390fde3ea37fbfcf"
+      "bytes": 17647,
+      "sha256": "72ce779325c785b47e8ad9e088f39c67d6c5d9e4250c1f6716cd3aa43087d9fa"
     },
     "evidence/repaired/benchmark_diagnostics.py": {
       "bytes": 10071,
@@ -417,32 +413,32 @@
       "sha256": "a5c70cedc1f710a2ee6603845f07cc907676ff77a631929e1a7161bc62fd65de"
     },
     "evidence/repaired/input_search_adapter.py": {
-      "bytes": 15849,
-      "sha256": "2ee3ec6bd877d033ee94ce6b50bd2466d5c6ea83a944ee797b971c2f1d1a46b5"
+      "bytes": 15847,
+      "sha256": "b983bc97c85c981bcc290db4f8cd170befd3e6bcf2b9080cb055cad7d1524bdf"
     },
     "evidence/repaired/live_search.py": {
-      "bytes": 14230,
-      "sha256": "b9c060a07fcf7d5092dacebb6f38835e5a2fd102f7c2a65c47ccf8535dab59fd"
+      "bytes": 14214,
+      "sha256": "0e3f9433811ce37210f12f5c9ea3baa5422db5c9fe6dd61a599627aa71309e59"
     },
-    "evidence/repaired/nebius_client.py": {
-      "bytes": 14607,
-      "sha256": "9c22630a9aaf38c17b213124f9574858f0a2cf7f188d8dfc7a48d173973ad2d6"
+    "evidence/repaired/model_client.py": {
+      "bytes": 14569,
+      "sha256": "3ff4a29d416fb0274b9bc31cf18661bb882bf53c568d7baad5cf269782a4d747"
     },
     "evidence/repaired/portable_export.py": {
-      "bytes": 9223,
-      "sha256": "73ee941362973be671f19552cdfe974f90d4fdfb3aa9588a496df9eb65b2e868"
+      "bytes": 9222,
+      "sha256": "18668059c7a7fc0498874b29820bcb7f89fac9d37894d863f19a5df10689032c"
     },
     "evidence/repaired/property_contract.py": {
-      "bytes": 12213,
-      "sha256": "eda44ed8fe0e19b150de05a5c48e3bfd85c396135bf3233d7c886a6c1dfbf7c6"
+      "bytes": 12212,
+      "sha256": "9a1d7eca790d635118bd9eb658ec0b4e303b95cc02e2ae32b577729dfebebda9"
     },
     "evidence/repaired/property_live.py": {
-      "bytes": 25712,
-      "sha256": "1fb7580d9feab10ba44228b272c5100a98e250997250d2f6d680b33029fe8401"
+      "bytes": 25711,
+      "sha256": "4819605cced242c7403328afc5dc56d04cb1aa1f0a18eb8ece249e314803bfd3"
     },
     "evidence/repaired/property_preparation.py": {
-      "bytes": 26656,
-      "sha256": "4652cb12e81e70e266560716d4a7cd9fc55d5a21e806b050bafcbc3ef1ab49d7"
+      "bytes": 26655,
+      "sha256": "a9c89c06c9d040923d949a870d4009a3f3b8703ce42b4195c4ebc6c356a2d379"
     },
     "evidence/repaired/property_protocol.json": {
       "bytes": 2381,
@@ -465,28 +461,28 @@
       "sha256": "4302fe865ecf1d0f670f46a68f64f95af09dc0721618d6b486639281529d0adc"
     },
     "evidence/repaired/reprocase.py": {
-      "bytes": 17261,
-      "sha256": "98924c86edbeaee4cf86867c129dcf04176c57963e612a3eb147b59dfed684b0"
+      "bytes": 17260,
+      "sha256": "211c2542b0e7d06ce20beefac989607f4a38f1fc55af683614bf7eb3b4462797"
     },
     "evidence/repaired/runtime-manifest.json": {
-      "bytes": 4474,
-      "sha256": "292c4136f47a834b65931fd73d9f67d8b2b5f51553b51b418d84d5494f485c43"
+      "bytes": 4621,
+      "sha256": "9504151ed349257573c18c10404570445a785dc35163408a4f384e9d2411cde5"
     },
     "evidence/repaired/test_prepared.py": {
-      "bytes": 7267,
-      "sha256": "ef7ea6dbf2dda3137dc4580d37c84f2ac27c7ebbf060ef024f764f5d58a9cc51"
+      "bytes": 7266,
+      "sha256": "d39cbea6e3c2b9d1739c5f2005040f1fc9c5c37a998ce04b7285b84f7181ffba"
     },
     "evidence/repaired/witness.json": {
       "bytes": 3668,
-      "sha256": "541666a36b2377d640b68298fab130ebf5394a312fba53ce07c9791fdce1b2ab"
+      "sha256": "195c9e7279f5a34f111f495b2ac282a478781e6fdf5843258ba9eab9036afbe2"
     },
     "evidence/success/benchmark.py": {
       "bytes": 21558,
       "sha256": "83364d2767e2504fe9c28025f1b4b9f17205d162784f892b519f4a1ef2df1a66"
     },
     "evidence/success/benchmark_adapter.py": {
-      "bytes": 17643,
-      "sha256": "f07a88d0e22b87e78c2eb2a775701c0b9e3d2a59fc3aca44390fde3ea37fbfcf"
+      "bytes": 17647,
+      "sha256": "72ce779325c785b47e8ad9e088f39c67d6c5d9e4250c1f6716cd3aa43087d9fa"
     },
     "evidence/success/benchmark_diagnostics.py": {
       "bytes": 10071,
@@ -577,28 +573,28 @@
       "sha256": "a5c70cedc1f710a2ee6603845f07cc907676ff77a631929e1a7161bc62fd65de"
     },
     "evidence/success/input_search_adapter.py": {
-      "bytes": 15849,
-      "sha256": "2ee3ec6bd877d033ee94ce6b50bd2466d5c6ea83a944ee797b971c2f1d1a46b5"
+      "bytes": 15847,
+      "sha256": "b983bc97c85c981bcc290db4f8cd170befd3e6bcf2b9080cb055cad7d1524bdf"
     },
     "evidence/success/live_search.py": {
-      "bytes": 14230,
-      "sha256": "b9c060a07fcf7d5092dacebb6f38835e5a2fd102f7c2a65c47ccf8535dab59fd"
+      "bytes": 14214,
+      "sha256": "0e3f9433811ce37210f12f5c9ea3baa5422db5c9fe6dd61a599627aa71309e59"
     },
-    "evidence/success/nebius_client.py": {
-      "bytes": 14607,
-      "sha256": "9c22630a9aaf38c17b213124f9574858f0a2cf7f188d8dfc7a48d173973ad2d6"
+    "evidence/success/model_client.py": {
+      "bytes": 14569,
+      "sha256": "3ff4a29d416fb0274b9bc31cf18661bb882bf53c568d7baad5cf269782a4d747"
     },
     "evidence/success/property_contract.py": {
-      "bytes": 12213,
-      "sha256": "eda44ed8fe0e19b150de05a5c48e3bfd85c396135bf3233d7c886a6c1dfbf7c6"
+      "bytes": 12212,
+      "sha256": "9a1d7eca790d635118bd9eb658ec0b4e303b95cc02e2ae32b577729dfebebda9"
     },
     "evidence/success/property_live.py": {
-      "bytes": 23692,
-      "sha256": "65b9d7f7c5d789c8672fc56ca2a680872100741652f4e3d1504cc8079cfe7d1f"
+      "bytes": 23691,
+      "sha256": "cc3c95039e68c550c315841cb02ca07631112e9dcfab4ab84224d4aaad152111"
     },
     "evidence/success/property_preparation.py": {
-      "bytes": 26656,
-      "sha256": "4652cb12e81e70e266560716d4a7cd9fc55d5a21e806b050bafcbc3ef1ab49d7"
+      "bytes": 26655,
+      "sha256": "a9c89c06c9d040923d949a870d4009a3f3b8703ce42b4195c4ebc6c356a2d379"
     },
     "evidence/success/property_protocol.json": {
       "bytes": 2381,
@@ -621,32 +617,32 @@
       "sha256": "4302fe865ecf1d0f670f46a68f64f95af09dc0721618d6b486639281529d0adc"
     },
     "evidence/success/reprocase.py": {
-      "bytes": 17261,
-      "sha256": "98924c86edbeaee4cf86867c129dcf04176c57963e612a3eb147b59dfed684b0"
+      "bytes": 17260,
+      "sha256": "211c2542b0e7d06ce20beefac989607f4a38f1fc55af683614bf7eb3b4462797"
     },
     "evidence/success/runtime-manifest.json": {
-      "bytes": 4380,
-      "sha256": "cebcd402e041b0c93a465a1f82a8929074379b556152e2a3fb7e5334f1d5794f"
+      "bytes": 4527,
+      "sha256": "5948d6271bb2c016f3093b82a851af7b4b0e643c29e3fa19acdf6203d431ef36"
     },
     "evidence/success/test_prepared.py": {
-      "bytes": 7177,
-      "sha256": "9570cc2b539c01f5b175fcdf5452e64279492936723871b3aba47105503470f5"
+      "bytes": 7176,
+      "sha256": "26bbcbdc4cea7f929d5497ac00fee6a3eee298ee0d5c5d91da6a847cc291361a"
     },
     "evidence/success/witness.json": {
       "bytes": 3558,
-      "sha256": "0d9387fa065a3028ecfd8cd453a991a34556f620f27c70c11707fa1688afe312"
+      "sha256": "b737b61dd9abdb7ba85771492e2bf959c3cd6343904768ceeed40502707418d5"
     },
     "evidence/successful-response.json": {
-      "bytes": 514254,
-      "sha256": "f9e34d2d6760784826cac050d7a991ab215187fe71b308145d30e93ea1ef8dd5"
+      "bytes": 514236,
+      "sha256": "fb04f2e62c9c44917d21ac61ccdf419eef39e72619996aa558900e35df7b67c5"
     },
     "index-ru.html": {
-      "bytes": 2954,
-      "sha256": "fa06cec112a543564ffea936ea7efaf0fa548825b3250f95c55aaf0aac876ff8"
+      "bytes": 1879,
+      "sha256": "1c8b0962f501c9475649746fa7d38fdbcba72a872caa28a3763b37b94983ea0a"
     },
     "index.html": {
-      "bytes": 1903,
-      "sha256": "a08468d2c54eba655a99da8fc399ea43886c46a252ec54fed319291d7cdfaed5"
+      "bytes": 1348,
+      "sha256": "9d996917c4416788e868079a70d49b5f271b6612b94fbb3324140716575e39b0"
     },
     "judge.py": {
       "bytes": 7336,
@@ -664,411 +660,5 @@
       "bytes": 557,
       "sha256": "1db7cae7fce6452e2e608e401a0f953e0133e4c2d75db69fb8ae851d2086f5b6"
     }
-  },
-  "format": "reprocase-review-kit-v1",
-  "license": "MIT for own code; third-party terms retained",
-  "network": "offline entry point; no keys; network buttons disabled",
-  "omitted": [
-    "venv",
-    "unselected outputs",
-    "keys",
-    "user settings",
-    "full test-suite logs"
-  ],
-  "presentation_languages": [
-    "ru",
-    "en"
-  ],
-  "provenance": {
-    ".gitignore": {
-      "source": "ReproCase localization update",
-      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
-    },
-    "BUILD_INFO.md": {
-      "previous_sha256": "35f4682511625cd4aeecb52f413eddead6f6f30018e4ad49c6f4cfb8b2cf9283",
-      "source": "ReproCase documentation update, 2026-10-26",
-      "transformation": "Document existing optional live route and published video; no code/evidence changes"
-    },
-    "LOCALIZATION_EN.md": {
-      "source": "ReproCase localization update",
-      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
-    },
-    "LOCALIZATION_RU.md": {
-      "source": "ReproCase localization update",
-      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
-    },
-    "README.md": {
-      "previous_sha256": "5ecbdfef77c42f780540451915c599ba5013a5cbfa33cb9bde2af35475120ca1",
-      "source": "ReproCase documentation update, 2026-10-26",
-      "transformation": "Document existing optional live route and published video; no code/evidence changes"
-    },
-    "README_EN.md": {
-      "previous_sha256": "4002b7bfed326d082e4fb7d6ea1ba9de42cd69de345a67a1514ef10a839e59fa",
-      "source": "ReproCase documentation update, 2026-10-26",
-      "transformation": "Document existing optional live route and published video; no code/evidence changes"
-    },
-    "README_RU.md": {
-      "previous_sha256": "3dfd7f89c9fb01e3abc87b35a8444a21f5d484c87da6d9f15c32bab73d30d335",
-      "source": "ReproCase documentation update, 2026-10-26",
-      "transformation": "Document existing optional live route and published video; no code/evidence changes"
-    },
-    "SECURITY.md": {
-      "previous_sha256": "56806399e12fe98a04d61b77eb37c6672549c47646e56f3eebe738ae1cedb4ef",
-      "source": "ReproCase documentation update, 2026-10-26",
-      "transformation": "Document existing optional live route and published video; no code/evidence changes"
-    },
-    "app/adaptive_adapter.py": {
-      "source": "adaptive_adapter.py",
-      "source_sha256": "3540ec10237b60d7a17d2954843d2e510e5da9bce3fcacb00034e73682ef87be",
-      "transformation": "none"
-    },
-    "app/adaptive_benchmark.py": {
-      "source": "ReproCase localization update",
-      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
-    },
-    "app/adaptive_cases.json": {
-      "source": "adaptive_cases.json",
-      "source_sha256": "310dd00fb8ae0dfb225a3e12ee4b1a0e169025c14245941f77cbfed3b117d0c0",
-      "transformation": "none"
-    },
-    "app/adaptive_contract.py": {
-      "source": "adaptive_contract.py",
-      "source_sha256": "9927a4aa24f9df7ee5188fcab16b892aedccca4dea96c55168cda986001f62c0",
-      "transformation": "none"
-    },
-    "app/benchmark.py": {
-      "source": "ReproCase localization update",
-      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
-    },
-    "app/benchmark_adapter.py": {
-      "source": "ReproCase localization update",
-      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
-    },
-    "app/benchmark_diagnostics.py": {
-      "source": "benchmark_diagnostics.py",
-      "source_sha256": "0a0e3cc387a9923f0552e44e5fa31e0c76abf013b63421ebf319d0346ea202f3",
-      "transformation": "none"
-    },
-    "app/benchmark_fixtures.json": {
-      "source": "benchmark_fixtures.json",
-      "source_sha256": "7ca08905a0a581951f493f7aa08296c9391c05e00aa30be93542afc480744f96",
-      "transformation": "none"
-    },
-    "app/calculations.py": {
-      "source": "calculations.py",
-      "source_sha256": "8f605395d27971c776050205246b74ab0e5b17062cd8aa04d9b6640f3545df73",
-      "transformation": "none"
-    },
-    "app/catalog.py": {
-      "source": "catalog.py",
-      "source_sha256": "574085d8c1478755993153193491db52fc033ba31e138a387a6243e8418706fa",
-      "transformation": "none"
-    },
-    "app/comparison_series.py": {
-      "source": "ReproCase localization update",
-      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
-    },
-    "app/desktop.py": {
-      "source": "ReproCase localization update",
-      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
-    },
-    "app/desktop_theme.py": {
-      "source": "desktop_theme.py",
-      "source_sha256": "c5b4fef289097cc19ae55ff730cca1938763b1b7d0ef3fb5ee2a5a802d8cb3dc",
-      "transformation": "none"
-    },
-    "app/examples/artificial_nebius_response.json": {
-      "source": "examples/artificial_nebius_response.json",
-      "source_sha256": "360d084ae9bb63509136ab2269054717f535b2d0a632d08be091ee7341c31ab7",
-      "transformation": "none"
-    },
-    "app/examples/artificial_seed_proposal.json": {
-      "source": "examples/artificial_seed_proposal.json",
-      "source_sha256": "35daf9e1a96e6ec5ef3e53bfb08d7babe6067f004cd0a31603fa7e661798d8cb",
-      "transformation": "none"
-    },
-    "app/examples/invalid_speed.json": {
-      "source": "examples/invalid_speed.json",
-      "source_sha256": "06b73dc54f1f78a013da5136c29c3e34dd34a082f019055b5802198f90dc167b",
-      "transformation": "none"
-    },
-    "app/examples/search_seed_ambiguous.json": {
-      "source": "examples/search_seed_ambiguous.json",
-      "source_sha256": "f160cf5b48a3a01d533efe43a17ee0104db4f70db2035a5da33da7681e321bfd",
-      "transformation": "none"
-    },
-    "app/examples/search_step_ambiguous.json": {
-      "source": "examples/search_step_ambiguous.json",
-      "source_sha256": "850b567fcaff79491400f53fc9716a82fd74f9862e82beda05cad3bc22f2cd7d",
-      "transformation": "none"
-    },
-    "app/examples/search_units_ambiguous.json": {
-      "source": "examples/search_units_ambiguous.json",
-      "source_sha256": "a62339cb72ddb575885926f91288ba7e365b631fead4b8328f71880d108e870e",
-      "transformation": "none"
-    },
-    "app/examples/seed_mismatch.json": {
-      "source": "examples/seed_mismatch.json",
-      "source_sha256": "b9b516e8f24e8b742af97b02fee83f567231cb178626b86cc3d05031b543cfd3",
-      "transformation": "none"
-    },
-    "app/examples/step_mismatch.json": {
-      "source": "examples/step_mismatch.json",
-      "source_sha256": "633760c3a3a0fb31bd2c776547efcfd28938f6a0c432dd57177d2645f2146127",
-      "transformation": "none"
-    },
-    "app/examples/unit_mismatch.json": {
-      "source": "examples/unit_mismatch.json",
-      "source_sha256": "7504382b8bb636a4f568b808c04d4d5ae28c7a2b643ef92a4c17319a7052eea6",
-      "transformation": "none"
-    },
-    "app/historical_core.py": {
-      "source": "historical_core.py",
-      "source_sha256": "205b6dfcce09f3719d7cbc621757ea8e5a1fd706af92bbd4b02d0d95af713bf5",
-      "transformation": "none"
-    },
-    "app/historical_pilot.py": {
-      "source": "ReproCase localization update",
-      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
-    },
-    "app/historical_plan.json": {
-      "source": "historical_plan.json",
-      "source_sha256": "af81d9a69a34848f39d72404ac4fcb67554bac16a8b6b792d430a13dc27fd2cc",
-      "transformation": "none"
-    },
-    "app/historical_vendor/cpython_correlation/after/LICENSE": {
-      "source": "historical_vendor/cpython_correlation/after/LICENSE",
-      "source_sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf",
-      "transformation": "none"
-    },
-    "app/historical_vendor/cpython_correlation/after/Lib/statistics.py": {
-      "source": "historical_vendor/cpython_correlation/after/Lib/statistics.py",
-      "source_sha256": "768169a7717439c0e043515ad2d315c619c99ca764a7bf0f5fdbf15cd48551f3",
-      "transformation": "none"
-    },
-    "app/historical_vendor/cpython_correlation/before/LICENSE": {
-      "source": "historical_vendor/cpython_correlation/before/LICENSE",
-      "source_sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf",
-      "transformation": "none"
-    },
-    "app/historical_vendor/cpython_correlation/before/Lib/statistics.py": {
-      "source": "historical_vendor/cpython_correlation/before/Lib/statistics.py",
-      "source_sha256": "62c87a06c233f8e49407201e1b5596beaac2ca255000c09317814c248ebc418a",
-      "transformation": "none"
-    },
-    "app/historical_vendor/cpython_correlation/fix-commit.json": {
-      "source": "historical_vendor/cpython_correlation/fix-commit.json",
-      "source_sha256": "cde3be9f6580f2e68d53ef0af83c3281bf23fba62089117f5219fa7f4dbab867",
-      "transformation": "none"
-    },
-    "app/historical_vendor/manifest.json": {
-      "source": "historical_vendor/manifest.json",
-      "source_sha256": "36fd26e6e5f8c030631dcbcc180b78950076f27d0d141c3bb54dd5756c8ea3cb",
-      "transformation": "none"
-    },
-    "app/historical_vendor/more_reversed/after/LICENSE": {
-      "source": "historical_vendor/more_reversed/after/LICENSE",
-      "source_sha256": "09f1c8c9e941af3e584d59641ea9b87d83c0cb0fd007eb5ef391a7e2643c1a46",
-      "transformation": "none"
-    },
-    "app/historical_vendor/more_reversed/after/more_itertools/__init__.py": {
-      "source": "historical_vendor/more_reversed/after/more_itertools/__init__.py",
-      "source_sha256": "eeff04c91d301040b38262d7090133b042795dd44d5ecdcfd4d8269abcac0306",
-      "transformation": "none"
-    },
-    "app/historical_vendor/more_reversed/after/more_itertools/more.py": {
-      "source": "historical_vendor/more_reversed/after/more_itertools/more.py",
-      "source_sha256": "ba7159b4dbb69ddd0a4836369012ae26f4106d7570326c24d25774cd32173be2",
-      "transformation": "none"
-    },
-    "app/historical_vendor/more_reversed/after/more_itertools/recipes.py": {
-      "source": "historical_vendor/more_reversed/after/more_itertools/recipes.py",
-      "source_sha256": "6aff1f84b0a70b96c102e3b92a70539255f1489765fc54140b1c1478f95b4828",
-      "transformation": "none"
-    },
-    "app/historical_vendor/more_reversed/before/LICENSE": {
-      "source": "historical_vendor/more_reversed/before/LICENSE",
-      "source_sha256": "09f1c8c9e941af3e584d59641ea9b87d83c0cb0fd007eb5ef391a7e2643c1a46",
-      "transformation": "none"
-    },
-    "app/historical_vendor/more_reversed/before/more_itertools/__init__.py": {
-      "source": "historical_vendor/more_reversed/before/more_itertools/__init__.py",
-      "source_sha256": "eeff04c91d301040b38262d7090133b042795dd44d5ecdcfd4d8269abcac0306",
-      "transformation": "none"
-    },
-    "app/historical_vendor/more_reversed/before/more_itertools/more.py": {
-      "source": "historical_vendor/more_reversed/before/more_itertools/more.py",
-      "source_sha256": "d4f4133e2c5b904ca0fa4f4a45063c50a5b5e2260f8e10670397afab4ca34cd7",
-      "transformation": "none"
-    },
-    "app/historical_vendor/more_reversed/before/more_itertools/recipes.py": {
-      "source": "historical_vendor/more_reversed/before/more_itertools/recipes.py",
-      "source_sha256": "6aff1f84b0a70b96c102e3b92a70539255f1489765fc54140b1c1478f95b4828",
-      "transformation": "none"
-    },
-    "app/historical_vendor/more_reversed/fix-commit.json": {
-      "source": "historical_vendor/more_reversed/fix-commit.json",
-      "source_sha256": "c86e39ef4343743db0ac3c8fa8742a2725525ec301ee254d9b20993210c66620",
-      "transformation": "none"
-    },
-    "app/historical_vendor/wheels/manifest.json": {
-      "source": "historical_vendor/wheels/manifest.json",
-      "source_sha256": "21c4e39d924354bae2fc91359a11ad6d4e2c7058a0b94542cc30377a488f1f63",
-      "transformation": "none"
-    },
-    "app/input_search.py": {
-      "source": "ReproCase localization update",
-      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
-    },
-    "app/input_search_adapter.py": {
-      "source": "ReproCase localization update",
-      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
-    },
-    "app/input_search_benchmark.py": {
-      "source": "ReproCase localization update",
-      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
-    },
-    "app/input_search_evaluation.json": {
-      "source": "input_search_evaluation.json",
-      "source_sha256": "74d90bc45cdef0bdf1af1369630f86bf4346f06325a21a02ca8830064fd051b0",
-      "transformation": "none"
-    },
-    "app/input_search_plan.json": {
-      "source": "input_search_plan.json",
-      "source_sha256": "a172ec6b63c7ed1b0ae13b8e0c7d04d38267691612f34160177633a5b3d720d5",
-      "transformation": "none"
-    },
-    "app/live_search.py": {
-      "source": "ReproCase localization update",
-      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
-    },
-    "app/localization.py": {
-      "source": "ReproCase localization update",
-      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
-    },
-    "app/localization_gui.py": {
-      "source": "ReproCase localization update",
-      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
-    },
-    "app/localization_gui_check.py": {
-      "source": "ReproCase localization update",
-      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
-    },
-    "app/nebius_client.py": {
-      "source": "ReproCase localization update",
-      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
-    },
-    "app/portable_export.py": {
-      "source": "ReproCase localization update",
-      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
-    },
-    "app/property_contract.py": {
-      "source": "property_contract.py",
-      "source_sha256": "eda44ed8fe0e19b150de05a5c48e3bfd85c396135bf3233d7c886a6c1dfbf7c6",
-      "transformation": "none"
-    },
-    "app/property_live.py": {
-      "source": "ReproCase localization update",
-      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
-    },
-    "app/property_preparation.py": {
-      "source": "ReproCase localization update",
-      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
-    },
-    "app/property_protocol.json": {
-      "source": "property_protocol.json",
-      "source_sha256": "e42317321a60ba8831bc28a8b144a9a00b8afca0ad2add108d39a8350b630c56",
-      "transformation": "none"
-    },
-    "app/proposal.schema.json": {
-      "source": "proposal.schema.json",
-      "source_sha256": "ad4a706293edbc042f39ba7fe49e57db8a0e42b09b56a990eeef93d2a96ac8ed",
-      "transformation": "none"
-    },
-    "app/proposals.py": {
-      "source": "proposals.py",
-      "source_sha256": "cb877852279037fff840ac0f3c52f8c83e5b2f3ebee2f3b45d786c734b78bc02",
-      "transformation": "none"
-    },
-    "app/reference.py": {
-      "source": "reference.py",
-      "source_sha256": "1bb2b51ae30ff1976727af2a12aa34a32ce05a25e22f5a73ded470c57b2a91c2",
-      "transformation": "none"
-    },
-    "app/regression.py": {
-      "source": "regression.py",
-      "source_sha256": "2c063ed41d079b3c2a12e32cf23da73a963ad4c3e7cb91fc6a6c100af04b4d14",
-      "transformation": "none"
-    },
-    "app/reporting.py": {
-      "source": "ReproCase localization update",
-      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
-    },
-    "app/reprocase.py": {
-      "source": "ReproCase localization update",
-      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
-    },
-    "app/translations.json": {
-      "source": "ReproCase localization update",
-      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
-    },
-    "evidence/offline-repair.json": {
-      "source": "outputs/export-incident-review/proposal-2-replay.json",
-      "source_sha256": "53354c5b8aeebb846614ceb3065b40156e71b1cc2de6e94e922c39becd9f1c98",
-      "transformation": "Original path strings replaced; explicit derivative wrapper added and relabelled for public review; underlying report data unchanged"
-    },
-    "evidence/partial-series.json": {
-      "source": "outputs/property-live-7uxy0rcs/result.json",
-      "source_sha256": "2932807111a9fda71b67f803b4d738d38c4d5afe50042f39026fb85555324899",
-      "transformation": "Original path strings replaced; explicit derivative wrapper added and relabelled for public review; underlying report data unchanged"
-    },
-    "evidence/repaired/runtime-manifest.json": {
-      "source": "outputs/export-incident-review/proposal-2-replay/boundary_grid/runtime-manifest.json",
-      "source_sha256": "292c4136f47a834b65931fd73d9f67d8b2b5f51553b51b418d84d5494f485c43",
-      "transformation": "none"
-    },
-    "evidence/repaired/test_prepared.py": {
-      "source": "outputs/export-incident-review/proposal-2-replay/boundary_grid/test_prepared.py",
-      "source_sha256": "ef7ea6dbf2dda3137dc4580d37c84f2ac27c7ebbf060ef024f764f5d58a9cc51",
-      "transformation": "none"
-    },
-    "evidence/repaired/witness.json": {
-      "source": "outputs/export-incident-review/proposal-2-replay/boundary_grid/witness.json",
-      "source_sha256": "541666a36b2377d640b68298fab130ebf5394a312fba53ce07c9791fdce1b2ab",
-      "transformation": "none"
-    },
-    "evidence/success/runtime-manifest.json": {
-      "source": "outputs/portability-review/saved-real-hypothesis/runtime-manifest.json",
-      "source_sha256": "cebcd402e041b0c93a465a1f82a8929074379b556152e2a3fb7e5334f1d5794f",
-      "transformation": "none"
-    },
-    "evidence/success/test_prepared.py": {
-      "source": "outputs/portability-review/saved-real-hypothesis/test_prepared.py",
-      "source_sha256": "9570cc2b539c01f5b175fcdf5452e64279492936723871b3aba47105503470f5",
-      "transformation": "none"
-    },
-    "evidence/success/witness.json": {
-      "source": "outputs/portability-review/saved-real-hypothesis/witness.json",
-      "source_sha256": "0d9387fa065a3028ecfd8cd453a991a34556f620f27c70c11707fa1688afe312",
-      "transformation": "none"
-    },
-    "evidence/successful-response.json": {
-      "source": "outputs/property-live-cfwgjqos/result.json",
-      "source_sha256": "1102faed5093ea3b2ae8007e22ded8fa3c7082a6eb53752db039621dc6f01d1c",
-      "transformation": "Original path strings replaced; explicit derivative wrapper added and relabelled for public review; underlying report data unchanged"
-    },
-    "index-ru.html": {
-      "source": "ReproCase localization update",
-      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
-    },
-    "index.html": {
-      "source": "ReproCase localization update",
-      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
-    },
-    "judge.py": {
-      "source": "ReproCase localization update",
-      "transformation": "RU/EN presentation and instructions; evidence and protocol data unchanged"
-    }
-  },
-  "status": "OFFLINE_REVIEW_BUILD"
+  }
 }

@@ -6,7 +6,7 @@ import json
 import math
 
 import historical_core as core
-import nebius_client as client
+import model_client as client
 
 VERSION = 'property-v1'
 MAX_PROPOSAL_BYTES = 4096

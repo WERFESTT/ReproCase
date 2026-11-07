@@ -1,0 +1,8 @@
+{
+  "schema_version": 1,
+  "case_id": "seed",
+  "hypothesis_id": "configured_seed_ignored",
+  "action": "run_check",
+  "check_id": "closed_form_seed_oracle",
+  "input_sha256": "11755fd5b7b288d8d0ae36c9310471682489cf5675edacbfe3dd388edf3dae88"
+}

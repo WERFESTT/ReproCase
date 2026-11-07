@@ -11,7 +11,7 @@ import shlex
 import input_search as search
 import input_search_adapter as adapter
 import live_search as live
-import nebius_client as client
+import model_client as client
 import reprocase as app
 
 CASES = (("time_fixed", "units", "fixed"), ("seed_buggy", "seed", "buggy"),
@@ -27,7 +27,7 @@ STATES = {"RUNNING": "выполняется", "COMPLETED": "завершено"
 
 def source_hashes():
     names = (*search.SOURCE_FILES, "comparison_series.py", "live_search.py", "input_search_adapter.py",
-             "benchmark_adapter.py", "nebius_client.py", *(f"examples/search_{name}_ambiguous.json" for name in ("units", "seed", "step")))
+             "benchmark_adapter.py", "model_client.py", *(f"examples/search_{name}_ambiguous.json" for name in ("units", "seed", "step")))
     return {name: hashlib.sha256((search.ROOT / name).read_bytes()).hexdigest() for name in names}
 
 
@@ -42,7 +42,7 @@ def load_plan():
 
 
 def consent_text(plan):
-    lines = ["Сравнение пяти существующих учебных случаев через Nebius", f"Модель: {live.MODEL}; адрес: {live.HOST}"]
+    lines = ["Сравнение пяти существующих учебных случаев через model API", f"Модель: {live.MODEL}; адрес: {live.HOST}"]
     for row in plan["cases"]:
         lines.append(LABELS[row["id"]] + ": " + app.json_text(row["case"]["inputs"]))
     lines += ["Поля текущей формы не используются: запускаются только перечисленные пять случаев.",
