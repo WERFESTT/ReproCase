@@ -72,7 +72,7 @@ def validate_context(context):
         raise client.ClientError("Диагностический контекст не прошёл локальную проверку.") from None
 
 
-def build_request(context, model=client.DEFAULT_MODEL):
+def build_request(context, model=client.DEFAULT_MODEL, *, token_parameter="max_completion_tokens"):
     """Перенести тот же контекст в messages/tools без подсказанного ответа."""
     context = validate_context(context)
     public = {key: value for key, value in context.items() if key not in ("instruction", "action_schema")}
@@ -80,7 +80,8 @@ def build_request(context, model=client.DEFAULT_MODEL):
         {"role": "system", "content": context["instruction"]},
         {"role": "user", "content": json.dumps(public, ensure_ascii=False, sort_keys=True, separators=(",", ":"))},
     ]
-    return client.build_function_request(messages, context["action_schema"], "diagnostic_action", model)
+    return client.build_function_request(messages, context["action_schema"], "diagnostic_action", model,
+                                         token_parameter=token_parameter)
 
 
 def decode_response(raw, context, model=client.DEFAULT_MODEL):
@@ -138,16 +139,22 @@ class DiagnosticSession:
     transport_type = SyntheticTransport
 
     def __init__(self, *, synthetic_transport=None, allow_network=False,
-                 max_requests=MAX_MODEL_REQUESTS, model=client.DEFAULT_MODEL):
+                 max_requests=MAX_MODEL_REQUESTS, model=None, settings=None):
         if type(max_requests) is not int or not 1 <= max_requests <= MAX_MODEL_REQUESTS:
             raise client.ClientError("Допустим бюджет от одного до четырёх запросов.")
-        if type(allow_network) is not bool or model not in client.MODELS:
+        if type(allow_network) is not bool:
             raise client.ClientError("Неизвестный режим или модель.")
+        if allow_network or settings is not None:
+            settings = client.require_settings(settings)
+        if settings is not None and model is not None and model != settings.model:
+            raise client.ClientError("Модель не совпадает с подтверждённым подключением.")
+        model = client.validate_model(settings.model if settings is not None else client.DEFAULT_MODEL if model is None else model)
         if synthetic_transport is not None and not isinstance(synthetic_transport, self.transport_type):
             raise client.ClientError("Разрешён только явно синтетический транспорт.")
         if synthetic_transport is not None and allow_network:
             raise client.ClientError("Синтетический режим нельзя совмещать с включённой сетью.")
         self.transport, self.allow_network, self.model = synthetic_transport, allow_network, model
+        self.settings = settings
         self.max_requests, self.attempts, self.events = max_requests, 0, []
         self.stopped = False
         self._sample_digest = None
@@ -163,13 +170,14 @@ class DiagnosticSession:
         return validate_context(context)
 
     def _build_request(self, context):
-        return build_request(context, self.model)
+        return build_request(context, self.model,
+                             token_parameter=self.settings.token_parameter if self.settings else "max_completion_tokens")
 
     def _before_send(self):
         pass
 
     def _send(self, body, api_key):
-        return client._https_once(body, api_key)
+        return client._https_once(body, api_key, settings=self.settings)
 
     def _validate_action(self, arguments, context):
         try:
@@ -209,9 +217,7 @@ class DiagnosticSession:
                 if self.transport is None:
                     if not self.allow_network:
                         raise client.NetworkDisabled("Сеть отключена; запрос не отправлен.")
-                    if (type(api_key) is not str or not 1 <= len(api_key) <= 512
-                            or any(not 33 <= ord(ch) <= 126 for ch in api_key)):
-                        raise client.ClientError("Для разрешённого запроса нужен отдельно переданный корректный ключ.")
+                    client.require_settings(self.settings).validate_key(api_key)
                 elif api_key is not None:
                     raise client.ClientError("В синтетическом режиме ключ не принимается.")
                 self._before_send()

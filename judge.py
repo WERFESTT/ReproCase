@@ -1,4 +1,4 @@
-"""Точка входа OFFLINE_REVIEW. Только локальный просмотр, replay, GUI и пилот."""
+"""Проверяемая точка входа. Сеть выключена; GUI с сетью требует --allow-network."""
 import sys
 if not sys.flags.isolated:
     print('Use / используйте: python3 -I -B judge.py demo (или gui / pilot / verify)', file=sys.stderr)
@@ -80,8 +80,10 @@ def demo():
     return 0 if all(r['expected_outcome_matched'] for r in results) else 1
 
 
-def gui(hidden=False):
+def gui(hidden=False, allow_network=False):
     import desktop
+    if allow_network:
+        return desktop.main([])
     original = desktop.Window
     class OfflineWindow(original):
         def __init__(self, root):
@@ -119,8 +121,12 @@ def main():
     parser.add_argument('mode', choices=('verify','demo','gui','pilot','synthetic'))
     parser.add_argument('--hidden-check', action='store_true')
     parser.add_argument('--language', choices=('ru','en'), default=None)
+    parser.add_argument('--allow-network', action='store_true', help='разрешить настройку сетевого запуска в GUI; отправка требует подтверждения')
     args = parser.parse_args()
-    sys.addaudithook(no_network)
+    if args.allow_network and (args.mode != 'gui' or args.hidden_check):
+        parser.error('--allow-network разрешён только для gui без --hidden-check')
+    if not args.allow_network:
+        sys.addaudithook(no_network)
     global FILES, loc, print
     FILES = verify()['files']
     sys.meta_path.insert(0, CheckedFinder())
@@ -134,7 +140,7 @@ def main():
         print('OFFLINE_REVIEW: хеши совпадают. Это не доказательство авторства.')
         return 0
     if args.mode=='demo': return demo()
-    if args.mode=='gui': return gui(args.hidden_check)
+    if args.mode=='gui': return gui(args.hidden_check, args.allow_network)
     if args.mode=='pilot':
         import historical_pilot
         return historical_pilot.main([])

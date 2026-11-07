@@ -12,6 +12,7 @@ import input_search as search
 import input_search_adapter as adapter
 import live_search as live
 import model_client as client
+import model_settings
 import reprocase as app
 
 CASES = (("time_fixed", "units", "fixed"), ("seed_buggy", "seed", "buggy"),
@@ -27,29 +28,31 @@ STATES = {"RUNNING": "выполняется", "COMPLETED": "завершено"
 
 def source_hashes():
     names = (*search.SOURCE_FILES, "comparison_series.py", "live_search.py", "input_search_adapter.py",
-             "benchmark_adapter.py", "model_client.py", *(f"examples/search_{name}_ambiguous.json" for name in ("units", "seed", "step")))
+             "benchmark_adapter.py", "model_client.py", "model_settings.py",
+             *(f"examples/search_{name}_ambiguous.json" for name in ("units", "seed", "step")))
     return {name: hashlib.sha256((search.ROOT / name).read_bytes()).hexdigest() for name in names}
 
 
-def load_plan():
+def load_plan(settings=None):
     cases = [{"id": identifier, "variant": variant,
               "case": app.load_case(search.ROOT / f"examples/search_{name}_ambiguous.json")} for identifier, name, variant in CASES]
     return {"schema_version": 1, "cases": cases, "source_sha256": source_hashes(),
-            "model": live.MODEL, "endpoint": live.HOST,
+            "model": settings.model if settings else None, "endpoint": settings.endpoint if settings else None,
+            "connection": settings.as_dict() if settings else None,
             "limits": {"sessions": 5, "trials_per_session": 3, "requests_per_session": 4, "requests_total": 20,
                        "completion_tokens_per_request": 1024, "completion_tokens_total": 20480,
                        "request_bytes": 16000, "request_bytes_total": 320000}}
 
 
-def consent_text(plan):
-    lines = ["Сравнение пяти существующих учебных случаев через model API", f"Модель: {live.MODEL}; адрес: {live.HOST}"]
+def consent_text(plan, settings):
+    lines = ["Сравнение пяти существующих учебных случаев через API модели", model_settings.connection_text(settings)]
     for row in plan["cases"]:
         lines.append(LABELS[row["id"]] + ": " + app.json_text(row["case"]["inputs"]))
     lines += ["Поля текущей формы не используются: запускаются только перечисленные пять случаев.",
               "В сервис уйдут правило, числа, наблюдение, четыре разрешённых кандидата и результаты проверок. Вариант реализации, контрольный перебор и метки оценщика не отправляются.",
-              "На случай: до 3 проб и 4 запросов. Всего: до 20 запросов, 20480 токенов ответа (включая reasoning), 320000 байт тел; на запрос до 1024 токенов ответа и 16000 байт.",
+              "На случай: до 3 проб и 4 запросов. Всего: до 20 запросов, 20480 токенов ответа, 320000 байт тел; на запрос до 1024 токенов ответа и 16000 байт.",
               "Первая ошибка или отмена останавливает всю серию. Автоматических повторов нет. Ключ скрыт, только в памяти. Отмена не доказывает отмену отправленного запроса или отсутствие списания.",
-              "Ориентир $0.15, не денежный лимит. Расчёт $0.114432 предполагает по 16000 входных токенов на запрос, $0.30 вход / $0.90 выход за миллион, без кеша. Байт не равен токену, счёт поставщика может отличаться.",
+              model_settings.COST_NOTICE,
               "Прежний ошибочный travel_time не повторяется и учитывается только отдельно как история. На этом открытом наборе c02 сразу выявляет все три учебные ошибки; серия не докажет общего преимущества ИИ.",
               "Разрешить отправку этих пяти случаев в указанных пределах?"]
     return "\n\n".join(lines)
@@ -72,8 +75,8 @@ class Budget:
 
 
 class SeriesSession(live.LiveSession):
-    def __init__(self, cancelled, budget):
-        super().__init__(cancelled)
+    def __init__(self, cancelled, budget, settings):
+        super().__init__(cancelled, settings)
         self.budget = budget
 
     def _before_send(self):
@@ -175,18 +178,19 @@ def save_report(record, directory):
 class SeriesJob(live.LiveJob):
     directory_prefix = "comparison-five-"
 
-    def __init__(self, output_dir=None, session_factory=SeriesSession):
-        super().__init__(output_dir, session_factory)
+    def __init__(self, output_dir=None, session_factory=SeriesSession, *, settings=None):
+        super().__init__(output_dir, session_factory, settings=settings)
         self.progress_text = "Подготовка пяти сравнений."
 
     def _validate_payload(self, plan):
-        if app.json_text(plan) != app.json_text(load_plan()):
+        if app.json_text(plan) != app.json_text(load_plan(self.settings)):
             raise client.ClientError("План изменён; нужно заново просмотреть и подтвердить пять случаев.")
         return plan
 
     def _work(self, plan, key, directory):
         budget = Budget()
-        record = {"kind": "FIVE_CASE_COMPARISON", "model": live.MODEL, "endpoint": live.HOST,
+        record = {"kind": "FIVE_CASE_COMPARISON", "model": self.settings.model, "endpoint": self.settings.endpoint,
+                  "connection": self.settings.as_dict(),
                   "plan": plan, "history": historical_reference(), "state": "RUNNING", "cancel_requested": False,
                   "rows": [dict(row, state="NOT_RUN", baseline=None, model=None) for row in plan["cases"]]}
         save_error = None
@@ -203,7 +207,7 @@ class SeriesJob(live.LiveJob):
                 row["baseline"] = search.run_search(row["case"], row["variant"])
                 row["state"] = "RUNNING"
                 save_report(record, directory)
-                session = self.session_factory(self.cancelled, budget)
+                session = self.session_factory(self.cancelled, budget, self.settings)
                 try:
                     row["model"] = adapter.run_case(row["case"], row["variant"], session, key)
                 except Exception:

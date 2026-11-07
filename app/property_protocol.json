@@ -1,6 +1,6 @@
 {
   "version": "property-preparation-protocol-v1",
-  "mode": "FUTURE_REAL_RUN_NOT_AUTHORIZED_OR_IMPLEMENTED",
+  "mode": "EXPLICIT_USER_CONFIRMATION_REQUIRED",
   "cases": [
     "cpython_correlation",
     "more_reversed"
@@ -10,7 +10,7 @@
     1,
     2
   ],
-  "model": "nvidia/nemotron-3-super-120b-a12b",
+  "model": null,
   "proposal_requests_per_session": 1,
   "automatic_retries": 0,
   "max_completion_tokens_per_request": 1024,

@@ -16,6 +16,7 @@ import input_search
 import live_search
 import comparison_series
 import property_live
+import model_settings
 import desktop_theme
 import localization as loc
 from localization import print
@@ -161,7 +162,7 @@ class Session:
         self.search_result = input_search.run_search(self.case, "buggy")
         return self.search_result
 
-    def draft_request(self, values):
+    def draft_request(self, values, settings=None):
         """Одно учебное наблюдение, без эталона и готового предложения проверки."""
         self.update(values)
         operation = self.case["operation"]
@@ -169,7 +170,8 @@ class Session:
         public = {"schema_version": 1, "operation": operation, "task": CATALOG[operation]["task"],
                   "inputs": self.case["inputs"], "check": self.case["check"], "observation": observation}
         public["sample_id"] = hashlib.sha256(app.json_text(public).encode("utf-8")).hexdigest()[:16]
-        return build_request(diagnostics.model_context(public, []))
+        options = {"model": settings.model, "token_parameter": settings.token_parameter} if settings else {}
+        return build_request(diagnostics.model_context(public, []), **options)
 
 
 class Window:
@@ -187,6 +189,12 @@ class Window:
         self.theme, theme_warning = desktop_theme.load_setting()
         desktop_theme.apply_theme(root, self.theme)
         self.session = Session()
+        connection_warning = None
+        try:
+            self.connection_settings = model_settings.load_settings()
+        except model_settings.ClientError as error:
+            self.connection_settings = None
+            connection_warning = str(error)
         self.entries = {}
         self.live_pending = False
         self.live_job = None
@@ -249,6 +257,8 @@ class Window:
         self.live_button.grid(row=2, column=0, columnspan=2, sticky="w", pady=(8, 0))
         self.series_button = ttk.Button(buttons, text="Сравнить пять случаев…", command=lambda: self.start_live(series=True))
         self.series_button.grid(row=3, column=0, columnspan=2, sticky="w", pady=(8, 0))
+        self.connection_button = ttk.Button(buttons, text="Подключение модели…", command=self.configure_connection)
+        self.connection_button.grid(row=3, column=2, columnspan=2, sticky="w", padx=8, pady=(8, 0))
         self.property_choice = TextVariable(root, value=property_live.OPTIONS[0], choices=property_live.OPTIONS)
         self.property_selector = ttk.Combobox(buttons, textvariable=self.property_choice,
                                              values=property_live.OPTIONS, state="readonly", width=40)
@@ -293,8 +303,17 @@ class Window:
         self.apply_theme()
         root.update_idletasks()
         root.minsize(max(820, root.winfo_reqwidth()), 650)
-        if theme_warning or language_warning:
-            self.status.set(theme_warning or language_warning)
+        if theme_warning or language_warning or connection_warning:
+            self.status.set(theme_warning or language_warning or connection_warning)
+
+    def configure_connection(self):
+        if self.live_pending:
+            return
+        from connection_dialog import edit_settings
+        settings = edit_settings(self.root, self.connection_settings)
+        if settings is not None:
+            self.connection_settings = settings
+            self.status.set("Подключение сохранено. Запросов к модели не было.")
 
     def change_language(self, event=None):
         language = self.language_choice.get().lower()
@@ -549,7 +568,7 @@ class Window:
         values = self.values()
         self.clear()
         try:
-            draft = self.session.draft_request(values)
+            draft = self.session.draft_request(values, self.connection_settings)
         except ValueError as error:
             self.fail(error)
             return
@@ -564,7 +583,7 @@ class Window:
         if busy:
             widgets = [self.selector, self.run_button, self.reset_button, self.load_button, self.save_button,
                        self.copy_button,
-                       self.prepare_button, self.find_button, self.live_button, self.series_button,
+                       self.prepare_button, self.find_button, self.live_button, self.series_button, self.connection_button,
                        self.property_selector, self.property_preview_button, self.property_live_button]
             widgets += [widget for widget in self.form.winfo_children() if widget.winfo_class() == "TEntry"]
             self._live_states = [(widget, str(widget.cget("state"))) for widget in widgets]
@@ -581,7 +600,7 @@ class Window:
         self.clear()
         try:
             plan = property_live.make_plan(property_live.OPTIONS.index(self.property_choice.get()))
-            self.show_request_state("Предпросмотр теста — не отправлен", property_live.preview(plan))
+            self.show_request_state("Предпросмотр теста — не отправлен", property_live.preview(plan, self.connection_settings))
             self.status.set("Это полный предпросмотр подготовки свойства. Отправки и ввода ключа не было.")
             self.tabs.select(2)
         except ValueError as error:
@@ -592,11 +611,12 @@ class Window:
             return
         from tkinter import messagebox, simpledialog
         try:
+            settings = model_settings.require_settings(self.connection_settings)
             if property_mode:
-                property_live.ensure_runtime_current()
+                property_live.check_requirements()
                 case = property_live.make_plan(property_live.OPTIONS.index(self.property_choice.get()))
             elif series:
-                case = comparison_series.load_plan()
+                case = comparison_series.load_plan(settings)
             else:
                 self.session.update(self.values())
                 case = self.session.case
@@ -610,25 +630,26 @@ class Window:
         self.live_start_cancelled = False
         self.closing_after_live = False
         self.set_live_busy(True)
-        self.show_request_state("Запросы — ожидают разрешения", "Отправки ещё не было. Ожидается подтверждение пользователя и ввод ключа.")
+        self.show_request_state("Запросы — ожидают разрешения", "Отправки ещё не было. Ожидается подтверждение пользователя.")
         started = False
         key = None
         try:
-            consent = (property_live.consent_text(case) if property_mode else
-                       comparison_series.consent_text(case) if series else live_search.consent_text(case))
+            consent = (property_live.consent_text(case, settings) if property_mode else
+                       comparison_series.consent_text(case, settings) if series else live_search.consent_text(case, settings))
             if not messagebox.askyesno(loc.text("Разрешение на реальный запрос"), loc.text(consent), parent=self.root):
                 self.status.set("Отправка отменена пользователем. Запросов не было.")
                 self.show_request_state("Запросы — отменено до отправки", "Подтверждение не получено. Попыток отправки: 0.")
                 return
             if self.live_start_cancelled:
                 return
-            key = simpledialog.askstring(loc.text("Ключ model API — только в памяти"), loc.text("Введите ключ. Он не будет сохранён:"), show="*", parent=self.root)
-            if key is None or self.live_start_cancelled:
-                self.status.set("Ввод ключа отменён. Запросов не было.")
-                self.show_request_state("Запросы — отменено до отправки", "Ввод ключа или запуск отменён. Попыток отправки: 0.")
-                return
-            self.live_job = (property_live.PropertyJob() if property_mode else
-                             comparison_series.SeriesJob() if series else live_search.LiveJob())
+            if settings.requires_key:
+                key = simpledialog.askstring(loc.text("Ключ API модели — только в памяти"), loc.text("Введите ключ. Он не будет сохранён:"), show="*", parent=self.root)
+                if key is None or self.live_start_cancelled:
+                    self.status.set("Ввод ключа отменён. Запросов не было.")
+                    self.show_request_state("Запросы — отменено до отправки", "Ввод ключа или запуск отменён. Попыток отправки: 0.")
+                    return
+            self.live_job = (property_live.PropertyJob(settings=settings) if property_mode else
+                             comparison_series.SeriesJob(settings=settings) if series else live_search.LiveJob(settings=settings))
             if property_mode:
                 self.live_job.start(case, key, confirmed=True, approved_requests=case["requests"])
             else:
@@ -640,8 +661,11 @@ class Window:
         except property_live.StaleRuntime as error:
             self.status.set(str(error))
             self.show_request_state("Запросы — нужен перезапуск", "Код обновлён после загрузки окна. Запуск остановлен до отправки; перезапустите ReproCase.")
+        except model_settings.ClientError as error:
+            self.status.set(str(error))
+            self.show_request_state("Запросы — отправок нет", "Запуск не начат. Попыток отправки: 0.")
         except (ValueError, OSError, ImportError):
-            self.status.set("Запуск не начат: проверьте формат ключа и доступность папки отчётов. Запросов не было.")
+            self.status.set("Запуск не начат: проверьте настройки подключения, зависимости и доступность папки отчётов. Запросов не было.")
             self.show_request_state("Запросы — отправок нет", "Запуск не начат. Попыток отправки: 0.")
         finally:
             key = None
@@ -718,7 +742,7 @@ def main(argv=None):
     args = parser.parse_args(argv)
     # Для нового локального поиска используем уже подготовленное окружение; ключ ещё не вводился.
     isolated = app.ROOT / ".venv-historical/bin/python"
-    if importlib.util.find_spec("hypothesis") is None and isolated.is_file():
+    if not sys.flags.isolated and importlib.util.find_spec("hypothesis") is None and isolated.is_file():
         return subprocess.run([str(isolated), "-B", str(Path(__file__).resolve()),
                                *argv, *(["--language", loc.cli_language] if loc.cli_language else [])], cwd=app.ROOT).returncode
     try:

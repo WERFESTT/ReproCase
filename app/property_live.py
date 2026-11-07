@@ -16,6 +16,7 @@ import benchmark_adapter as transport
 import historical_core as core
 import live_search as live
 import model_client as client
+import model_settings
 import property_contract as contract
 import property_preparation as prep
 import reprocase as app
@@ -54,30 +55,30 @@ def validate_plan(plan):
     return copy.deepcopy(plan)
 
 
-def preview(plan):
+def preview(plan, settings=None):
     plan=validate_plan(plan)
     cases=list(dict.fromkeys(row['case_id'] for row in plan['rows']))
-    return ('ПРЕДПРОСМОТР. НИЧЕГО НЕ ОТПРАВЛЕНО.\nЧисла прежней учебной формы здесь не используются.\n\n'+consent_text(plan)+
+    return ('ПРЕДПРОСМОТР. НИЧЕГО НЕ ОТПРАВЛЕНО.\nЧисла прежней учебной формы здесь не используются.\n\n'+consent_text(plan,settings)+
             '\n\nПолные тела запросов, без ключа (для повторений тело одинаково):\n'+
-            '\n\n'.join(app.json_text(prep.build_request(contract.context(case))) for case in cases))
+            '\n\n'.join(app.json_text(prep.build_request(contract.context(case),
+                         settings.model if settings else client.DEFAULT_MODEL,
+                         token_parameter=settings.token_parameter if settings else 'max_completion_tokens')) for case in cases))
 
 
-def consent_text(plan):
+def consent_text(plan, settings=None):
     plan=validate_plan(plan); count=plan['requests']
     cases=list(dict.fromkeys(row['case_id'] for row in plan['rows']))
     descriptions='\n\n'.join(prep.search.LABELS[case]+': '+contract.context(case)['symptom'] for case in cases)
     return (f'Подготовка проверяемого теста: разрешить {count} '+('запрос?' if count==1 else 'независимых запросов?')+
-      f'\nМодель: {live.MODEL}\nАдрес: https://{live.HOST}{client.PATH}\n\n'+descriptions+
+      '\n'+model_settings.connection_text(settings)+'\n\n'+descriptions+
       '\n\nПоставщику отправятся публичный симптом, контракт API, описание генератора, области входов и схема свойства. '
       'Исправления, исходники, эталоны, найденные примеры и результаты локального поиска не отправляются. '
       'Полные данные доступны кнопкой предпросмотра.\n\n'+
-      f'Каждый сеанс — ровно одна попытка, до 1024 токенов ответа (включая reasoning), 16000 байт тела, тайм-аут {client.TIMEOUT_SECONDS} с. '
+      f'Каждый сеанс — ровно одна попытка, до 1024 токенов ответа, 16000 байт тела, тайм-аут {client.TIMEOUT_SECONDS} с. '
       f'Итого до {count} запросов, {count*1024} токенов ответа и {count*16000} байт запросов. '
       'Повторов и автоматического исправления ответа нет. Первая ошибка или отмена останавливает остаток серии.\n\n'
-      'Это платная отправка: ставки с карточки $0.30 / $0.06 / $0.90 за миллион входных / кешированных / выходных токенов. '
-      'Байты не равны токенам; ограничения не гарантируют денежный потолок. Неизвестное usage не считается нулём. '
-      'Отмена и тайм-аут не доказывают отмену запроса или списания у поставщика.\n\n'
-      'Ключ вводится скрыто, только в память; в отчёт не попадёт. Затем локальные методы проверят свойство и тест до/после. '
+      +model_settings.COST_NOTICE+'\n\n'
+      'Если выбран ключ, он вводится скрыто, только в память; в отчёт не попадёт. Затем локальные методы проверят свойство и тест до/после. '
       'Приёмка, генераторы и словарь свойств подготовлены вручную; польза модели ещё не доказана. '
       'Согласие относится только к этому запуску.')
 
@@ -94,11 +95,12 @@ class Budget:
 
 class PropertySession(live.LiveSession):
     function_name='propose_check'
-    def __init__(self,cancelled,budget):
-        transport.DiagnosticSession.__init__(self,allow_network=True,max_requests=1,model=live.MODEL)
+    def __init__(self,cancelled,budget,settings):
+        transport.DiagnosticSession.__init__(self,allow_network=True,max_requests=1,settings=settings)
         self.cancelled=cancelled; self.budget=budget; self.response_received=False
     def _validate_context(self,context): return contract.validate_context(context)
-    def _build_request(self,context): return prep.build_request(context)
+    def _build_request(self,context):
+        return prep.build_request(context,self.model,token_parameter=self.settings.token_parameter)
     def _continuity(self,context):
         if self.attempts or self._last_context is not None: raise client.ClientError('Одна попытка на сеанс; повтор запрещён.')
     def _before_send(self):
@@ -114,8 +116,9 @@ class PropertySession(live.LiveSession):
 
 
 def source_hashes():
-    return {**prep.fingerprints(),'property_live.py':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
-            'portable_export.py':hashlib.sha256((core.ROOT/'portable_export.py').read_bytes()).hexdigest()}
+    names=('property_live.py','portable_export.py','model_client.py','model_settings.py',
+           'live_search.py','benchmark_adapter.py')
+    return {**prep.fingerprints(),**{name:hashlib.sha256((core.ROOT/name).read_bytes()).hexdigest() for name in names}}
 
 
 LOADED_SOURCE_HASHES=source_hashes()
@@ -124,6 +127,18 @@ LOADED_SOURCE_HASHES=source_hashes()
 def ensure_runtime_current():
     if source_hashes()!=LOADED_SOURCE_HASHES:
         raise StaleRuntime('Перезапустите ReproCase: файлы проверки изменены после загрузки окна. Дальнейшие запросы запрещены.')
+
+
+def check_requirements():
+    """Проверить локальную готовность до согласия на отправку и ввода ключа."""
+    ensure_runtime_current()
+    try:
+        import hypothesis
+    except ImportError:
+        raise client.ClientError('Для подготовки теста нужны закреплённые зависимости. Установите их по README_RU.md и запустите окно этим интерпретатором.') from None
+    if hypothesis.__version__!=core.plan()['hypothesis_version']:
+        raise client.ClientError('Версия локального Hypothesis не соответствует плану.')
+    core.verify_sources()
 
 
 def make_artifact(row,run):
@@ -246,14 +261,11 @@ def save_report(record,directory):
 
 class PropertyJob(live.LiveJob):
     directory_prefix='property-live-'
-    def __init__(self,output_dir=None,session_factory=PropertySession):
-        super().__init__(output_dir,session_factory);self.progress_text='Подготовка запуска.'
+    def __init__(self,output_dir=None,session_factory=PropertySession,*,settings=None):
+        super().__init__(output_dir,session_factory,settings=settings);self.progress_text='Подготовка запуска.'
     def _validate_payload(self,plan):
-        ensure_runtime_current()
+        check_requirements()
         os.environ['HYPOTHESIS_STORAGE_DIRECTORY']=str(core.ROOT/'outputs/hypothesis-cache')
-        import hypothesis
-        if hypothesis.__version__!=core.plan()['hypothesis_version']: raise client.ClientError('Версия локального Hypothesis не соответствует плану.')
-        core.verify_sources()
         return validate_plan(plan)
     def start(self,plan,key,*,confirmed=False,approved_requests=None):
         plan=validate_plan(plan)
@@ -263,8 +275,9 @@ class PropertyJob(live.LiveJob):
     def _work(self,plan,key,directory):
         budget=Budget(plan['requests']);session=None;save_error=None
         rows=[dict(r,state='NOT_STARTED',proposal=None,searches=[],manual_baseline=[],exports=[],events=[]) for r in plan['rows']]
-        record={'kind':'PROPERTY_PREPARATION','state':'RUNNING','plan':plan,'rows':rows,'model':live.MODEL,
-                'endpoint':live.HOST,'cancel_requested':False,'source_sha256':copy.deepcopy(LOADED_SOURCE_HASHES)}
+        record={'kind':'PROPERTY_PREPARATION','state':'RUNNING','plan':plan,'rows':rows,'model':self.settings.model,
+                'endpoint':self.settings.endpoint,'connection':self.settings.as_dict(),
+                'cancel_requested':False,'source_sha256':copy.deepcopy(LOADED_SOURCE_HASHES)}
         try:
             save_report(record,directory)
             for index,row in enumerate(rows):
@@ -272,7 +285,7 @@ class PropertyJob(live.LiveJob):
                 validate_plan(plan)
                 ensure_runtime_current()
                 row['state']='RUNNING';self.progress_text=f"Подготовка свойства {index+1}/{len(rows)}. Попыток начато: {budget.used}."
-                session=self.session_factory(self.cancelled,budget);row['origin']=session.origin
+                session=self.session_factory(self.cancelled,budget,self.settings);row['origin']=session.origin
                 stage='request'
                 try:
                     row['proposal']=session.request_action(contract.context(row['case_id']),key)

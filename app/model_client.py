@@ -1,4 +1,4 @@
-"""Клиент для будущей отдельно разрешённой пробы. По умолчанию сеть закрыта.
+"""Клиент для отдельно подтверждённого подключения. По умолчанию сеть закрыта.
 
 Ничего не выполняется при импорте. Ключ принимается только явным аргументом;
 окружение, файлы ключей и аккаунты этот модуль не ищет.
@@ -12,24 +12,20 @@ import http.client
 import json
 import ssl
 import threading
+import urllib.error
+import urllib.request
+
+from model_settings import ClientError, TOKEN_PARAMETERS, require_settings, validate_model
 
 from proposals import demonstration_proposal, proposal_schema, validate_proposal
 from reprocase import validate_case
 
 
-HOST = "model-api.invalid"
-ALLOWED_HOSTS = ("model-api.invalid", "model-api-alt.invalid")
-PATH = "/v1/chat/completions"
-MODELS = ("nvidia/Nemotron-3_5-Lightning", "nvidia/nemotron-3-super-120b-a12b")
-DEFAULT_MODEL = MODELS[0]
+DEFAULT_MODEL = "reprocase-offline"
 MAX_INPUT_BYTES = 4096
 MAX_RESPONSE_BYTES = 65_536
 MAX_COMPLETION_TOKENS = 512
 TIMEOUT_SECONDS = 30
-
-
-class ClientError(ValueError):
-    """Безопасное сообщение без ключа и необработанного ответа поставщика."""
 
 
 class NetworkDisabled(ClientError):
@@ -49,11 +45,10 @@ def _reject_constant(value):
     raise ClientError("Ответ содержит недопустимую константу JSON.")
 
 
-def build_request(case, model=DEFAULT_MODEL):
+def build_request(case, model=DEFAULT_MODEL, *, token_parameter="max_completion_tokens"):
     """Только подготовка тела запроса; нет обращения к сети или ключу."""
     case = validate_case(case)
-    if type(model) is not str or model not in MODELS:
-        raise ClientError("Модель не входит в явно разрешённый список.")
+    validate_model(model)
     context = {"case": case, "allowed_proposal": demonstration_proposal(case)}
     messages = [
         {"role": "system", "content": (
@@ -64,13 +59,15 @@ def build_request(case, model=DEFAULT_MODEL):
         )},
         {"role": "user", "content": json.dumps(context, ensure_ascii=False, sort_keys=True)},
     ]
-    return build_function_request(messages, proposal_schema(), "propose_check", model)
+    return build_function_request(messages, proposal_schema(), "propose_check", model, token_parameter=token_parameter)
 
 
-def build_function_request(messages, schema, function_name, model=DEFAULT_MODEL, *, max_completion_tokens=None, max_request_bytes=None):
+def build_function_request(messages, schema, function_name, model=DEFAULT_MODEL, *, max_completion_tokens=None,
+                           max_request_bytes=None, token_parameter="max_completion_tokens"):
     """Общие ограничения запросов; схема и имя берутся только из локального кода."""
-    if type(model) is not str or model not in MODELS:
-        raise ClientError("Модель не входит в явно разрешённый список.")
+    validate_model(model)
+    if token_parameter not in TOKEN_PARAMETERS:
+        raise ClientError("Неизвестный параметр лимита ответа.")
     if function_name not in ("propose_check", "diagnostic_action", "input_search_action"):
         raise ClientError("Неизвестная функция клиента.")
     tokens = MAX_COMPLETION_TOKENS if max_completion_tokens is None else max_completion_tokens
@@ -82,7 +79,7 @@ def build_function_request(messages, schema, function_name, model=DEFAULT_MODEL,
         raise ClientError("Инструкция и входные данные больше 4096 байт.")
     request = {
         "model": model, "messages": messages, "stream": False,
-        "max_completion_tokens": tokens,
+        token_parameter: tokens,
         "parallel_tool_calls": False,
         "tools": [{"type": "function", "function": {
             "name": function_name, "description": "Вернуть одно разрешённое диагностическое действие.",
@@ -139,8 +136,7 @@ def decode_function_response(raw, expected_function, expected_model=DEFAULT_MODE
     """Проверить общий конверт tool call. Аргументы затем проверяет конкретный маршрут."""
     if expected_function not in ("propose_check", "diagnostic_action", "input_search_action"):
         raise ClientError("Неизвестная ожидаемая функция.")
-    if expected_model not in MODELS:
-        raise ClientError("Неизвестная ожидаемая модель.")
+    validate_model(expected_model)
     try:
         if type(raw) is str:
             raw = raw.encode("utf-8")
@@ -192,54 +188,72 @@ def decode_response(raw, case, expected_model=DEFAULT_MODEL):
     return ValidatedReply(proposal=proposal, usage=reply.usage, model=reply.model)
 
 
-def _https_once(body, api_key, *, host=None):
-    """Единственная сетевая операция: фиксированный HTTPS-адрес, без редиректов и повторов."""
-    host = HOST if host is None else host
-    if host not in ALLOWED_HOSTS:
-        raise ClientError("Адрес поставщика не входит в разрешённый список.")
-    connection = http.client.HTTPSConnection(host, timeout=TIMEOUT_SECONDS, context=ssl.create_default_context())
+class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, request, fp, code, message, headers, new_url):
+        fp.close()
+        raise ClientError("Перенаправление запрещено. Новый адрес и ключ не отправлены; автоматического повтора нет.")
+
+
+def _https_once(body, api_key=None, *, settings=None):
+    """Один POST на выбранный адрес: HTTPS или HTTP обратной петли; без повторов."""
+    settings = require_settings(settings)
+    settings.validate_key(api_key)
+    if type(body) is not bytes or len(body) > 16000:
+        raise ClientError("Превышен предел полного запроса.")
+    headers = {"Content-Type": "application/json", "Accept": "application/json"}
+    if settings.requires_key:
+        headers["Authorization"] = "Bearer " + api_key
+    # Локальный сервер не направляется во внешний прокси. HTTPS использует
+    # стандартные настройки прокси и доверия сертификатам окружения Python.
+    proxy = urllib.request.ProxyHandler({}) if settings.is_loopback else urllib.request.ProxyHandler()
+    opener = urllib.request.build_opener(proxy, _NoRedirect(),
+                                        urllib.request.HTTPSHandler(context=ssl.create_default_context()))
+    request = urllib.request.Request(settings.endpoint, data=body, headers=headers, method="POST")
     try:
-        connection.request("POST", PATH, body=body, headers={
-            "Authorization": "Bearer " + api_key, "Content-Type": "application/json", "Accept": "application/json",
-        })
-        response = connection.getresponse()
-        if response.status != 200:
-            raise ClientError(f"Поставщик вернул HTTP {response.status}. Повтор не выполнен; потребление неизвестно.")
-        raw = response.read(MAX_RESPONSE_BYTES + 1)
-        if len(raw) > MAX_RESPONSE_BYTES:
-            raise ClientError("Ответ превысил предел размера. Потребление неизвестно; повтор не выполнен.")
-        return raw
+        with opener.open(request, timeout=TIMEOUT_SECONDS) as response:
+            if response.status != 200:
+                raise ClientError(f"Сервер вернул HTTP {response.status}. Повтор не выполнен; потребление неизвестно.")
+            raw = response.read(MAX_RESPONSE_BYTES + 1)
+            if len(raw) > MAX_RESPONSE_BYTES:
+                raise ClientError("Ответ превысил предел размера. Потребление неизвестно; повтор не выполнен.")
+            return raw
     except ClientError:
         raise
-    except (OSError, http.client.HTTPException):
+    except urllib.error.HTTPError as error:
+        status = error.code
+        error.close()
+        raise ClientError(f"Сервер вернул HTTP {status}. Повтор не выполнен; потребление неизвестно.") from None
+    except (OSError, ValueError, http.client.HTTPException):
         raise ClientError("Сетевая ошибка или тайм-аут. Отмена у поставщика и потребление неизвестны; повтора нет.") from None
-    finally:
-        connection.close()
 
 
 class OneShotClient:
     """Не более одной попытки на экземпляр. Ключ не хранится в объекте и не логируется."""
 
-    def __init__(self, *, allow_network=False, model=DEFAULT_MODEL):
-        if type(allow_network) is not bool or model not in MODELS:
+    def __init__(self, *, allow_network=False, model=None, settings=None):
+        if type(allow_network) is not bool:
             raise ClientError("Некорректные параметры клиента.")
+        if allow_network or settings is not None:
+            settings = require_settings(settings)
+        if settings is not None and model is not None and model != settings.model:
+            raise ClientError("Модель не совпадает с подтверждённым подключением.")
         self.allow_network = allow_network
-        self.model = model
+        self.settings = settings
+        self.model = validate_model(settings.model if settings is not None else DEFAULT_MODEL if model is None else model)
         self.attempted = False
         self._lock = threading.Lock()
 
-    def request_proposal(self, case, api_key):
+    def request_proposal(self, case, api_key=None):
         with self._lock:
             if not self.allow_network:
                 raise NetworkDisabled("Сеть отключена. Реальная проба требует отдельного разрешения.")
             if self.attempted:
                 raise ClientError("Попытка уже была; автоматический повтор запрещён.")
-            if type(api_key) is not str or not 1 <= len(api_key) <= 512 or any(not 33 <= ord(ch) <= 126 for ch in api_key):
-                raise ClientError("Ключ должен быть передан отдельно без пробелов и управляющих символов.")
+            self.settings.validate_key(api_key)
             case = validate_case(case)
-            body = json.dumps(build_request(case, self.model), ensure_ascii=False).encode("utf-8")
+            body = json.dumps(build_request(case, self.model, token_parameter=self.settings.token_parameter), ensure_ascii=False).encode("utf-8")
             self.attempted = True
-        raw = _https_once(body, api_key)
+        raw = _https_once(body, api_key, settings=self.settings)
         return decode_response(raw, case, self.model)
 
 

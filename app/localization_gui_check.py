@@ -8,6 +8,8 @@ import desktop
 import localization as loc
 import desktop_theme
 import model_client
+import model_settings
+import property_live
 
 
 def main():
@@ -23,6 +25,7 @@ def main():
              mock.patch.object(desktop_theme,'SETTINGS_PATH',Path(temp)/'theme.json'), \
              mock.patch.object(model_client,'_https_once',side_effect=AssertionError('NETWORK_FORBIDDEN')) as send:
             w=desktop.Window(root)
+            w.connection_settings=model_settings.ConnectionSettings('http://127.0.0.1:8000/v1/chat/completions','local-test')
             for language in ('en','ru','en'):
                 w.language_choice.set(language.upper());w.change_language()
                 for theme in ('dark','light'):
@@ -34,7 +37,7 @@ def main():
                         assert w.session.evidence is result
                         w.language_choice.set(language.upper());w.change_language()
                         root.geometry(f'{root.minsize()[0]}x820');root.update_idletasks()
-                        for button in (w.run_button,w.reset_button,w.load_button,w.save_button,w.copy_button,
+                        for button in (w.run_button,w.reset_button,w.load_button,w.save_button,w.copy_button,w.connection_button,
                                        w.prepare_button,w.find_button,w.property_live_button,w.property_preview_button):
                             assert button.winfo_x()+button.winfo_reqwidth() <= button.master.winfo_width()
                         w.copy_button.invoke()
@@ -43,7 +46,8 @@ def main():
                             w.load_button.invoke()
                         assert w.session.evidence is result
                     w.prepare_property()
-                    with mock.patch('tkinter.messagebox.askyesno',return_value=False) as consent:
+                    with mock.patch('tkinter.messagebox.askyesno',return_value=False) as consent, \
+                         mock.patch.object(property_live,'check_requirements'):
                         w.start_live(property_mode=True)
                     assert not w.live_pending
                     assert loc.text('Разрешение на реальный запрос')==consent.call_args.args[0]

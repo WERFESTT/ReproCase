@@ -90,7 +90,8 @@ def validate_context(context):
         raise client.ClientError("Контекст подбора не прошёл локальную проверку.") from None
 
 
-def build_request(context, model=client.DEFAULT_MODEL, *, max_completion_tokens=None, max_request_bytes=None):
+def build_request(context, model=client.DEFAULT_MODEL, *, max_completion_tokens=None, max_request_bytes=None,
+                  token_parameter="max_completion_tokens"):
     context = validate_context(context)
     public = {key: value for key, value in context.items() if key not in ("instruction", "action_schema")}
     messages = [
@@ -98,7 +99,8 @@ def build_request(context, model=client.DEFAULT_MODEL, *, max_completion_tokens=
         {"role": "user", "content": json.dumps(public, ensure_ascii=False, sort_keys=True, separators=(",", ":"))},
     ]
     return client.build_function_request(messages, context["action_schema"], FUNCTION_NAME, model,
-                                         max_completion_tokens=max_completion_tokens, max_request_bytes=max_request_bytes)
+                                         max_completion_tokens=max_completion_tokens, max_request_bytes=max_request_bytes,
+                                         token_parameter=token_parameter)
 
 
 def artificial_response(action, model=client.DEFAULT_MODEL, usage=None):
@@ -138,7 +140,8 @@ class SearchSession(transport.DiagnosticSession):
         return validate_context(context)
 
     def _build_request(self, context):
-        return build_request(context, self.model)
+        return build_request(context, self.model,
+                             token_parameter=self.settings.token_parameter if self.settings else "max_completion_tokens")
 
     def _validate_action(self, arguments, context):
         try:

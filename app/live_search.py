@@ -14,33 +14,30 @@ import threading
 import input_search as search
 import input_search_adapter as adapter
 import model_client as client
+import model_settings
 import reprocase as app
 
-HOST = "model-api-alt.invalid"
-MODEL = "nvidia/nemotron-3-super-120b-a12b"
 MAX_REQUEST_BYTES = 16000
 MAX_COMPLETION_TOKENS = 1024
 MAX_REQUESTS = 4
-RATES = {"input": 0.30, "cached_input": 0.06, "output": 0.90}
 
 
-def consent_text(case):
+def consent_text(case, settings):
     case = app.validate_case(case)
-    return (f"Реальный поиск через model API\nМодель: {MODEL}\nАдрес: https://{HOST}{client.PATH}\n\n"
+    return ("Реальный поиск через API модели\n" + model_settings.connection_text(settings) + "\n\n"
             "Будут отправлены правило учебной задачи, эти входные числа, наблюдение, разрешённые кандидаты и результаты проверок:\n"
             + app.json_text(case["inputs"]) + "\nВариант реализации и метки оценщика не отправляются. Проверяется намеренно ошибочный учебный вариант.\n\n"
-            "Максимум 4 последовательных запроса, 3 новые пробы, 1024 токена ответа на запрос (включая reasoning), "
+            "Максимум 4 последовательных запроса, 3 новые пробы, 1024 токена ответа на запрос, "
             "16000 байт полного запроса. Автоматических повторов нет.\n"
-            "$0.30 / $0.06 / $0.90 за миллион входных / кешированных входных / выходных токенов — ставки с карточки пользователя. "
-            "Это оценка, не жёсткий денежный лимит. Адрес поставщика может измениться: произвольный новый адрес здесь ввести нельзя.\n\n"
-            "Ключ вводится скрыто, используется только в памяти и не сохраняется. Отмена прекращает следующие запросы; "
+            + model_settings.COST_NOTICE + "\n\n"
+            "Если выбран ключ, он вводится скрыто, используется только в памяти и не сохраняется. Отмена прекращает следующие запросы; "
             "она не подтверждает отмену или отсутствие списания за уже отправленный запрос. Отчёт сохранится отдельно.\n\n"
             "Разрешить отправку этих данных в пределах указанного запуска?")
 
 
 class LiveSession(adapter.SearchSession):
-    def __init__(self, cancelled):
-        super().__init__(allow_network=True, max_requests=MAX_REQUESTS, model=MODEL)
+    def __init__(self, cancelled, settings):
+        super().__init__(allow_network=True, max_requests=MAX_REQUESTS, settings=settings)
         self.cancelled = cancelled
 
     @property
@@ -49,7 +46,7 @@ class LiveSession(adapter.SearchSession):
 
     def _build_request(self, context):
         return adapter.build_request(context, self.model, max_completion_tokens=MAX_COMPLETION_TOKENS,
-                                     max_request_bytes=MAX_REQUEST_BYTES)
+                                     max_request_bytes=MAX_REQUEST_BYTES, token_parameter=self.settings.token_parameter)
 
     def _before_send(self):
         if self.cancelled.is_set():
@@ -58,7 +55,7 @@ class LiveSession(adapter.SearchSession):
     def _send(self, body, api_key):
         if len(body) > MAX_REQUEST_BYTES:
             raise client.ClientError("Превышен предел полного запроса.")
-        return client._https_once(body, api_key, host=HOST)
+        return client._https_once(body, api_key, settings=self.settings)
 
     def _validate_action(self, arguments, context):
         if self.cancelled.is_set():
@@ -74,7 +71,7 @@ class LiveSession(adapter.SearchSession):
                 if event.get("usage") is None and event.get("response_text"):
                     try:
                         payload = json.loads(event["response_text"], object_pairs_hook=client._json_object, parse_constant=client._reject_constant)
-                        if type(payload) is dict and payload.get("model") == MODEL:
+                        if type(payload) is dict and payload.get("model") == self.model:
                             event["usage"] = client._usage(payload.get("usage"))
                     except (ValueError, TypeError, RecursionError):
                         pass  # Неполный JSON или неверный usage остаётся неизвестным.
@@ -82,29 +79,14 @@ class LiveSession(adapter.SearchSession):
 
 
 def estimate_cost(events):
-    """Диапазон по известному usage; при неизвестном кеше не выдаём точную цену."""
-    low = high = 0.0
+    """Без тарифа выбранного сервера стоимость неизвестна даже при известном usage."""
     attempted = [e for e in events if e["network_attempted"]]
-    unknown = 0
-    for event in attempted:
-        usage = event.get("usage") or {}
-        incoming, outgoing = usage.get("prompt_tokens"), usage.get("completion_tokens")
-        if incoming is None or outgoing is None:
-            unknown += 1
-            continue
-        cached = usage.get("cached_prompt_tokens")
-        if cached is None:
-            low += (incoming * RATES["cached_input"] + outgoing * RATES["output"]) / 1e6
-            high += (incoming * RATES["input"] + outgoing * RATES["output"]) / 1e6
-        else:
-            amount = ((incoming - cached) * RATES["input"] + cached * RATES["cached_input"] + outgoing * RATES["output"]) / 1e6
-            low += amount
-            high += amount
-    bounds = [round(low, 10), round(high, 10)]
-    return {"rates_usd_per_million": dict(RATES), "estimate_usd_range": bounds if attempted and not unknown else None,
-            "known_usage_subtotal_usd_range": bounds if len(attempted) > unknown else None,
+    unknown = sum(any((event.get("usage") or {}).get(field) is None
+                      for field in ("prompt_tokens", "completion_tokens")) for event in attempted)
+    return {"rates_usd_per_million": None, "estimate_usd_range": None,
+            "known_usage_subtotal_usd_range": None,
             "requests_with_unknown_usage": unknown,
-            "note": "Оценка по указанным ставкам, не счёт поставщика и не денежный лимит. Неизвестное потребление не считается нулевым."}
+            "note": model_settings.COST_NOTICE}
 
 
 def summary(record):
@@ -168,21 +150,21 @@ def _redact(value, key):
 class LiveJob:
     """Один запуск на экземпляр; Tk читается и обновляется только главным потоком."""
     directory_prefix = "live-search-"
-    def __init__(self, output_dir=None, session_factory=LiveSession):
+    def __init__(self, output_dir=None, session_factory=LiveSession, *, settings=None):
         self.output_dir = app.ROOT / "outputs" if output_dir is None else search.local_path(output_dir)
         self.session_factory = session_factory
+        self.settings = model_settings.require_settings(settings)
         self.cancelled = threading.Event()
         self.results = queue.Queue()
         self._lock = threading.Lock()
         self.started = False
         self.thread = None
 
-    def start(self, case, key, *, confirmed=False):
+    def start(self, case, key=None, *, confirmed=False):
         if confirmed is not True:
             raise client.ClientError("Нужно явное подтверждение отправки.")
         case = copy.deepcopy(self._validate_payload(case))
-        if type(key) is not str or not 1 <= len(key) <= 512 or any(not 33 <= ord(ch) <= 126 for ch in key):
-            raise client.ClientError("Введите ключ без пробелов и управляющих символов.")
+        self.settings.validate_key(key)
         with self._lock:
             if self.started:
                 raise client.ClientError("Этот запуск уже начат; повтор не выполняется.")
@@ -207,7 +189,7 @@ class LiveJob:
     def _work(self, case, key, directory):
         session = None
         try:
-            session = self.session_factory(self.cancelled)
+            session = self.session_factory(self.cancelled, self.settings)
             record = adapter.run_case(case, "buggy", session, key)
         except Exception:
             record = {"result": None, "events": copy.deepcopy(session.events) if session else [],
@@ -217,7 +199,8 @@ class LiveJob:
         try:
             record = _redact(record, key)
             record.update(origin="REAL_API" if record["accounting"]["network_attempts"] else "LOCAL_NO_REQUEST",
-                          model=MODEL, endpoint=HOST, cancel_requested=self.cancelled.is_set(),
+                          model=self.settings.model, endpoint=self.settings.endpoint,
+                          connection=self.settings.as_dict(), cancel_requested=self.cancelled.is_set(),
                           limits={"requests": MAX_REQUESTS, "trials": 3, "completion_tokens_per_request": MAX_COMPLETION_TOKENS,
                                   "serialized_request_bytes": MAX_REQUEST_BYTES}, cost=estimate_cost(record["events"]))
             for event in record["events"]:

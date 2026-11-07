@@ -34,6 +34,14 @@ This checks the research package and replays 100 recorded before/after outcomes:
 
 The property vocabulary, semantic validation, and case selection are manually designed. Model output is validated as data; arbitrary generated Python is not executed. The current evidence covers two historical defects and does not establish general model superiority or support for arbitrary repositories.
 
-The optional client source is in `app/model_client.py`. Public connection addresses are non-working placeholders; a new model experiment requires explicit connection configuration. Offline use is complete without that configuration.
+## Connect a model
+
+```bash
+python3 -I -B judge.py gui --allow-network
+```
+
+Open **Model connection…** and enter the full endpoint URL and model identifier. Local HTTP servers on the loopback interface and remote HTTPS servers are supported through a compatible `chat/completions` protocol with function calls. Choose authentication and the token-limit field supported by your server. A key, when required, is entered privately for each run and is never saved. Saving settings makes no request; every run still requires confirmation showing the destination and limits.
+
+Connection settings are local and excluded from Git. No company, server, model, or tariff is selected automatically. See the [connection instructions](README_EN.md#model-connection) for the exact response contract and dependencies needed for historical test preparation. The ordinary commands above continue to run offline.
 
 Own code: MIT, Copyright (c) 2026 WERFESTT. [License scope](LICENSE_SCOPE.md), [component notices](THIRD_PARTY.txt), and [security information](SECURITY.md).

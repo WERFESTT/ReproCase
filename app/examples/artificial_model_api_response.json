@@ -1,6 +1,6 @@
 {
   "id": "artificial-offline-example",
-  "model": "nvidia/Nemotron-3_5-Lightning",
+  "model": "reprocase-offline",
   "usage": null,
   "choices": [
     {

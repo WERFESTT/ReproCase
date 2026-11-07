@@ -25,18 +25,19 @@ import reprocase as app
 
 ROOT=core.ROOT
 OUT=ROOT/'outputs/property-preparation'
-MODEL=client.MODELS[1]
+MODEL=client.DEFAULT_MODEL
 SOURCES=('property_contract.py','property_preparation.py','historical_core.py','historical_pilot.py',
          'historical_plan.json','historical_vendor/manifest.json','property_protocol.json')
 
 class Cancelled(BaseException): pass
 
-def build_request(public):
+def build_request(public, model=MODEL, *, token_parameter="max_completion_tokens"):
     public=contract.validate_context(public)
     messages=[{'role':'system','content':'Предложи проверяемое свойство и область входов по симптому и публичному контракту. Верни ровно один propose_check в заданной декларативной схеме. Не добавляй код, пути, сеть или заявление о найденной ошибке. Возможны несколько допустимых свойств; полезность проверит отдельный локальный контур.'},
               {'role':'user','content':json.dumps(public,ensure_ascii=False,sort_keys=True)}]
-    return client.build_function_request(messages,contract.schema(),'propose_check',MODEL,
-                                         max_completion_tokens=1024,max_request_bytes=16000)
+    return client.build_function_request(messages,contract.schema(),'propose_check',model,
+                                         max_completion_tokens=1024,max_request_bytes=16000,
+                                         token_parameter=token_parameter)
 
 def artificial_response(proposal):
     result=transport.artificial_response(proposal,MODEL)

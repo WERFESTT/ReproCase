@@ -61,9 +61,46 @@ The installation uses the pinned wheels in `app/historical_vendor/wheels/` and n
 
 ## Model connection
 
-The client source is `app/model_client.py`. The published copy uses non-working `.invalid` hostnames. It is not a configured live service: entering a key does not make those addresses usable. A new experiment requires explicit configuration of an authorized endpoint and compatible model, followed by validation of that configuration.
+Start the verified desktop interface with network operations explicitly enabled:
 
-The existing client code limits a single-property request to one attempt, at most 1024 completion tokens, at most 16000 serialized request bytes, and a 30-second timeout. It uses a host allowlist, certificate checks, a memory-only key, and no automatic retries. Service-side usage after a timeout can remain unknown. The application limits are not an account-wide spending limit. No credentials are required for the documented offline commands.
+```bash
+python3 -I -B judge.py gui --allow-network
+```
+
+1. Open **Model connection…**.
+2. Enter the full endpoint URL, including its path, and the exact model identifier. For example, `http://127.0.0.1:8000/v1/chat/completions` addresses a local server you have already started. ReproCase does not install or start a model server.
+3. Select **No key** or **Access key (Bearer)** as required by the server.
+4. Select its supported output-limit parameter: `max_tokens` or `max_completion_tokens`. Save.
+5. Choose an operation and review its destination, model, transmitted data and request limits. Confirm that run. If authentication was selected, enter the key in the masked prompt; the key stays in memory for that run only.
+
+Remote servers require HTTPS with certificate and hostname verification. HTTP is accepted only for `localhost` or a loopback IP address such as `127.0.0.1` or `[::1]`. URLs containing credentials, query parameters or fragments are rejected, as are `.invalid` placeholders. Redirects are never followed.
+
+Nonsecret settings are saved to the Git-ignored `app/connection_settings.json`: endpoint, model, authentication mode and token-limit parameter. The key is not stored there. `app/connection_settings.example.json` shows the format and is not loaded automatically. You can create the working settings file manually before opening the application. Missing settings cause a local configuration message, not a request. Saving settings and previewing requests perform no network operations.
+
+### Compatibility and limits
+
+The server must support non-streaming `chat/completions` requests with `messages`, `tools`, a forced function `tool_choice` and `parallel_tool_calls=false`. A successful response is HTTP 200 JSON with the exact requested `model`, one `choices` item with `index=0`, `finish_reason="tool_calls"`, and exactly one call to the expected function. Function arguments must be a JSON string. Additional response text and refusals are rejected, and the proposed action then passes independent local validation. Plain text chat and other API protocols are not automatically converted. If the server returns its internal model name instead of a requested alias, use its supported exact identifier.
+
+| Operation | Maximum requests |
+| --- | --- |
+| One educational search | 4, with up to 3 new probes |
+| Five-case comparison | 20 total, up to 4 per case |
+| Prepare one historical property | 1 |
+| Two properties with three repetitions each | 6 total, 1 per session |
+
+These modes retain limits of 1024 completion tokens, 16000 serialized request bytes, 65536 response bytes and a 30-second network-operation timeout. There are no automatic retries. An error or cancellation stops subsequent requests in a series. No tariff is assigned to a user-selected server: token usage is reported when known, while monetary cost remains unknown. The former model's prices are not reused. Timeouts do not establish service-side cancellation or zero usage, and application limits are not an account-wide spending cap.
+
+**New historical test preparation** requires the pinned dependencies described above. Start the network-enabled window with that interpreter, for example `.venv/bin/python -I -B judge.py gui --allow-network`. Local readiness is checked before consent and key entry. The verified launcher does not silently switch interpreters.
+
+Without `--allow-network`, the launcher still blocks networking. Both modes verify the manifest. Saved research results and portable bundles retain their own pinned sources and need no new connection.
+
+Run the client integration checks against a local mock server, without a real model or payment:
+
+```bash
+python3 -B -m unittest discover -s tests -v
+```
+
+These checks cover configuration propagation, response validation, consent, cancellation, limits and local replay. Compatibility with a particular model server requires a separate confirmed run after configuring that server.
 
 ## Interpretation and integrity
 
